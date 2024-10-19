@@ -1,0 +1,24 @@
+<% layout('layout/boilerplate') %>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card h-100">
+            <img src="<%=foundBook.images%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=foundBook.title%></h5>
+              <p class="card-text"><%=foundBook.description%></p>
+              <p class="card-text text-muted"><%=bookJson.details.authorText.replace("#author#", foundBook.author)%></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%=bookJson.details.priceValue.replace("#price#", foundBook.price)%></li>
+              <!-- <li class="list-group-item">A third item</li> -->
+            </ul>
+            <div class="card-body">
+              <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-info"><%=bookJson.details.actionButtons.editLabel%></a>
+              <form class="d-inline" action="/readingBliss/<%=foundBook.id%>?_method=DELETE" method="POST">
+                <button class="btn btn-danger"><%=bookJson.details.actionButtons.deleteLabel%></button>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
