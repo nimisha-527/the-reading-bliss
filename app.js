@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const Books = require('./models/books');
 const { bookJson } = require('./public/index');
 const ejsMate = require('ejs-mate');
+const { wrapAsync, expressError } = require('./utils/index');
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     useNewURLParser: true,
@@ -35,51 +36,64 @@ app.use(methodOverride("_method"));
 app.use(express.static( path.join(__dirname, "public") ));
 app.use(express.urlencoded({extended: true}));
 
+// const wrapAsync = (fn) => {
+
+// }
 
 app.get('/', (req, res) => {
     res.render("home", {bookJson})
 });
 
-app.get('/readingBliss', async (req, res) => {
+app.get('/readingBliss', wrapAsync(async (req, res) => {
     const bookLibrary = await Books.find({});
     res.render("readingBliss/index", {bookLibrary, bookJson});
-});
+}));
 
-app.get('/readingBliss/newBook', async (req, res) => {
+app.get('/readingBliss/newBook', wrapAsync(async (req, res) => {
     res.render("readingBliss/new", {bookJson})
-});
+}));
 
-app.post('/readingBliss', async (req, res) => {
+app.post('/readingBliss', wrapAsync(async (req, res) => {
+    // if(!req.body.books) throw new expressError("INVALID DATA", 400);
     const newBook = await new Books(req.body)
     await newBook.save();
     res.redirect(`/readingBliss/${newBook._id}`)
-});
+}));
 
-app.get('/readingBliss/:id', async (req, res) => {
+app.get('/readingBliss/:id', wrapAsync(async (req, res) => {
     const {id} = req.params;
     const foundBook = await Books.findById(id);
     res.render("readingBliss/details", {foundBook, bookJson});
-});
+}));
 
-app.get('/readingBliss/:id/edit', async (req, res) => {
+app.get('/readingBliss/:id/edit', wrapAsync(async (req, res) => {
     const {id} = req.params;
     const foundBook = await Books.findById(id);
     res.render("readingBliss/edit", {book: foundBook, bookJson});
-});
+}));
 
-app.put('/readingBliss/:id', async (req, res) => {
-    const {id} = req.params;
-    const foundBook = await Books.findByIdAndUpdate(id, req.body, {runValidators: true, new: true});
-    await foundBook.save()
-    res.redirect("/readingBliss");
-});
+app.put('/readingBliss/:id', wrapAsync(async (req, res) => {
+        const {id} = req.params;
+        const foundBook = await Books.findByIdAndUpdate(id, req.body, {runValidators: true, new: true});
+        await foundBook.save()
+        res.redirect("/readingBliss");
+}));
 
-app.delete('/readingBliss/:id', async (req, res) => {
+app.delete('/readingBliss/:id', wrapAsync(async (req, res) => {
     const {id} = req.params;
-    console.log(id)
     await Books.findByIdAndDelete(id);
     res.redirect("/readingBliss");
-});
+}));
+
+app.all('*', (req, res, next) => {
+    next(new expressError("PAGE NOT FOUND", 404));
+})
+
+app.use((err, req, res, next) => {
+    const {statusCode = 500} = err;
+    if(!err.message) err.message = "Something went wrong!!!";
+    res.status(statusCode).render("error" , {err});
+})
 
 app.listen(8080, () => {
     console.log('listening on port 8080');
