@@ -1,29 +1,29 @@
 <% layout('layout/boilerplate') %>
 
 <h1><%=bookJson.newBook.title%></h1>
-<form action="/readingBliss" method="POST">
+<form action="/readingBliss" method="POST" class="needs-validation" novalidate>
     <div class="mb-3">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>
-        <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.newBook.productName.placeHolder%>">
+        <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.newBook.productName.placeHolder%>" required>
       </div>
       <div class="mb-3">
           <label for="price" class="form-label"><%=bookJson.newBook.productPrice.label%></label>
           <div class="input-group">
               <span class="input-group-text">$</span>
-              <input name="price" type="text" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="<%=bookJson.newBook.productPrice.placeHolder%>">
+              <input name="price" type="text" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="<%=bookJson.newBook.productPrice.placeHolder%>" required>
             </div>
       </div>
       <div class="mb-3">
         <label for="author" class="form-label"><%=bookJson.newBook.productAuthor.label%></label>
-        <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.newBook.productAuthor.placeHolder%>">
+        <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.newBook.productAuthor.placeHolder%>" required>
       </div>
       <div class="mb-3">
           <label for="images" class="form-label"><%=bookJson.newBook.productImage.label%></label>
-          <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.newBook.productImage.placeHolder%>">
+          <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.newBook.productImage.placeHolder%>" required>
         </div>
       <div class="mb-3">
         <label for="description" class="form-label"><%=bookJson.newBook.productDescription.label%></label>
-        <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.newBook.productDescription.placeHolder%>" rows="3"></textarea>
+        <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.newBook.productDescription.placeHolder%>" rows="3" required></textarea>
       </div>
       <div class="mb-3">
         <label for="category"><%=bookJson.newBook.productCategory.label%></label>
@@ -36,3 +36,25 @@
       <button type="submit" class="btn btn-success" value="Submit"><%=bookJson.newBook.actionButtons.submitLabel%></button>
 </form>
 <a href="/readingBliss"><%=bookJson.newBook.actionButtons.cancelLabel%></a>
+
+<!-- <script>
+  (() => {
+    console.log('Form validation')
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script> -->
