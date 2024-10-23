@@ -2,6 +2,7 @@ const staticJson = {
     "homePage": {
         "pageTitle": "Home",
         "title": "WELCOME TO READING BLISS",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolores, at facere, eius qui perferendis nemo reiciendis repudiandae ea cupiditate laborum ab voluptatem voluptatibus ad veritatis. Eos a aliquid vel.          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nostrum ipsa veritatis praesentium, porro alias rerum omnis aperiam in iste iure tempore, quam vitae similique optio at, eius tenetur. Commodi.",
         "actionButtons": {
             "listOfBooksLabel": "List Of Books",
             "newBookLabel": "Add New Book"
@@ -64,7 +65,8 @@ const staticJson = {
             "editLabel": "Edit",
             "cancelLabel": "Cancel",
             "homeLabel": "Home",
-            "deleteLabel": "Delete"
+            "deleteLabel": "Delete",
+            "toReadBook": "Read The Book"
         }
     },
     "edit": {
@@ -105,9 +107,10 @@ const staticJson = {
         "actionButtons": {
             "saveLabel": "Save",
             "cancelLabel": "Cancel",
-            "homeLabel": "Home",
+            "homeLabel": "Home"
         }
     },
+    "logoImage": "https://picsum.photos/id/24/200/200"
 }
 
 module.exports = staticJson;

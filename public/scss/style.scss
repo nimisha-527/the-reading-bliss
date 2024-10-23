@@ -1,0 +1,82 @@
+$dark: #4C3E4F;
+$light: #C6A1CF;
+// $font-family-base: "Cursive", sans-serif;
+// $font-family-sans-serif:     "Cursive", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$display-font-weight: 500;
+
+// .custom-style {
+//     background-color: black
+// }
+
+$primary: #4C3E4F;
+$secondary:#C6A1CF;
+$info: #CFCBAB;
+$text-info-emphasis: $secondary;
+
+$box-shadow-lg: 0 1rem 3rem rgba(#CFCBAB, .175);
+
+// CUSTOM
+
+.font-family-custom {
+    font-family: "Slabo 27px", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #4C3E4F
+}
+
+.font-family-custom-white {
+    font-family: "Slabo 27px", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #FFFFFF
+}
+
+.font-family-custom-home {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    color: #4C3E4F
+}
+
+
+// Primary button styles
+.btn-custom-outline-primary {
+    background-color: #FFFFFF !important;
+    color:#4C3E4F !important;
+}
+.btn-custom-fill-primary:hover {
+    background-color: #FFFFFF !important;
+    color:#4C3E4F !important;
+}
+.btn-custom-fill-primary {
+    background-color: #4C3E4F !important;
+    color:#FFFFFF !important;
+}
+.btn-custom-outline-primary:hover {
+    background-color: #4C3E4F !important;
+    color:#FFFFFF !important;
+}
+
+// Secondary buttons styles
+.btn-custom-fill-secondary {
+    background-color: #C6A1CF !important;
+    color:#FFFFFF !important;
+}
+
+.btn-custom-outline-secondary {
+    background-color: #FFFFFF !important;
+    color:#C6A1CF !important;
+}
+
+.btn-custom-outline-secondary:hover {
+    background-color: #C6A1CF !important;
+    color:#FFFFFF !important;
+}
+
+.btn-custom-fill-secondary:hover {
+    background-color: #FFFFFF !important;
+    color:#C6A1CF !important;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
