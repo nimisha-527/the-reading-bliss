@@ -1,6 +1,6 @@
 <% layout('layout/boilerplate') %>
-
-<h1><%=bookJson.newBook.title%></h1>
+<%- include("../partials/carousal") %>
+<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
 <form action="/readingBliss" method="POST" class="needs-validation" novalidate>
     <div class="mb-3">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>
@@ -19,7 +19,7 @@
       </div>
       <div class="mb-3">
           <label for="images" class="form-label"><%=bookJson.newBook.productImage.label%></label>
-          <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.newBook.productImage.placeHolder%>" required>
+          <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.newBook.productImage.placeHolder%>">
         </div>
       <div class="mb-3">
         <label for="description" class="form-label"><%=bookJson.newBook.productDescription.label%></label>
@@ -33,28 +33,9 @@
             <% } %>
           </select>
       </div>
-      <button type="submit" class="btn btn-success" value="Submit"><%=bookJson.newBook.actionButtons.submitLabel%></button>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="/readingBliss"><%=bookJson.newBook.actionButtons.cancelLabel%></a>
+        <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=bookJson.newBook.actionButtons.submitLabel%></button>
+      </div>
 </form>
-<a href="/readingBliss"><%=bookJson.newBook.actionButtons.cancelLabel%></a>
-
-<!-- <script>
-  (() => {
-    console.log('Form validation')
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-  
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-</script> -->
+</div>

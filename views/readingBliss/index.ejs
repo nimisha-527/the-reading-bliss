@@ -1,6 +1,5 @@
 <% layout('layout/boilerplate') %>
 <div>
-  <!-- <h1 class="pb-4"><%=bookJson.listOfBooks.title%></h1> -->
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% for(let library of bookLibrary) { %>
     <div class="col">
@@ -11,7 +10,7 @@
             <p class="card-text"><%=library.description%></p>
           </div>
           <div class="card-footer" style="text-align: center;">
-            <a class="btn btn-primary" href="/readingBliss/<%=library.id%>">
+            <a class="btn btn-primary btn-custom-fill-primary py-2 px-4" href="/readingBliss/<%=library.id%>">
                 Details
               </a>
         </div>

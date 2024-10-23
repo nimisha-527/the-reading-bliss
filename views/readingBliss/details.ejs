@@ -11,13 +11,15 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><%=bookJson.details.priceValue.replace("#price#", foundBook.price)%></li>
-              <!-- <li class="list-group-item">A third item</li> -->
             </ul>
-            <div class="card-body">
-              <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-info"><%=bookJson.details.actionButtons.editLabel%></a>
+            <div class="card-body d-grid gap-2 d-md-flex justify-content-md-between">
               <form class="d-inline" action="/readingBliss/<%=foundBook.id%>?_method=DELETE" method="POST">
-                <button class="btn btn-danger"><%=bookJson.details.actionButtons.deleteLabel%></button>
+                <button class="btn btn-link"><%=bookJson.details.actionButtons.deleteLabel%></button>
               </form>
+              <div>
+                <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-primary btn-custom-outline-primary py-2 px-4"><%=bookJson.details.actionButtons.editLabel%></a>
+                <a href="https://doctypepdf.com/#gsc.tab=0" target="_blank" class="card-link btn btn-primary btn-custom-fill-primary py-2 px-4"><%=bookJson.details.actionButtons.toReadBook%></a>
+              </div>
             </div>
           </div>
     </div>
