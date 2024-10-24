@@ -1,0 +1,76 @@
+<% layout('layout/boilerplate') %>
+<div class="container">
+  <div class="row">
+    <!-- remove the # tag to remove the commented code of EJS -->
+    <!-- <div class="column">
+      <%# for(let i=0; i < galleryImages1; i++) { %> 
+      <img src="<%#randomImageColumn1%>" alt="" style="width: 100%" />
+      <%# } %>
+    </div> -->
+
+    <!-- TODO: Add the clickable for each photo -->
+    <div class="column">
+      <% for(let images1 of galleryImages1) { %>
+      <img src="<%=images1%>" alt="" style="width: 100%" />
+      <% } %>
+    </div>
+    <div class="column">
+      <% for(let images2 of galleryImages2) { %>
+      <img src="<%=images2%>" alt="" style="width: 100%" />
+      <% } %>
+    </div>
+    <div class="column">
+      <% for(let images3 of galleryImages3) { %>
+      <img src="<%=images3%>" alt="" style="width: 100%" />
+      <% } %>
+    </div>
+    <div class="column">
+      <% for(let images4 of galleryImages4) { %>
+      <img src="<%=images4%>" alt="" style="width: 100%" />
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Create two equal columns that floats next to each other */
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create four equal columns that sits next to each other */
+  .column {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      -ms-flex: 50%;
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+</style>

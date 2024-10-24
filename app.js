@@ -5,9 +5,10 @@ const methodOverride = require('method-override');
 // const { fileURLToPath } = require('url');
 const mongoose = require('mongoose');
 const Books = require('./models/books');
-const { bookJson } = require('./public/index');
+const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('./public/index');
 const ejsMate = require('ejs-mate');
 const { wrapAsync, expressError } = require('./utils/index');
+// const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     useNewURLParser: true,
@@ -62,6 +63,11 @@ app.post('/readingBliss', wrapAsync(async (req, res) => {
 
 app.get('/readingBliss/aboutUs', wrapAsync(async (req, res) => {
     res.render("readingBliss/aboutUs", {bookJson});
+}));
+
+app.get('/readingBliss/gallery', wrapAsync(async (req, res) => {
+    // const randomImageColumn1 = bookJson.galleryImage.replaceAll('#randomImage#', randomColumn1)
+    res.render("readingBliss/gallery", {bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4});
 }));
 
 app.get('/readingBliss/:id', wrapAsync(async (req, res) => {
