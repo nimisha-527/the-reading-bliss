@@ -110,7 +110,8 @@ const staticJson = {
             "homeLabel": "Home"
         }
     },
-    "logoImage": "https://picsum.photos/id/24/200/200"
+    "logoImage": "https://picsum.photos/id/24/200/200",
+    "galleryImage": "https://images.pexels.com/photos/#randomImage#/pexels-photo-#randomImage#.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 }
 
 module.exports = staticJson;

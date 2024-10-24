@@ -1,7 +1,11 @@
 const bookJson = require("./bookStaticJson");
-const formValidation = require("./formValidation");
+const {galleryImages1, galleryImages2, galleryImages3, galleryImages4} = require("./static/imageGallery");
+// const formValidation = require("./formValidation");
 
 module.exports = {
     bookJson,
-    formValidation
+    galleryImages1,
+    galleryImages2,
+    galleryImages3,
+    galleryImages4
 };
