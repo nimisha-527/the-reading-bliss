@@ -1,5 +1,5 @@
-$dark: #4C3E4F;
-$light: #C6A1CF;
+$dark: #4c3e4f;
+$light: #c6a1cf;
 // $font-family-base: "Cursive", sans-serif;
 // $font-family-sans-serif:     "Cursive", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $display-font-weight: 500;
@@ -8,75 +8,90 @@ $display-font-weight: 500;
 //     background-color: black
 // }
 
-$primary: #4C3E4F;
-$secondary:#C6A1CF;
-$info: #CFCBAB;
+$primary: #4c3e4f;
+$secondary: #c6a1cf;
+$info: #cfcbab;
 $text-info-emphasis: $secondary;
 
-$box-shadow-lg: 0 1rem 3rem rgba(#CFCBAB, .175);
+$box-shadow-lg: 0 1rem 3rem rgba(#cfcbab, 0.175);
 
 // CUSTOM
 
 .font-family-custom {
-    font-family: "Slabo 27px", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #4C3E4F
+  font-family: "Slabo 27px", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #4c3e4f;
 }
 
-.font-family-custom-white {
-    font-family: "Slabo 27px", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #FFFFFF
+.font-family-custom-slabo-white {
+  font-family: "Slabo 27px", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
 }
 
 .font-family-custom-home {
-    font-family: "Dancing Script", cursive;
-    font-optical-sizing: auto;
-    font-weight: bolder;
-    font-style: normal;
-    color: #4C3E4F
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
+  color: #4c3e4f;
 }
 
+.font-family-custom-Caveat {
+  font-family: "Caveat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 52px;
+  letter-spacing: 5px;
+  color: #ffffff;
+}
 
 // Primary button styles
 .btn-custom-outline-primary {
-    background-color: #FFFFFF !important;
-    color:#4C3E4F !important;
+  background-color: #ffffff !important;
+  color: #4c3e4f !important;
 }
 .btn-custom-fill-primary:hover {
-    background-color: #FFFFFF !important;
-    color:#4C3E4F !important;
+  background-color: #ffffff !important;
+  color: #4c3e4f !important;
 }
 .btn-custom-fill-primary {
-    background-color: #4C3E4F !important;
-    color:#FFFFFF !important;
+  background-color: #4c3e4f !important;
+  color: #ffffff !important;
 }
 .btn-custom-outline-primary:hover {
-    background-color: #4C3E4F !important;
-    color:#FFFFFF !important;
+  background-color: #4c3e4f !important;
+  color: #ffffff !important;
 }
 
 // Secondary buttons styles
 .btn-custom-fill-secondary {
-    background-color: #C6A1CF !important;
-    color:#FFFFFF !important;
+  background-color: #c6a1cf !important;
+  color: #ffffff !important;
 }
 
 .btn-custom-outline-secondary {
-    background-color: #FFFFFF !important;
-    color:#C6A1CF !important;
+  background-color: #ffffff !important;
+  color: #c6a1cf !important;
 }
 
 .btn-custom-outline-secondary:hover {
-    background-color: #C6A1CF !important;
-    color:#FFFFFF !important;
+  background-color: #c6a1cf !important;
+  color: #ffffff !important;
 }
 
 .btn-custom-fill-secondary:hover {
-    background-color: #FFFFFF !important;
-    color:#C6A1CF !important;
+  background-color: #ffffff !important;
+  color: #c6a1cf !important;
 }
 
+.back-ground-image-half {
+  background-color: #4c3e4f;
+  background-image: url("https://images.pexels.com/photos/11911071/pexels-photo-11911071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 20rem;
+}
 @import "../../node_modules/bootstrap/scss/bootstrap";

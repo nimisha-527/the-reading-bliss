@@ -60,6 +60,10 @@ app.post('/readingBliss', wrapAsync(async (req, res) => {
     res.redirect(`/readingBliss/${newBook._id}`)
 }));
 
+app.get('/readingBliss/aboutUs', wrapAsync(async (req, res) => {
+    res.render("readingBliss/aboutUs", {bookJson});
+}));
+
 app.get('/readingBliss/:id', wrapAsync(async (req, res) => {
     const {id} = req.params;
     const foundBook = await Books.findById(id);
