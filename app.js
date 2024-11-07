@@ -1,4 +1,4 @@
-const express =  require('express');
+const express = require('express');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
@@ -6,8 +6,10 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const Books = require('./models/books');
 const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('./public/index');
+const {booksSchema} = require('./schemas');
 const ejsMate = require('ejs-mate');
 const { wrapAsync, expressError } = require('./utils/index');
+const ExpressError = require('./utils/ExpressError');
 // const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
@@ -41,6 +43,17 @@ app.use(express.urlencoded({extended: true}));
 
 // }
 
+const validateBooks = (req, res, next) => {
+    const {error} = booksSchema.validate(req.body);
+    if(error) {
+        const msg = error.details.map(el => el.message).join(",");
+        console.log(msg);
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
 app.get('/', (req, res) => {
     res.render("home", {bookJson})
 });
@@ -54,8 +67,9 @@ app.get('/readingBliss/newBook', wrapAsync(async (req, res) => {
     res.render("readingBliss/new", {bookJson})
 }));
 
-app.post('/readingBliss', wrapAsync(async (req, res) => {
+app.post('/readingBliss', validateBooks, wrapAsync(async (req, res) => {
     // if(!req.body.books) throw new expressError("INVALID DATA", 400);
+
     const newBook = await new Books(req.body)
     await newBook.save();
     res.redirect(`/readingBliss/${newBook._id}`)
@@ -70,6 +84,10 @@ app.get('/readingBliss/gallery', wrapAsync(async (req, res) => {
     res.render("readingBliss/gallery", {bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4});
 }));
 
+app.get('/readingBliss/contact', wrapAsync(async (req, res) => {
+    res.render("readingBliss/contact", {bookJson});
+}));
+
 app.get('/readingBliss/:id', wrapAsync(async (req, res) => {
     const {id} = req.params;
     const foundBook = await Books.findById(id);
@@ -82,7 +100,7 @@ app.get('/readingBliss/:id/edit', wrapAsync(async (req, res) => {
     res.render("readingBliss/edit", {book: foundBook, bookJson});
 }));
 
-app.put('/readingBliss/:id', wrapAsync(async (req, res) => {
+app.put('/readingBliss/:id', validateBooks, wrapAsync(async (req, res) => {
         const {id} = req.params;
         const foundBook = await Books.findByIdAndUpdate(id, req.body, {runValidators: true, new: true});
         await foundBook.save()
