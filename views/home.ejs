@@ -1,11 +1,34 @@
 <% layout('./layout/imageBoilerPlate') %>
-<img src="https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="object-fit-sm-fill opacity-50 position-relative min-vh-100" alt="...">
+<img src="https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="object-fit-sm-fill opacity-50 position-relative min-vh-100" alt="...">
 
       <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
-          <div class="container position-absolute top-50 start-50 translate-middle text-center">
-            <h1 class="display-1 font-family-custom-home"><%=bookJson.homePage.title%></h1>
+
+      <!-- TODO: Add custom styles foe padding -->
+          <div class="container position-absolute top-50 start-50 translate-middle d-grid gap-5 d-md-flex flex-column">
+            <div class="text-center mt-5">
+              <h1 class="display-1 font-family-custom-home"><%=bookJson.homePage.title%></h1>
             <p class="text-body-secondary font-family-custom-slabo-white py-3"><%=bookJson.homePage.description%></p>
             <a href="/readingBliss" class="card-link btn btn-outline-primary mt-3 py-3 px-5 btn-custom-fill-primary">Explore</a>
+            </div>
+
+            <div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
+              <form action="" method="POST" class="needs-validation" novalidate>
+                  <div class="mb-3">
+                      <label for="username" class="form-label">Enter Your Email/UserName</label>
+                      <input type="text" name="username" class="form-control" id="username" placeholder="Please Enter Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input name="password" type="password" id="password" class="form-control" placeholder="Please Enter Your Password" required>
+                          </div>
+                    </div>
+            
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                      <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit">Submit</button>
+                    </div>
+              </form>
+            </div>
           </div>
 
         <div class="container mt-5 mb-5">

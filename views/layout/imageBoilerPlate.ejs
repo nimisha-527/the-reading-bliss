@@ -13,7 +13,7 @@
     <title>BOILERPLATE</title>
   </head>
 
-  <body class="d-flex flex-column min-vh-100 font-family-custom">
+  <body class="d-flex flex-column font-family-custom">
     <%- include("../partials/navbar") %>
     <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
     <%- body %> 
@@ -35,7 +35,6 @@
 
 <script>
   (() => {
-    console.log("Form validation");
     ("use strict");
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to

@@ -26,14 +26,24 @@ style="font-size: 20px;">
           <a class="nav-link" href="/readingBliss/gallery">Gallery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="/readingBliss/contact">Contact</a>
         </li>
         <li class="nav-item form-check form-switch">
           <div class="nav-link">
-            <input class="form-check-input py-2 px-4" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <input class="form-check-input py-2 px-4" type="checkbox" role="switch" id="flexSwitchCheckDefault" aria-checked="false">
           </div>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- <script lang="js">
+  const inputSwitch = document.querySelector("#flexSwitchCheckDefault")
+  const checkSwitch = inputSwitch.addEventListener("change", (event) => {
+    console.log(event.target.checked,"---checked");
+    return event.target.checked 
+  })
+  console.log(checkSwitch, "------check switch")
+  module.exports = checkSwitch();
+</script> -->

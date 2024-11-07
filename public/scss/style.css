@@ -27,7 +27,7 @@
   font-style: normal;
   font-size: 52px;
   letter-spacing: 5px;
-  color: #ffffff;
+  color: #000000;
 }
 
 .btn-custom-outline-primary {
@@ -72,10 +72,12 @@
 
 .back-ground-image-half {
   background-color: #4c3e4f;
-  background-image: url("https://images.pexels.com/photos/11911071/pexels-photo-11911071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/327882/pexels-photo-327882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=4");
   background-size: cover;
+  background-position: top 50%;
   background-repeat: no-repeat;
   padding-bottom: 20rem;
+  opacity: 0.75;
 }
 
 /*!
