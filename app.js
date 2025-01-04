@@ -6,10 +6,11 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const Books = require('./models/books');
 const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('./public/index');
-const {booksSchema} = require('./schemas');
+const {booksSchema, reviewSchema} = require('./schemas');
 const ejsMate = require('ejs-mate');
 const { wrapAsync, expressError } = require('./utils/index');
 const ExpressError = require('./utils/ExpressError');
+const Review = require('./models/review');
 // const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
@@ -54,6 +55,17 @@ const validateBooks = (req, res, next) => {
     }
 }
 
+const validateReviews = (req, res, next) => {
+    const {error} = reviewSchema.validate(req.body);
+    if(error) {
+        const msg = error.details.map(el => el.message).join(",");
+        console.log(msg);
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
 app.get('/', (req, res) => {
     res.render("home", {bookJson})
 });
@@ -69,8 +81,13 @@ app.get('/readingBliss/newBook', wrapAsync(async (req, res) => {
 
 app.post('/readingBliss', validateBooks, wrapAsync(async (req, res) => {
     // if(!req.body.books) throw new expressError("INVALID DATA", 400);
-
+    // const randomNumber = Math.floor(Math.random() * 11) + 1 
+    // console.log(`https://picsum.photos/id/${randomNumber}/200/200`)
     const newBook = await new Books(req.body)
+    // if(newBook.images === "") {
+    //  const randomNumber = Math.floor(Math.random() * 11) + 1 
+    //     newBook.images = `https://picsum.photos/id/${randomNumber}/200/200` // trying if image is not uploaded in the form then by defualt a image will be uploaded
+    // }
     await newBook.save();
     res.redirect(`/readingBliss/${newBook._id}`)
 }));
@@ -90,7 +107,7 @@ app.get('/readingBliss/contact', wrapAsync(async (req, res) => {
 
 app.get('/readingBliss/:id', wrapAsync(async (req, res) => {
     const {id} = req.params;
-    const foundBook = await Books.findById(id);
+    const foundBook = await Books.findById(id).populate('reviews');
     res.render("readingBliss/details", {foundBook, bookJson});
 }));
 
@@ -112,6 +129,25 @@ app.delete('/readingBliss/:id', wrapAsync(async (req, res) => {
     await Books.findByIdAndDelete(id);
     res.redirect("/readingBliss");
 }));
+
+// posting the review and then redirecting it to the page with all the review for that particular book. That is why we are passing the ID so we can take that and show details accordingly
+app.post('/readingBliss/:id/reviews', validateReviews, wrapAsync(async (req, res) => {
+    const {id} = req.params;
+    const foundBook = await Books.findById(id);
+    const review = new Review(req.body.review);
+    foundBook.reviews.push(review);
+    await review.save();
+    await foundBook.save();
+    res.redirect(`/readingBliss/${foundBook._id}`)
+}));
+
+app.delete('/readingBliss/:id/reviews/:reviewId', wrapAsync(async (req, res) => {
+    const {id, reviewId} = req.params;
+    await Books.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/readingBliss/${id}`)
+}));
+
 
 app.all('*', (req, res, next) => {
     next(new expressError("PAGE NOT FOUND", 404));

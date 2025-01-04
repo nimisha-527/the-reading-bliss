@@ -70,6 +70,22 @@
   color: #c6a1cf !important;
 }
 
+/* ICONS */
+.icon-button-custom-fill-primary {
+  background-color: #ffffff !important;
+  color: #4c3e4f !important;
+  cursor:pointer;
+  transition: transform 1s;
+}
+.icon-button-custom-fill-primary:hover {
+  background-color: #ffffff !important;
+  color: #7e6683 !important;
+  cursor:pointer;
+  transform: rotate(180deg);
+}
+.default-css-unset {
+  all:unset;
+}
 .back-ground-image-half {
   background-color: #4c3e4f;
   background-image: url("https://images.pexels.com/photos/327882/pexels-photo-327882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=4");
