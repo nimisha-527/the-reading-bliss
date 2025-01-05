@@ -7,7 +7,9 @@ const mongoose = require('mongoose');
 const { bookJson } = require('./public/index');
 const ejsMate = require('ejs-mate');
 const { expressError } = require('./utils/index');
-const { readingBlissRoutes } = require('./views/route/index');
+const { readingBlissRoutes } = require('./route/index');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     useNewURLParser: true,
@@ -35,6 +37,26 @@ app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
 app.use(express.static( path.join(__dirname, "public") ));
 app.use(express.urlencoded({extended: true}));
+
+const sessionConfig = {
+    secret: "thisisnotasecret",
+    resave:false,
+    saveUninitialized: true,
+    cookie: {
+        HttpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+// session expires in one week, above calcuation is for that purpose.
+app.use(session(sessionConfig));
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
 app.use('/readingBliss', readingBlissRoutes);
 
