@@ -31,7 +31,7 @@ const staticJson = {
             "placeHolder": "Enter Name"
         },
         "productDescription": {
-            "label": "Summary",
+            "label": "About Book",
             "placeHolder": "Enter description"
         },
         "productImage": {
@@ -101,7 +101,7 @@ const staticJson = {
             "placeHolder": "Enter Name"
         },
         "productDescription": {
-            "label": "Summary",
+            "label": "About Book",
             "placeHolder": "Enter description"
         },
         "actionButtons": {

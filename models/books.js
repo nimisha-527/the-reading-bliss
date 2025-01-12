@@ -28,6 +28,14 @@ const bookSchema = new Schema({
         type: String,
         required: false
     },
+    recommended: {
+        type: Boolean,
+        default: false
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     reviews: [
         {
             type: Schema.Types.ObjectId,
@@ -36,6 +44,7 @@ const bookSchema = new Schema({
     ]
 })
 
+// post middleware are executed after the hooked method and all of its pre middleware have completed. "findOneAndDelete" is the middleware the will trigger with "findByIdAndDelete"
 bookSchema.post('findOneAndDelete', async function (doc) {
     if(doc) {
         await Reviews.deleteMany({

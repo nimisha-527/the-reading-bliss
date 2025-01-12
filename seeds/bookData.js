@@ -78,8 +78,16 @@ const bookData = [
         "description": "A fictional oral history of a rock band in the 1970s, capturing the complexities of love, fame, and music.",
         "category": "Historical Fiction",
         "images": "https://ashsinfinitelibrary.wordpress.com/wp-content/uploads/2019/03/daisy.jpg"
-    }
+    },
+    {
+        "owner": '6781402d231ec2db658a038d',
+        "title": 'Harry Potter and Philosopher Stone',
+        "price": 40,
+        "author": 'J. K. Rowling',
+        "description": 'This book is amzazingg',
+        "category": 'Fiction',
+        "images": 'https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_360,c_scale,dpr_1.5/jackets/9781408855652.jpg'
+      }
 ]
-
 
 module.exports = bookData
