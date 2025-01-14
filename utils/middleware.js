@@ -2,7 +2,6 @@ const Books = require('../models/books');
 const Review = require('../models/review');
 module.exports.isLoggedIn = (req, res, next) => {
     //isAuthenticated() is the helper function from passport
-    console.log("req UsERR", req.user)
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
         req.flash('error', "Please sign in first");

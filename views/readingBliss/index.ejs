@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate') %> 
+<% layout('layout/boilerplate') %>
 <% if(!bookLibrary.length) { %> 
   <div class="mt-5">
     You do not have any books yet. You can add your book with the following link 
@@ -37,6 +37,7 @@
     <% for(let library of bookLibrary) { %>
       <% if(currentUser && library?.owner && !library?.owner?.equals(currentUser._id)) { %>
         <p>You do not have any books yet. You can add your book with the following link  <a href="/readingbliss/newBook">New Book</a></p>
+        <% break %>
       <% } %> 
     <% } %>
   </div>

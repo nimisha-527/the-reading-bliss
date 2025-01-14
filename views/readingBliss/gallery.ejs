@@ -8,6 +8,15 @@
       You can click on the book cover images below to know more about the book.
     </div>
   </div>
+  <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
+    <%# for(details of recommendedBook) { %>
+      <div class="col card-hover">
+        <img src="<%#= details.images  %>" alt="" style="width: 100%" class="card-img">
+      </div>
+    <%# } %>
+  </div> -->
+
+
   <div class="row">
     <!-- remove the # tag to remove the commented code of EJS -->
     <!-- <div class="column">
@@ -17,61 +26,40 @@
     </div> -->
 
     <!-- TODO: Add the clickable for each photo -->
-    <% for(let i=0; i<4 ; i++) {%>
-      <div class="column">
-        <% for(let images1 of galleryImages1) { %>
-        <!-- <img src="<%=images1%>" alt="" style="width: 100%" /> -->
-        <div class="card bg-dark text-white mb-2 card-hover">
-          <a href="/readingBliss"><img src="<%=images1%>>" alt="" style="width: 100%" class="card-img"></a>
+    <div class="col">
+      <% for(let detail1 of details1[0]) { %>
+        <a href="/readingBliss/<%= detail1._id %>">
+        <div class="card bg-dark text-white img-hover mb-2">
+         <img src="<%=detail1.images%>" alt="" style="width: 100%" />
         </div>
-        <% } %>
-      </div>
-    <% } %>
-    <div class="column">
-      <% for(let images1 of galleryImages1) { %>
-      <!-- <img src="<%=images1%>" alt="" style="width: 100%" /> -->
-      <div class="card bg-dark text-white mb-2 card-hover">
-        <a href="/readingBliss"><img src="https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_360,c_scale,dpr_1.5/jackets/9781408855652.jpg" alt="" style="width: 100%" class="card-img"></a>
-      </div>
+        </a>
       <% } %>
     </div>
-    <div class="column">
-      <% for(let images2 of galleryImages2) { %>
-      <!-- <img src="<%=images2%>" alt="" style="width: 100%" /> -->
-      <div class="card bg-dark text-white mb-2 card-hover">
-        <img src="<%= images2%>" alt="" style="width: 100%" class="card-img">
-        <div class="card-img-overlay">
-          <h3 class="card-title">Card title</h3> <!--title of the book that is recommended -->
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text">Last updated 3 mins ago</p>
-        </div>
-      </div>
+    <div class="col">
+      <% for(let detail2 of details2[0]) { %>
+        <a href="/readingBliss/<%= detail2._id %>">
+          <div class="card bg-dark text-white img-hover mb-2">
+           <img src="<%=detail2.images%>" alt="" style="width: 100%" />
+          </div>
+          </a>
       <% } %>
     </div>
-    <div class="column">
-      <% for(let images3 of galleryImages3) { %>
-      <!-- <img src="<%=images3%>" alt="" style="width: 100%" /> -->
-      <div class="card bg-dark text-white mb-2 card-hover">
-        <img src="<%= images3%>" alt="" style="width: 100%" class="card-img">
-        <div class="card-img-overlay">
-          <h3 class="card-title">Card title</h3> <!--title of the book that is recommended -->
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text">Last updated 3 mins ago</p>
-        </div>
-      </div>
+    <div class="col">
+      <% for(let detail3 of details3[0]) { %>
+        <a href="/readingBliss/<%= detail3._id %>">
+          <div class="card bg-dark text-white img-hover mb-2">
+           <img src="<%=detail3.images%>" alt="" style="width: 100%" />
+          </div>
+          </a>
       <% } %>
     </div>
-    <div class="column">
-      <% for(let images4 of galleryImages4) { %>
-      <!-- <img src="<%=images4%>" alt="" style="width: 100%" /> -->
-      <div class="card bg-dark text-white mb-2 card-hover">
-        <img src="<%= images4%>" alt="" style="width: 100%" class="card-img">
-        <div class="card-img-overlay">
-          <h3 class="card-title">Card title</h3> <!--title of the book that is recommended -->
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text">Last updated 3 mins ago</p>
-        </div>
-      </div>
+    <div class="col">
+      <% for(let detail4 of details4[0]) { %>
+        <a href="/readingBliss/<%= detail4._id %>">
+          <div class="card bg-dark text-white img-hover mb-2">
+           <img src="<%=detail4.images%>" alt="" style="width: 100%" />
+          </div>
+          </a>
       <% } %>
     </div>
   </div>
@@ -87,27 +75,24 @@
   }
 
   /* Create four equal columns that sits next to each other */
-  .column {
+  .col {
     -ms-flex: 25%; /* IE10 */
     flex: 25%;
     max-width: 25%;
     padding: 0 4px;
   }
 
-  .column img {
+  .col img {
     vertical-align: middle;
     width: 100%;
-  }
-
-  .card-img {
     opacity: 0.5;
   }
 
-  .card-hover {
+  .img-hover {
     transition: all .2s ease;
   }
 
-  .card-hover:hover {
+  .img-hover:hover {
     transform: translate3D(-30px,-25px,7px) scale(1.03); /* move up slightly and zoom in */
     box-shadow: 8px 28px 50px rgba(39,44,49,.07), 1px 6px 12px rgba(39,44,49,.04);
     transition: all .2s ease; /* zoom in */
@@ -116,7 +101,7 @@
 
   /* Responsive layout - makes a two column-layout instead of four columns */
   @media screen and (max-width: 800px) {
-    .column {
+    .col {
       -ms-flex: 50%;
       flex: 50%;
       max-width: 50%;
@@ -125,7 +110,7 @@
 
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
-    .column {
+    .col {
       -ms-flex: 100%;
       flex: 100%;
       max-width: 100%;

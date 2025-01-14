@@ -6,7 +6,7 @@ const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4
 const { wrapAsync, expressError, isLoggedIn, isOwner } = require('../utils/index');
 const { booksSchema } = require('../schemas');
 const reviewsRoutes = require('./reviews');
-const Recommend = require('../models/recommend')
+const Recommend = require('../models/recommend');
 // const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
 
 const validateBooks = (req, res, next) => {
@@ -22,7 +22,6 @@ const validateBooks = (req, res, next) => {
 
 router.get('/',isLoggedIn, wrapAsync(async (req, res) => {
     const bookLibrary = await Books.find({});
-    console.log(bookLibrary,"---bookslibrary")
     res.render("readingBliss/index", { bookLibrary, bookJson });
 }));
 
@@ -34,9 +33,45 @@ router.get('/aboutUs', wrapAsync(async (req, res) => {
 }));
 
 router.get('/gallery', wrapAsync(async (req, res) => {
-    // const randomImageColumn1 = bookJson.galleryImage.replaceAll('#randomImage#', randomColumn1)
-    const recommended = await Recommend.find({});
-    res.render("readingBliss/gallery", { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4, recommended });
+    const books = await Books.find({});
+    const recommendedList = await Recommend.find({});
+    let recommendedBook =  [];
+    for(let book of books ) {
+        if(book.recommended && !recommendedList.length) {
+            req.flash('error', "There are no recommended books at the moment. You can add the book by clicking on the recommended button from your collection.");
+            const foundBookToUpdate = await Books.findByIdAndUpdate(book._id.toString(), { $set: { recommended: false }}, { runValidators: true, new: true });
+            await foundBookToUpdate.save();
+        } else if(book.recommended) {
+            recommendedBook.push(book)
+        }
+    }
+
+    // Explicitly declare four arrays
+    let array1 = [];
+    let array2 = [];
+    let array3 = [];
+    let array4 = [];
+
+    // Store references to the target arrays
+    let targetArrays = [array1, array2, array3, array4];
+
+    // Distribute elements to the target arrays
+    recommendedBook.forEach((item, index) => {
+        let targetIndex = index % 4; // Since we have 4 arrays
+        targetArrays[targetIndex].push(item);
+    });
+
+    let details1 = [], details2 = [], details3 = [], details4 = [];
+
+    details1.push(array1);
+    details2.push(array2);
+    details3.push(array3);
+    details4.push(array4);
+
+    console.log(array1)
+
+    res.render("readingBliss/gallery", { bookJson, recommendedBook, recommendedList, details1, details2, details3, details4 });
+
 }));
 
 router.get('/contact', wrapAsync(async (req, res) => {
@@ -48,21 +83,14 @@ router.get('/newBook', isLoggedIn, wrapAsync(async (req, res) => {
 }));
 
 router.post('/', isLoggedIn, isOwner, validateBooks, wrapAsync(async (req, res) => {
-    // if(!req.body.books) throw new expressError("INVALID DATA", 400);
-    // const randomNumber = Math.floor(Math.random() * 11) + 1 
-    // console.log(`https://picsum.photos/id/${randomNumber}/200/200`)
     const newBook = await new Books(req.body);
     newBook.owner = req.user._id;
-    // if(newBook.images === "") {
-    //  const randomNumber = Math.floor(Math.random() * 11) + 1 
-    //     newBook.images = `https://picsum.photos/id/${randomNumber}/200/200` // trying if image is not uploaded in the form then by defualt a image will be uploaded
-    // }
     await newBook.save();
     req.flash('success', "Book added successfully")
     res.redirect(`/readingBliss/${newBook._id}`)
 }));
 
-router.get('/:id',isLoggedIn, isOwner, wrapAsync(async (req, res) => {
+router.get('/:id',isLoggedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
     const foundBook = await Books.findById(id).populate({
         path: 'reviews',
@@ -70,7 +98,7 @@ router.get('/:id',isLoggedIn, isOwner, wrapAsync(async (req, res) => {
             path: 'owner'
         }
     }).populate('owner');
-    console.log(foundBook,"----foundbook in details page");
+    // console.log(foundBook,"----foundbook in details page");
     if(!foundBook) {
         req.flash('error', "Book you are searching for does not exists");
         return res.redirect('/readingBliss')
@@ -87,7 +115,6 @@ router.get('/:id/edit', isLoggedIn, wrapAsync(async (req, res) => {
 router.put('/:id',isLoggedIn, isOwner, validateBooks, wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Books.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-    // await foundBook.save()
     req.flash('success', "Book Updated successfully")
     res.redirect(`/readingBliss/${id}`);
 }));

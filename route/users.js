@@ -43,7 +43,6 @@ router.get('/login', (req, res) => {
 //passport.authenticate is the method that passport package gives us.
 // By using storeReturnTo middleware fn, we can save the returnTo value to res.locals before passport.authenticate() clears the session and deletes req.session.returnTo. This enables us to access and use returnTo value (via res.locals.returnTo) later the middleware chain so that we can redirect users to the approriate page after they have logged in.
 router.post('/login',storeReturnTo, passport.authenticate('local', {failureFlash: true, failureRedirect: '/readingbliss/login'}), (req, res) => {
-    console.log(req.body,"----bpdy login");
     const {username} = req.body;
     try {
         req.flash('success',`Welcome back, ${username}`);

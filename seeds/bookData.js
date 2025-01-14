@@ -48,6 +48,7 @@ const bookData = [
         "images": "https://i0.wp.com/www.hooksbookswanderlust.com/wp-content/uploads/2022/03/Addie-LaRue.jpg?resize=600%2C600&ssl=1"
     },
     {
+        "owner": '6781402d231ec2db658a038d',
         "title": "Klara and the Sun",
         "price": 14.99,
         "author": "Kazuo Ishiguro",
@@ -56,6 +57,7 @@ const bookData = [
         "images": "https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22337411/headshots_1614627884458.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400"
     },
     {
+        "owner": '6781402d231ec2db658a038d',
         "title": "The Seven Husbands of Evelyn Hugo",
         "price": 17.99,
         "author": "Taylor Jenkins Reid",
@@ -64,6 +66,7 @@ const bookData = [
         "images": "https://perireads.com/wp-content/uploads/2021/12/The-Seven-Husbands-of-Evelyn-Hugo-Feature.jpg"
     },
     {
+        "owner": '6781402d231ec2db658a038d',
         "title": "Circe",
         "price": 16.99,
         "author": "Madeline Miller",
@@ -72,6 +75,7 @@ const bookData = [
         "images": "https://i0.wp.com/fannaforbooks.com/wp-content/uploads/2019/05/circe-by-madeline-miller-fanna-for-books.jpg?fit=1400%2C1600&ssl=1"
     },
     {
+        "owner": '6781402d231ec2db658a038d',
         "title": "Daisy Jones & The Six",
         "price": 15.99,
         "author": "Taylor Jenkins Reid",

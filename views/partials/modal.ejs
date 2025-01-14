@@ -2,14 +2,16 @@
 <button type="button" class="btn btn-primary btn-custom-fill-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#ModalPopup" data-bs-whatever="<%= foundBook.title %>"><%= buttonName  %></button>
 
 <!-- Modal -->
+ <% if(!foundBook.recommended) { %>
 <div class="modal fade" id="ModalPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <p><%= helperText %></p>
         <form action="/readingBliss/<%= foundBook.id  %>/recommend/<%= currentUser._id  %>" method="POST">
           <div class="mb-3">
             <label for="image" class="col-form-label">Image Link:</label>
@@ -28,3 +30,24 @@
     </div>
   </div>
 </div>
+<% } %>
+<% if(foundBook.recommended) { %>
+
+<div class="modal fade" id="ModalPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This book is already recommended. You can view it in <a href="/readingBliss/gallery">Gallery Section</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
