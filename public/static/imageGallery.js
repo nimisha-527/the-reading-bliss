@@ -6,7 +6,8 @@ const galleryImages1 = [
     `https://images.pexels.com/photos/4153146/pexels-photo-4153146.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`,
     `https://images.pexels.com/photos/1906437/pexels-photo-1906437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`,
     `https://images.pexels.com/photos/1907784/pexels-photo-1907784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`,
-    `https://images.pexels.com/photos/1791742/pexels-photo-1791742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`
+    `https://images.pexels.com/photos/1791742/pexels-photo-1791742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`,
+    `https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_360,c_scale,dpr_1.5/jackets/9781408855652.jpg`
 ]
 
 // const galleryImages1 = 8;

@@ -6,7 +6,7 @@ const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4
 const { wrapAsync, expressError, isLoggedIn, isOwner } = require('../utils/index');
 const { booksSchema } = require('../schemas');
 const reviewsRoutes = require('./reviews');
-const { request } = require('http');
+const Recommend = require('../models/recommend')
 // const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
 
 const validateBooks = (req, res, next) => {
@@ -35,7 +35,8 @@ router.get('/aboutUs', wrapAsync(async (req, res) => {
 
 router.get('/gallery', wrapAsync(async (req, res) => {
     // const randomImageColumn1 = bookJson.galleryImage.replaceAll('#randomImage#', randomColumn1)
-    res.render("readingBliss/gallery", { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 });
+    const recommended = await Recommend.find({});
+    res.render("readingBliss/gallery", { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4, recommended });
 }));
 
 router.get('/contact', wrapAsync(async (req, res) => {
