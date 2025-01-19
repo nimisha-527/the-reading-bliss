@@ -21,13 +21,17 @@ const validateBooks = (req, res, next) => {
 }
 
 router.get('/',isLoggedIn, wrapAsync(async (req, res) => {
-    const bookLibrary = await Books.find({});
+    const booksLibrary = await Books.find({});
+    let books;
+    let bookLibrary = [];
+    for(books of booksLibrary) {
+        if(books.owner?.toString() === req.user._id?.toString()) {
+            bookLibrary.push(books);
+        }
+    }
     res.render("readingBliss/index", { bookLibrary, bookJson });
 }));
 
-// router.get('/recommend', async (req, res) => {
-//     res.send("on recommend");
-// })
 router.get('/aboutUs', wrapAsync(async (req, res) => {
     res.render("readingBliss/aboutUs", { bookJson });
 }));
