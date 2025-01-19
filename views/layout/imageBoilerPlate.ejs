@@ -15,7 +15,11 @@
   </head>
 
   <body class="d-flex flex-column font-family-custom">
-    <%- include("../partials/navbar") %>
+    <% if(currentUser) { %>
+      <%- include("../partials/navbarLoggedIn") %>
+    <% } else { %>
+      <%- include("../partials/navbar") %>
+    <% } %>
     <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
     <%- body %> 
     
@@ -32,6 +36,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="/js/formValidation.js"></script>
+    <script src="/js/modalInput.js"></script>
   </body>
 </html>
 

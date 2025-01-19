@@ -1,5 +1,22 @@
 <% layout('layout/boilerplate') %>
 <div class="container">
+  <div class="alert alert-primary d-flex align-items-center mb-5" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <div>
+      You can click on the book cover images below to know more about the book.
+    </div>
+  </div>
+  <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
+    <%# for(details of recommendedBook) { %>
+      <div class="col card-hover">
+        <img src="<%#= details.images  %>" alt="" style="width: 100%" class="card-img">
+      </div>
+    <%# } %>
+  </div> -->
+
+
   <div class="row">
     <!-- remove the # tag to remove the commented code of EJS -->
     <!-- <div class="column">
@@ -9,29 +26,44 @@
     </div> -->
 
     <!-- TODO: Add the clickable for each photo -->
-    <div class="column">
-      <% for(let images1 of galleryImages1) { %>
-      <img src="<%=images1%>" alt="" style="width: 100%" />
+    <div class="col">
+      <% for(let detail1 of details1[0]) { %>
+        <a href="/readingBliss/<%= detail1._id %>">
+        <div class="card bg-dark text-white img-hover mb-2">
+         <img src="<%=detail1.images%>" alt="" style="width: 100%" />
+        </div>
+        </a>
       <% } %>
     </div>
-    <div class="column">
-      <% for(let images2 of galleryImages2) { %>
-      <img src="<%=images2%>" alt="" style="width: 100%" />
+    <div class="col">
+      <% for(let detail2 of details2[0]) { %>
+        <a href="/readingBliss/<%= detail2._id %>">
+          <div class="card bg-dark text-white img-hover mb-2">
+           <img src="<%=detail2.images%>" alt="" style="width: 100%" />
+          </div>
+          </a>
       <% } %>
     </div>
-    <div class="column">
-      <% for(let images3 of galleryImages3) { %>
-      <img src="<%=images3%>" alt="" style="width: 100%" />
+    <div class="col">
+      <% for(let detail3 of details3[0]) { %>
+        <a href="/readingBliss/<%= detail3._id %>">
+          <div class="card bg-dark text-white img-hover mb-2">
+           <img src="<%=detail3.images%>" alt="" style="width: 100%" />
+          </div>
+          </a>
       <% } %>
     </div>
-    <div class="column">
-      <% for(let images4 of galleryImages4) { %>
-      <img src="<%=images4%>" alt="" style="width: 100%" />
+    <div class="col">
+      <% for(let detail4 of details4[0]) { %>
+        <a href="/readingBliss/<%= detail4._id %>">
+          <div class="card bg-dark text-white img-hover mb-2">
+           <img src="<%=detail4.images%>" alt="" style="width: 100%" />
+          </div>
+          </a>
       <% } %>
     </div>
   </div>
 </div>
-
 <style>
   /* Create two equal columns that floats next to each other */
   .row {
@@ -43,22 +75,33 @@
   }
 
   /* Create four equal columns that sits next to each other */
-  .column {
+  .col {
     -ms-flex: 25%; /* IE10 */
     flex: 25%;
     max-width: 25%;
     padding: 0 4px;
   }
 
-  .column img {
-    margin-top: 8px;
+  .col img {
     vertical-align: middle;
     width: 100%;
+    opacity: 0.5;
+  }
+
+  .img-hover {
+    transition: all .2s ease;
+  }
+
+  .img-hover:hover {
+    transform: translate3D(-30px,-25px,7px) scale(1.03); /* move up slightly and zoom in */
+    box-shadow: 8px 28px 50px rgba(39,44,49,.07), 1px 6px 12px rgba(39,44,49,.04);
+    transition: all .2s ease; /* zoom in */
+    cursor: pointer;
   }
 
   /* Responsive layout - makes a two column-layout instead of four columns */
   @media screen and (max-width: 800px) {
-    .column {
+    .col {
       -ms-flex: 50%;
       flex: 50%;
       max-width: 50%;
@@ -67,7 +110,7 @@
 
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
-    .column {
+    .col {
       -ms-flex: 100%;
       flex: 100%;
       max-width: 100%;
