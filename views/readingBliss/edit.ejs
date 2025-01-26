@@ -7,13 +7,6 @@
           <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.edit.productName.placeHolder%>" value="<%= book.title %>" required>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label"><%=bookJson.edit.productPrice.label%></label>
-            <div class="input-group">
-                <span class="input-group-text">$</span>
-                <input name="price" type="text" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="<%=bookJson.edit.productPrice.placeHolder%>" value="<%= book.price %>" required>
-              </div>
-        </div>
-        <div class="mb-3">
           <label for="author" class="form-label"><%=bookJson.edit.productAuthor.label%></label>
           <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.edit.productAuthor.placeHolder%>" value="<%= book.author %>" required>
         </div>
@@ -34,7 +27,7 @@
             </select>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-          <a class="d-inline" href="/readingBliss"><%=bookJson.edit.actionButtons.cancelLabel%></a>
+          <a href="/readingBliss" class="d-inline btn btn-link" role="button"><%=bookJson.edit.actionButtons.cancelLabel%></a>
           <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=bookJson.edit.actionButtons.saveLabel%></button>
         </div>
   </form>

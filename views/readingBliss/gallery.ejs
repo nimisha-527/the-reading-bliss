@@ -8,25 +8,9 @@
       You can click on the book cover images below to know more about the book.
     </div>
   </div>
-  <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
-    <%# for(details of recommendedBook) { %>
-      <div class="col card-hover">
-        <img src="<%#= details.images  %>" alt="" style="width: 100%" class="card-img">
-      </div>
-    <%# } %>
-  </div> -->
 
-
-  <div class="row">
-    <!-- remove the # tag to remove the commented code of EJS -->
-    <!-- <div class="column">
-      <%# for(let i=0; i < galleryImages1; i++) { %> 
-      <img src="<%#randomImageColumn1%>" alt="" style="width: 100%" />
-      <%# } %>
-    </div> -->
-
-    <!-- TODO: Add the clickable for each photo -->
-    <div class="col">
+  <div class="gallery-row">
+    <div class="gallery-col">
       <% for(let detail1 of details1[0]) { %>
         <a href="/readingBliss/<%= detail1._id %>">
         <div class="card bg-dark text-white img-hover mb-2">
@@ -35,7 +19,7 @@
         </a>
       <% } %>
     </div>
-    <div class="col">
+    <div class="gallery-col">
       <% for(let detail2 of details2[0]) { %>
         <a href="/readingBliss/<%= detail2._id %>">
           <div class="card bg-dark text-white img-hover mb-2">
@@ -44,7 +28,7 @@
           </a>
       <% } %>
     </div>
-    <div class="col">
+    <div class="gallery-col">
       <% for(let detail3 of details3[0]) { %>
         <a href="/readingBliss/<%= detail3._id %>">
           <div class="card bg-dark text-white img-hover mb-2">
@@ -53,7 +37,7 @@
           </a>
       <% } %>
     </div>
-    <div class="col">
+    <div class="gallery-col">
       <% for(let detail4 of details4[0]) { %>
         <a href="/readingBliss/<%= detail4._id %>">
           <div class="card bg-dark text-white img-hover mb-2">
@@ -64,56 +48,3 @@
     </div>
   </div>
 </div>
-<style>
-  /* Create two equal columns that floats next to each other */
-  .row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    padding: 0 4px;
-  }
-
-  /* Create four equal columns that sits next to each other */
-  .col {
-    -ms-flex: 25%; /* IE10 */
-    flex: 25%;
-    max-width: 25%;
-    padding: 0 4px;
-  }
-
-  .col img {
-    vertical-align: middle;
-    width: 100%;
-    opacity: 0.5;
-  }
-
-  .img-hover {
-    transition: all .2s ease;
-  }
-
-  .img-hover:hover {
-    transform: translate3D(-30px,-25px,7px) scale(1.03); /* move up slightly and zoom in */
-    box-shadow: 8px 28px 50px rgba(39,44,49,.07), 1px 6px 12px rgba(39,44,49,.04);
-    transition: all .2s ease; /* zoom in */
-    cursor: pointer;
-  }
-
-  /* Responsive layout - makes a two column-layout instead of four columns */
-  @media screen and (max-width: 800px) {
-    .col {
-      -ms-flex: 50%;
-      flex: 50%;
-      max-width: 50%;
-    }
-  }
-
-  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .col {
-      -ms-flex: 100%;
-      flex: 100%;
-      max-width: 100%;
-    }
-  }
-</style>

@@ -22,10 +22,6 @@ const staticJson = {
             "label": "Book Name",
             "placeHolder": "Enter your book name"
         },
-        "productPrice": {
-            "label": "Book Price",
-            "placeHolder": "0.00"
-        },
         "productAuthor": {
             "label": "Book Author Name",
             "placeHolder": "Enter Name"
@@ -60,7 +56,6 @@ const staticJson = {
         "pageTitle": "Details",
         "title": "Here are your pool of books",
         "authorText": " - penned by #author#",
-        "priceValue": " $ #price#",
         "actionButtons": {
             "editLabel": "Edit",
             "cancelLabel": "Cancel",
@@ -75,10 +70,6 @@ const staticJson = {
         "productName": {
             "label": "Product Name",
             "placeHolder": "product name"
-        },
-        "productPrice": {
-            "label": "Price",
-            "placeHolder": "product price"
         },
         "productCategory": {
             "label": "Select Category",

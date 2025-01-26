@@ -10,9 +10,6 @@
               <p class="card-text text-muted"><%=bookJson.details.authorText.replace("#author#", foundBook.author)%></p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><%=bookJson.details.priceValue.replace("#price#", foundBook.price)%></li>
-            </ul>
-            <ul class="list-group list-group-flush">
               <li class="list-group-item">Added by - <b><%=foundBook?.owner.name%></b></li>
             </ul>
             <div class="card-body d-grid gap-2 d-md-flex justify-content-md-between">
@@ -82,8 +79,6 @@
     <%- include("../partials/modal", {buttonName: 'Recommend this book', foundBook, helperText: 'If you want you can update the image and description of the book.'}) %>
     <p>*Your recommended book goes to the Gallery</p>
   </div>
-
-  <!-- we will create a add to collection button. So, anyone who does not own the book but wants to own can add to their collection-->
 </div>
 
 <% } %>

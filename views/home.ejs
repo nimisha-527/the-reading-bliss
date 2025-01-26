@@ -1,16 +1,18 @@
 <% layout('./layout/imageBoilerPlate') %>
-<img src="https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="object-fit-sm-fill opacity-50 position-relative min-vh-100" alt="...">
+<!-- <img src="https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="object-fit-sm-fill opacity-50 position-relative min-vh-100" alt="..."> -->
 
       <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
 
       <!-- TODO: Add custom styles foe padding -->
-          <div class="container position-absolute top-50 start-50 translate-middle d-grid gap-5 d-md-flex flex-column">
-            <div class="text-center mt-5">
-              <h1 class="display-1 font-family-custom-home"><%=bookJson.homePage.title%></h1>
-            <p class="text-body-secondary font-family-custom-slabo-white py-3"><%=bookJson.homePage.description%></p>
-            <a href="/readingBliss/gallery" class="card-link btn btn-outline-primary mt-3 py-3 px-5 btn-custom-fill-primary">Explore</a>
-            </div>
+       <div class="home--image position-relative">
+        <div class="container position-absolute top-50 start-50 translate-middle">
+          <div class="text-center">
+            <h1 class="display-3 font-family-custom-home text-white"><%=bookJson.homePage.title%></h1>
+            <div class="my-5"></div>
+          <a href="/readingBliss/gallery" class="card-link btn btn-outline-secondary mt-3 py-3 px-5 btn-custom-fill-primary">Explore</a>
           </div>
+        </div>
+       </div>
 
         <div class="container mt-5 mb-5">
             <div class="row">

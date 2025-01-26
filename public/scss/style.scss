@@ -1,34 +1,31 @@
 $dark: #4c3e4f;
 $light: #c6a1cf;
-// $font-family-base: "Cursive", sans-serif;
-// $font-family-sans-serif:     "Cursive", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $display-font-weight: 500;
-
-// .custom-style {
-//     background-color: black
-// }
-
 $primary: #4c3e4f;
 $secondary: #c6a1cf;
 $info: #cfcbab;
 $text-info-emphasis: $secondary;
+$white: #ffffff;
+$black: #000;
 
-$box-shadow-lg: 0 1rem 3rem rgba(#cfcbab, 0.175);
+$box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
 
-// CUSTOM
+// CUSTOM CLASSES
+
+// FONT FAMILY
 
 .font-family-custom {
   font-family: "Slabo 27px", serif;
   font-weight: 400;
   font-style: normal;
-  color: #4c3e4f;
+  color: $primary;
 }
 
 .font-family-custom-slabo-white {
   font-family: "Slabo 27px", serif;
   font-weight: 400;
   font-style: normal;
-  color: #ffffff;
+  color: $white;
 }
 
 .font-family-custom-home {
@@ -36,64 +33,113 @@ $box-shadow-lg: 0 1rem 3rem rgba(#cfcbab, 0.175);
   font-optical-sizing: auto;
   font-weight: bolder;
   font-style: normal;
-  color: #4c3e4f;
+  color: $primary;
 }
 
-.font-family-custom-Caveat {
-  font-family: "Caveat", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 52px;
-  letter-spacing: 5px;
-  color: #000000;
-}
+// PRIMARY bUTTON STYLES
 
-// Primary button styles
 .btn-custom-outline-primary {
-  background-color: #ffffff !important;
-  color: #4c3e4f !important;
+  background-color: $white !important;
+  color: $primary !important;
 }
 .btn-custom-fill-primary:hover {
-  background-color: #ffffff !important;
-  color: #4c3e4f !important;
+  background-color: $white !important;
+  color: $primary !important;
 }
 .btn-custom-fill-primary {
-  background-color: #4c3e4f !important;
-  color: #ffffff !important;
+  background-color: $primary !important;
+  color: $white !important;
 }
 .btn-custom-outline-primary:hover {
-  background-color: #4c3e4f !important;
-  color: #ffffff !important;
+  background-color: $primary !important;
+  color: $white !important;
 }
 
-// Secondary buttons styles
+// SECONDARY BUTTONS STYLE
+
 .btn-custom-fill-secondary {
-  background-color: #c6a1cf !important;
-  color: #ffffff !important;
+  background-color: $secondary !important;
+  color: $white !important;
 }
 
 .btn-custom-outline-secondary {
-  background-color: #ffffff !important;
-  color: #c6a1cf !important;
+  background-color: $white !important;
+  color: $secondary !important;
 }
 
 .btn-custom-outline-secondary:hover {
-  background-color: #c6a1cf !important;
-  color: #ffffff !important;
+  background-color: $secondary !important;
+  color: $white !important;
 }
 
 .btn-custom-fill-secondary:hover {
-  background-color: #ffffff !important;
-  color: #c6a1cf !important;
+  background-color: $white !important;
+  color: $secondary !important;
 }
 
-.back-ground-image-half {
-  background-color: #4c3e4f;
-  background-image: url("https://images.pexels.com/photos/327882/pexels-photo-327882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=4");
-  background-size: cover;
-  background-position: top 50%;
+.btn-link:hover {
+  font-size: 18px !important;
+  transition: all .2s ease;
+}
+
+// BACKGROUND IMAGES
+
+.home--image {
+  height: 87vh;
+  background-image:linear-gradient(rgba($primary, 0.4), rgba(24, 24, 24, 0.5)),
+  url("https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: contain;
+  background-position: center bottom;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
   background-repeat: no-repeat;
-  padding-bottom: 20rem;
-  opacity: 0.75;
+}
+// https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+.back-ground-image-half {
+  height: 50vh;
+  background-image: linear-gradient(rgba(0,0,0, 0.8), rgba($black, 0.5)),
+  url("https://images.pexels.com/photos/1808200/pexels-photo-1808200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3");
+  background-size: cover;
+  background-position: center;
+  text-shadow: 0 0.05rem 0.1rem rgba($black, 0.687);
+  box-shadow: inset 0 0 10px rgba($black, 0.700);
+  background-repeat: no-repeat;
+}
+
+.image-text-label {
+  border-radius: 4px;
+  background-color: #000000a9;
+  padding: 8px;
+  box-shadow: 1px 1px 2px $black;
+  color: $white;
+}
+
+// CAROUSAL STYLES
+
+.carousal--size {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousal--design {
+  box-shadow: 0 4px 10px rgba($black, 0.2);
+}
+
+// NAVBAR STYLES
+
+.nav-link.active:hover {
+  border-bottom: 1px solid $white;
+}
+
+.nav-link:hover {
+  border-bottom: 1px solid rgba($white, .55);
+}
+
+// CARD STYLES
+
+.card-image-size {
+  width: 50% !important;
+  height: 50vh
 }
 @import "../../node_modules/bootstrap/scss/bootstrap";
