@@ -1,6 +1,7 @@
 const Books = require('../models/books');
 const Recommend = require('../models/recommend');
 const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('../public/index');
+const {cloudinary} = require('../cloudinary');
 module.exports.index = async (req, res) => {
     const booksLibrary = await Books.find({});
     let books;
@@ -19,8 +20,24 @@ module.exports.renderNewForm = async (req, res) => {
 
 module.exports.addNewBook = async (req, res) => {
     const newBook = await new Books(req.body);
+    newBook.images = req.files.map((f) => {
+        return {
+            url: f.path,
+            filename: f.filename
+        }
+    });
     newBook.owner = req.user._id;
     await newBook.save();
+
+    // If the user does not select the images section then we update default image.
+    if(newBook.images.length == 0) {
+        const imgs = {
+            url: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1798&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            filename: "YourBook"
+        }
+        newBook.images.push(imgs)
+        await newBook.save();
+    }
     req.flash('success', "Book added successfully")
     res.redirect(`/readingBliss/${newBook._id}`)
 }
@@ -99,14 +116,36 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.editBooks = async (req, res) => {
     const { id } = req.params;
-    await Books.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+    const books = await Books.findById(id);
+    const updateBooks = await Books.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+    updateBooks.images = req.files.map((f) => {
+        return {
+            url: f.path,
+            filename: f.filename
+        }
+    });
+    await updateBooks.save();
+
+    // If the user does not select the images section then we do not change the image and update the same image again that he has already selected.
+    if(updateBooks.images.length === 0) {
+        updateBooks.images = books.images?.map((f) => {
+            return {
+                url: f.url,
+                filename: f.filename
+            }
+        });
+        await updateBooks.save();
+    }
     req.flash('success', "Book Updated successfully")
     res.redirect(`/readingBliss/${id}`);
 }
 
 module.exports.deleteBooks = async (req, res) => {
     const { id } = req.params;
-    await Books.findByIdAndDelete(id);
+    const deleteBooks = await Books.findByIdAndDelete(id);
+    for(let image of deleteBooks.images) {
+        await cloudinary.uploader.destroy(image.filename)
+    }
     req.flash('success', "Book deleted successfully")
     res.redirect("/readingBliss");
 }

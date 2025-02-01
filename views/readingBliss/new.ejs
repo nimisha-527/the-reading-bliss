@@ -1,7 +1,7 @@
 <% layout('layout/boilerplate') %>
 <%- include("../partials/carousal") %>
 <div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
-<form action="/readingBliss" method="POST" class="needs-validation" novalidate>
+<form action="/readingBliss" class="needs-validation" novalidate enctype="multipart/form-data" method="POST">
     <div class="mb-3">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>
         <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.newBook.productName.placeHolder%>" required>
@@ -10,10 +10,14 @@
         <label for="author" class="form-label"><%=bookJson.newBook.productAuthor.label%></label>
         <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.newBook.productAuthor.placeHolder%>" required>
       </div>
+      <!-- <div class="mb-3">
+          <label for="images" class="form-label"><%#=bookJson.newBook.productImage.label%></label>
+          <input type="text" name="images" class="form-control" id="images" placeholder="<%#=bookJson.newBook.productImage.placeHolder%>">
+      </div> -->
       <div class="mb-3">
-          <label for="images" class="form-label"><%=bookJson.newBook.productImage.label%></label>
-          <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.newBook.productImage.placeHolder%>">
-        </div>
+        <label for="images" class="form-label"><%=bookJson.newBook.productImage.label%></label>
+        <input type="file" name="images" class="form-control" id="images" multiple>
+      </div>
       <div class="mb-3">
         <label for="description" class="form-label"><%=bookJson.newBook.productDescription.label%></label>
         <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.newBook.productDescription.placeHolder%>" rows="3" required></textarea>
@@ -28,7 +32,7 @@
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-between">
         <a href="/readingBliss" class="btn btn-link" role="button"><%=bookJson.newBook.actionButtons.cancelLabel%></a>
-        <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=bookJson.newBook.actionButtons.submitLabel%></button>
+        <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4 submit-button-new-book" value="Submit"><%=bookJson.newBook.actionButtons.submitLabel%></button>
       </div>
 </form>
 </div>

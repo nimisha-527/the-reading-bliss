@@ -1,7 +1,7 @@
 <% layout('layout/boilerplate') %>
 <%- include("../partials/carousal") %>
 <div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
-  <form action="/readingBliss/<%= book._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
+  <form action="/readingBliss/<%= book._id %>?_method=PUT" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
       <div class="mb-3">
           <label for="name" class="form-label"><%=bookJson.edit.productName.label%></label>
           <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.edit.productName.placeHolder%>" value="<%= book.title %>" required>
@@ -11,9 +11,9 @@
           <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.edit.productAuthor.placeHolder%>" value="<%= book.author %>" required>
         </div>
         <div class="mb-3">
-            <label for="images" class="form-label"><%=bookJson.edit.productImage.label%></label>
-            <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.edit.productImage.placeHolder%>" value="<%= book.images %>">
-          </div>
+          <label for="images" class="form-label"><%=bookJson.edit.productImage.label%></label>
+          <input type="file" name="images" id="images" class="form-control" multiple>
+        </div>
         <div class="mb-3">
           <label for="description" class="form-label"><%=bookJson.edit.productDescription.label%></label>
           <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.edit.productDescription.placeHolder%>" rows="3" required><%= book.description %></textarea>

@@ -14,7 +14,7 @@
       <% for(let detail1 of details1[0]) { %>
         <a href="/readingBliss/<%= detail1._id %>">
         <div class="card bg-dark text-white img-hover mb-2">
-         <img src="<%=detail1.images%>" alt="" style="width: 100%" />
+         <img src="<%=detail1.images[0]?.url%>" alt="" style="width: 100%" />
         </div>
         </a>
       <% } %>
@@ -23,7 +23,7 @@
       <% for(let detail2 of details2[0]) { %>
         <a href="/readingBliss/<%= detail2._id %>">
           <div class="card bg-dark text-white img-hover mb-2">
-           <img src="<%=detail2.images%>" alt="" style="width: 100%" />
+           <img src="<%=detail2.images[0]?.url%>" alt="" style="width: 100%" />
           </div>
           </a>
       <% } %>
@@ -32,7 +32,7 @@
       <% for(let detail3 of details3[0]) { %>
         <a href="/readingBliss/<%= detail3._id %>">
           <div class="card bg-dark text-white img-hover mb-2">
-           <img src="<%=detail3.images%>" alt="" style="width: 100%" />
+           <img src="<%=detail3.images[0]?.url%>" alt="" style="width: 100%" />
           </div>
           </a>
       <% } %>
@@ -41,7 +41,7 @@
       <% for(let detail4 of details4[0]) { %>
         <a href="/readingBliss/<%= detail4._id %>">
           <div class="card bg-dark text-white img-hover mb-2">
-           <img src="<%=detail4.images%>" alt="" style="width: 100%" />
+           <img src="<%=detail4.images[0]?.url%>" alt="" style="width: 100%" />
           </div>
           </a>
       <% } %>

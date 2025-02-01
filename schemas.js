@@ -4,8 +4,7 @@ module.exports.booksSchema = Joi.object({
     title: Joi.string().required(),
     author: Joi.string().required(),
     description: Joi.string().required(),
-    category: Joi.string().required(),
-    images: Joi.string()  
+    category: Joi.string().required()
 }).required();
 
 module.exports.reviewSchema = Joi.object({

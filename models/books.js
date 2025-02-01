@@ -20,10 +20,12 @@ const bookSchema = new Schema({
         required: true,
         enum: ["Thriller", "Fiction", "Fantasy", "Memoir", "Literary Fiction", "Science Fiction", "Historical Fiction"]
     },
-    images: {
-        type: String,
-        required: false
-    },
+    images: [
+        {
+            url: String,
+            filename: String,
+        }
+    ],
     recommended: {
         type: Boolean,
         default: false
