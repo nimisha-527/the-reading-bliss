@@ -90,7 +90,8 @@ app.get('/', (req, res) => {
 });
 
 app.all('*', (req, res, next) => {
-    next(new expressError("PAGE NOT FOUND", 404));
+    // next(new expressError("PAGE NOT FOUND", 404));
+    res.render("readingBliss/pageNotFound");
 })
 
 app.use((err, req, res, next) => {
