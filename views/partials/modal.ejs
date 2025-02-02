@@ -15,7 +15,7 @@
         <form action="/readingBliss/<%= foundBook.id  %>/recommend/<%= currentUser._id  %>" method="POST">
           <div class="mb-3">
             <label for="image" class="col-form-label">Image Link:</label>
-            <input type="text" class="form-control" id="image" name="image" value="<%= foundBook.images  %>">
+            <input type="text" class="form-control" id="image" name="image" value="<%= foundBook.images[0].url  %>">
           </div>
           <div class="mb-3">
             <label for="description-text" class="col-form-label">Description:</label>

@@ -5,7 +5,7 @@
         <form action="/readingBliss/register" method="POST" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="name" class="form-label">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name"
+                <input type="text" name="name" class="form-control" id="name" autofocus
                     placeholder="Please Enter Your name" required>
             </div>
             <div class="mb-3">
@@ -13,11 +13,11 @@
                 <input type="text" name="username" class="form-control" id="username"
                     placeholder="Please Enter Your Username" required>
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="email" class="form-label">Enter Your Email</label>
                 <input type="email" name="emailId" class="form-control" id="email"
                     placeholder="Please Enter Your Email" required>
-            </div>
+            </div> -->
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
@@ -27,8 +27,8 @@
             </div>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-                <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit">Sign
-                    Up</button>
+                <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit">Sign Up</button>
+                <a href="/readingBliss/login" class="btn btn-link" role="button">Login</a>
             </div>
         </form>
     </div>

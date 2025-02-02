@@ -1,5 +1,7 @@
 // ejs-mate is used for layout, partials and block template functions for the EJS template engine
-
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -27,6 +29,7 @@ mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     console.log(err)
     console.log("Mongo Connection Failed");
 })
+const PORT = process.env.PORT || 8080;
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Failed"));
@@ -87,7 +90,8 @@ app.get('/', (req, res) => {
 });
 
 app.all('*', (req, res, next) => {
-    next(new expressError("PAGE NOT FOUND", 404));
+    // next(new expressError("PAGE NOT FOUND", 404));
+    res.render("readingBliss/pageNotFound");
 })
 
 app.use((err, req, res, next) => {
@@ -96,7 +100,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error" , {err});
 })
 
-app.listen(8080, () => {
-    console.log('listening on port 8080');
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}....`);
 });
 

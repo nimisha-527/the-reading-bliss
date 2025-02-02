@@ -1,5 +1,7 @@
 const Books = require('../models/books');
 const Review = require('../models/review');
+const expressError = require('./ExpressError');
+const { booksSchema, reviewSchema } = require('../schemas');
 module.exports.isLoggedIn = (req, res, next) => {
     //isAuthenticated() is the helper function from passport
     if (!req.isAuthenticated()) {
@@ -37,4 +39,26 @@ module.exports.isReviewAuthor = async (req, res, next) => {
         return res.redirect(`/readingBliss/${id}`);
     }
     next();
+}
+
+module.exports.validateBooks = (req, res, next) => {
+    const { error } = booksSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(",");
+        console.log(msg);
+        throw new expressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
+module.exports.validateReviews = (req, res, next) => {
+    const {error} = reviewSchema.validate(req.body);
+    if(error) {
+        const msg = error.details.map(el => el.message).join(",");
+        console.log(msg);
+        throw new expressError(msg, 400);
+    } else {
+        next();
+    }
 }
