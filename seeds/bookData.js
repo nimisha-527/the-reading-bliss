@@ -49,7 +49,8 @@ const bookData = [
                 "filename": 'seeds4'
             }
         ],
-        "owner": "6782986ea62dc941714edff3"
+        "owner": "6782986ea62dc941714edff3",
+        "recommended": true
     },
     {
         "title": "The Vanishing Half",
@@ -128,6 +129,7 @@ const bookData = [
                 "filename": 'seeds10'
             }
         ],
+        "recommended": true
     },
     {
         "owner": '6781402d231ec2db658a038d',
@@ -141,6 +143,7 @@ const bookData = [
                 "filename": 'seeds11'
             }
         ],
+        "recommended": true
       }
 ]
 

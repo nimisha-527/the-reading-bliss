@@ -41,6 +41,10 @@
   color: #ffffff !important;
 }
 
+.btn-custom .btn {
+  padding: 0 !important;
+}
+
 .btn-custom-fill-secondary {
   background-color: #c6a1cf !important;
   color: #ffffff !important;
@@ -64,6 +68,25 @@
 .btn-link:hover {
   font-size: 18px !important;
   transition: all 0.2s ease;
+}
+
+/* ICONS */
+.icon-button-custom-fill-primary {
+  background-color: #ffffff !important;
+  color: #4c3e4f !important;
+  cursor: pointer;
+  transition: transform 1s;
+}
+
+.icon-button-custom-fill-primary:hover {
+  background-color: #ffffff !important;
+  color: #7e6683 !important;
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
+.default-css-unset {
+  all: unset;
 }
 
 .home--image {
@@ -113,9 +136,8 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.55);
 }
 
-.card-image-size {
-  width: 50% !important;
-  height: 50vh;
+.navbar {
+  font-size: 20px;
 }
 
 /*!

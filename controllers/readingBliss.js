@@ -82,8 +82,6 @@ module.exports.renderGallery = async (req, res) => {
     details3.push(array3);
     details4.push(array4);
 
-    console.log(array1)
-
     res.render("readingBliss/gallery", { bookJson, recommendedBook, recommendedList, details1, details2, details3, details4 });
 
 }

@@ -1,8 +1,8 @@
 <% layout('layout/boilerplate') %>
 
 <div class="row">
-    <div class="col-6 pb-5">
-        <div class="card h-100">
+    <div class="col-lg-6 pb-5">
+        <div class="card">
             <img src="<%=foundBook.images[0]?.url%>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%=foundBook.title%></h5>
@@ -12,24 +12,24 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Added by - <b><%=foundBook?.owner.name%></b></li>
             </ul>
-            <div class="card-body d-grid gap-2 d-md-flex justify-content-md-between">
+            <div class="card-footer d-grid gap-2 d-md-flex justify-content-md-between">
               <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
-                <form class="d-inline" action="/readingBliss/<%=foundBook.id%>?_method=DELETE" method="POST">
-                  <button class="btn btn-link"><%=bookJson.details.actionButtons.deleteLabel%></button>
+                <form class="btn-custom btn" action="/readingBliss/<%=foundBook.id%>?_method=DELETE" method="POST">
+                  <button class="btn btn-link" type="button"><%=bookJson.details.actionButtons.deleteLabel%></button>
                 </form>
               <% } %>
-              <div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-between">
                 <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
-                  <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-primary btn-custom-outline-primary py-2 px-4"><%=bookJson.details.actionButtons.editLabel%></a>
+                  <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-primary btn-custom-outline-primary py-2 px-4 text-center"><%=bookJson.details.actionButtons.editLabel%></a>
                 <% } %>
-                <a href="https://www.google.com/search?q=<%=foundBook.title%>" target="_blank" class="card-link btn btn-primary btn-custom-fill-primary py-2 px-4"><%=bookJson.details.actionButtons.toReadBook%></a>
+                <a href="https://www.google.com/search?q=<%=foundBook.title%>" target="_blank" class="btn btn-primary btn-custom-fill-primary py-2 px-4"><%=bookJson.details.actionButtons.toReadBook%></a>
               </div>
             </div>
         </div>
     </div>
 
     <!-- REVIEWS -->
-    <div class="col-6">
+    <div class="col-lg-6">
       <h2>Leave Your review</h2>
       <form action="/readingBliss/<%= foundBook.id %>/reviews" method="POST" class="needs-validation mb-5" novalidate>
         <div class="mb-3">

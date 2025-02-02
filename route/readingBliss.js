@@ -25,7 +25,7 @@ router.post('/', isLoggedIn, isOwner, upload.array('images'), validateBooks, wra
 //     res.send(req.files);
 // })
 
-router.get('/:id', isLoggedIn, wrapAsync(readingBlissController.renderDetailsPage))
+router.get('/:id', wrapAsync(readingBlissController.renderDetailsPage))
 
 router.get('/:id/edit', isLoggedIn, wrapAsync(readingBlissController.renderEditForm));
 

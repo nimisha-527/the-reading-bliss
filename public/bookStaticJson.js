@@ -61,7 +61,7 @@ const staticJson = {
             "cancelLabel": "Cancel",
             "homeLabel": "Home",
             "deleteLabel": "Delete",
-            "toReadBook": "Search The Book"
+            "toReadBook": "Browse The Book"
         }
     },
     "edit": {
