@@ -16,7 +16,9 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('./models/user')
+const User = require('./models/user');
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require("helmet")
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     useNewURLParser: true,
@@ -45,13 +47,19 @@ app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
 app.use(express.static( path.join(__dirname, "public") ));
 app.use(express.urlencoded({extended: true}));
+app.use(
+    mongoSanitize({
+      replaceWith: '--',
+    }),
+  );
 
 const sessionConfig = {
+    name:"session",
     secret: "thisisnotasecret",
     resave:false,
     saveUninitialized: true,
     cookie: {
-        HttpOnly: true,
+        httpOnly: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -59,6 +67,48 @@ const sessionConfig = {
 // session expires in one week, above calcuation is for that purpose.
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(helmet());
+const scriptSrcUrls = [
+    "https://cdnjs.cloudflare.com",
+    "https://cdn.jsdelivr.net"
+];
+const styleSrcUrls = [
+    "https://fonts.googleapis.com"
+];
+const connectSrcUrls = [];
+const fontSrcUrls = [];
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            "default-src": ["'self'"],
+            "connect-src": ["'self'", ...connectSrcUrls],
+            "script-src": ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            "style-src": ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            "worker-src": ["'self'", "blob:"],
+            "child-src": ["blob:"],
+            "object-src": [],
+            "img-src": [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/dzjms6aad/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                "https://images.unsplash.com",
+                "https://images.pexels.com",
+                "https://ashsinfinitelibrary.wordpress.com",
+                "https://i0.wp.com/fannaforbooks.com",
+                "https://perireads.com",
+                "https://platform.vox.com",
+                "https://i0.wp.com",
+                "https://tyshiashante.com",
+                "https://picsum.photos",
+                "https://michellehickey.design",
+                "https://www.gateshousings.com",
+                "https://i.pinimg.com"
+            ],
+            "font-src": ["'self'", ...fontSrcUrls],
+        },
+    }
+}));
 
 app.use(passport.initialize()); // look for the docs passport.js for better understanding
 app.use(passport.session()); // look for the docs passport.js for better understanding. And this comes after the session according to docs
