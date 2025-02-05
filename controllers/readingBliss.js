@@ -2,16 +2,18 @@ const Books = require('../models/books');
 const Recommend = require('../models/recommend');
 const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('../public/index');
 const {cloudinary} = require('../cloudinary');
+const {trashIcon, starIcon, infoIcon, bookIcon} = require("../public/icons");
 module.exports.index = async (req, res) => {
     const booksLibrary = await Books.find({});
     let books;
     let bookLibrary = [];
+    const booksListStatic = bookJson.listOfBooks; 
     for(books of booksLibrary) {
         if(books.owner?.toString() === req.user._id?.toString()) {
             bookLibrary.push(books);
         }
     }
-    res.render("readingBliss/index", { bookLibrary, bookJson });
+    res.render("readingBliss/index", { bookLibrary, booksListStatic, bookIcon });
 }
 
 module.exports.renderNewForm = async (req, res) => {
@@ -43,12 +45,14 @@ module.exports.addNewBook = async (req, res) => {
 }
 
 module.exports.renderAboutUs = async (req, res) => {
-    res.render("readingBliss/aboutUs", { bookJson });
+    const aboutUsStatic = bookJson.aboutUs;
+    res.render("readingBliss/aboutUs", { aboutUsStatic });
 }
 
 module.exports.renderGallery = async (req, res) => {
     const books = await Books.find({});
     const recommendedList = await Recommend.find({});
+    const galleryStatic = bookJson.gallery;
     let recommendedBook =  [];
     for(let book of books ) {
         if(book.recommended && !recommendedList.length) {
@@ -82,12 +86,13 @@ module.exports.renderGallery = async (req, res) => {
     details3.push(array3);
     details4.push(array4);
 
-    res.render("readingBliss/gallery", { bookJson, recommendedBook, recommendedList, details1, details2, details3, details4 });
+    res.render("readingBliss/gallery", { galleryStatic, recommendedBook, recommendedList, details1, details2, details3, details4, infoIcon });
 
 }
 
 module.exports.renderContactUs = async (req, res) => {
-    res.render("readingBliss/contact", { bookJson });
+    const contactUsStatic = bookJson.contactUs;
+    res.render("readingBliss/contact", { contactUsStatic });
 }
 
 module.exports.renderDetailsPage = async (req, res) => {
@@ -103,7 +108,8 @@ module.exports.renderDetailsPage = async (req, res) => {
         req.flash('error', "Book you are searching for does not exists");
         return res.redirect('/readingBliss')
     }
-    res.render("readingBliss/details", { foundBook, bookJson });
+    const staticDetails = bookJson.details;
+    res.render("readingBliss/details", { foundBook, trashIcon, starIcon, staticDetails });
 }
 
 module.exports.renderEditForm = async (req, res) => {

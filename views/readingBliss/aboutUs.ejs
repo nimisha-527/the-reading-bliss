@@ -1,35 +1,29 @@
 <% layout('./layout/imageBoilerplate') %>
 <div class="mb-5 d-grid gap-5">
   <div class="back-ground-image-half position-relative">
-    <h1 class="display-3 position-absolute top-50 start-50 translate-middle image-text-label">About US</h1>
+    <h1
+      class="display-3 position-absolute top-50 start-50 translate-middle image-text-label"
+    >
+      <%=aboutUsStatic.title %>
+    </h1>
   </div>
   <div class="container text-center">
     <div class="d-flex flex-lg-row flex-column align-self-center gap-2 pb-5">
       <div class="card shadow rounded">
         <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-            ducimus, illo quas maxime cupiditate expedita unde ratione quasi
-            libero repudiandae soluta pariatur commodi ipsum in blanditiis
-            deleniti voluptates asperiores facilis!
-          </p>
+          <p><%=aboutUsStatic.description.first %></p>
         </div>
       </div>
       <div class="card shadow rounded">
         <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, aut
-            fuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi
-            reprehenderit, in veniam doloribus! Incidunt consequuntur sit
-            praesentium velit nulla!
-          </p>
+          <p><%=aboutUsStatic.description.second %></p>
         </div>
       </div>
     </div>
     <img
-      src="https://images.pexels.com/photos/711009/pexels-photo-711009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      src="<%= aboutUsStatic.picDetails.url  %>"
       class="rounded-circle"
-      alt="Cinque Terre"
+      alt="<%= aboutUsStatic.picDetails.text  %>"
       width="304"
       height="236"
     />

@@ -1,34 +1,45 @@
 <% layout('./layout/imageBoilerPlate') %>
-<!-- <img src="https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="object-fit-sm-fill opacity-50 position-relative min-vh-100" alt="..."> -->
+<!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
 
-      <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
+<div class="home--image position-relative">
+  <div class="container position-absolute top-50 start-50 translate-middle">
+    <div class="text-center">
+      <h1 class="display-4 font-family-custom-home text-white">
+        <%=homeStatic.title%>
+      </h1>
+      <div class="my-5"></div>
+      <a
+        href="/readingBliss/gallery"
+        class="card-link btn btn-outline-secondary mt-3 py-3 px-5 btn-custom-fill-primary"
+        ><%=homeStatic.actionButtons.exploreLabel%></a
+      >
+    </div>
+  </div>
+</div>
 
-      <!-- TODO: Add custom styles foe padding -->
-       <div class="home--image position-relative">
-        <div class="container position-absolute top-50 start-50 translate-middle">
-          <div class="text-center">
-            <h1 class="display-3 font-family-custom-home text-white"><%=bookJson.homePage.title%></h1>
-            <div class="my-5"></div>
-          <a href="/readingBliss/gallery" class="card-link btn btn-outline-secondary mt-3 py-3 px-5 btn-custom-fill-primary">Explore</a>
-          </div>
-        </div>
-       </div>
-
-        <div class="container mt-5 mb-5">
-            <div class="row">
-              <div class="col-md-8 text-center">
-                <img class="object-fit-sm-cover shadow" src="https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2"  alt="...">
-              </div>
-              <div class="col-md-4 text-start d-flex align-items-center">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat a molestias maxime ipsam sint ab officia nemo ipsa expedita velit vitae dolor inventore id quidem deleniti, autem tempore perspiciatis earum!Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid vitae reprehenderit repellat deleniti consequuntur recusandae dolores, repudiandae fugiat, iste ducimus voluptatibus dolore doloribus fugit fuga similique eaque debitis rem illo.</p>
-              </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-4 text-start d-flex align-items-center">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, consequatur quia. Aliquid itaque quaerat vitae quia ratione? Alias sit voluptatibus sapiente ad ipsum dolorum non porro, doloribus voluptas cupiditate deserunt!</p>
-                  </div>
-                  <div class="col-md-8 text-center">
-                    <img class="object-fit-sm-cover shadow" src="https://images.pexels.com/photos/5604251/pexels-photo-5604251.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2"  alt="...">
-                  </div>
-              </div>
-          </div>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-8 text-center">
+      <img
+        class="object-fit-sm-cover shadow"
+        src="<%=homeStatic.picDetails.firstUrl %>"
+        alt="<%=homeStatic.picDetails.firstText %>"
+      />
+    </div>
+    <div class="col-md-4 text-start d-flex align-items-center">
+      <p><%=homeStatic.description.first %></p>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-4 text-start d-flex align-items-center">
+      <p><%=homeStatic.description.second %></p>
+    </div>
+    <div class="col-md-8 text-center">
+      <img
+        class="object-fit-sm-cover shadow"
+        src="<%=homeStatic.picDetails.secondUrl %>"
+        alt="<%=homeStatic.picDetails.secondText %>"
+      />
+    </div>
+  </div>
+</div>

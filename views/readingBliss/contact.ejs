@@ -1,36 +1,30 @@
 <% layout('./layout/imageBoilerplate') %>
 <div class="mb-5 d-grid gap-5">
   <div class="back-ground-image-half position-relative">
-    <h1 class="display-3 position-absolute top-50 start-50 translate-middle image-text-label">Contact US</h1>
+    <h1
+      class="display-3 position-absolute top-50 start-50 translate-middle image-text-label"
+    >
+      <%=contactUsStatic.title %>
+    </h1>
   </div>
 
   <div class="container text-center">
     <img
-      src="https://images.pexels.com/photos/2789781/pexels-photo-2789781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      src="<%=contactUsStatic.picDetails.url%>"
       class="rounded-circle"
-      alt="Cinque Terre"
+      alt="<%=contactUsStatic.picDetails.text%>"
       width="304"
       height="236"
     />
     <div class="d-flex flex-lg-row flex-column gap-2 pt-5">
       <div class="card shadow rounded">
         <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-            ducimus, illo quas maxime cupiditate expedita unde ratione quasi
-            libero repudiandae soluta pariatur commodi ipsum in blanditiis
-            deleniti voluptates asperiores facilis!
-          </p>
+          <p><%=contactUsStatic.description.first %></p>
         </div>
       </div>
       <div class="card shadow rounded">
         <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, aut
-            fuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi
-            reprehenderit, in veniam doloribus! Incidunt consequuntur sit
-            praesentium velit nulla!
-          </p>
+          <p><%=contactUsStatic.description.second %></p>
         </div>
       </div>
     </div>

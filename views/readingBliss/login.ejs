@@ -1,23 +1,51 @@
 <% layout('layout/boilerplate') %>
 
-    <h1 class="text-center mb-3"><u><b>Login</b></u></h1>
-    <div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
-        <form action="/readingBliss/login" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="username" class="form-label">Enter UserName</label>
-                <input type="text" name="username" class="form-control" id="username" autofocus
-                    placeholder="Please Enter Your Username" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <div class="input-group">
-                    <input name="password" type="password" id="password" class="form-control"
-                        placeholder="Please Enter Your Password" required>
-                </div>
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-                <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit">Login</button>
-                <a href="/readingBliss/register" class="btn btn-link" role="button">Sign Up</a>
-            </div>
-        </form>
+<h1 class="text-center mb-3">
+  <u><b>Login</b></u>
+</h1>
+<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
+  <form
+    action="/readingBliss/login"
+    method="POST"
+    class="needs-validation"
+    novalidate
+  >
+    <div class="mb-3">
+      <label for="username" class="form-label">Enter UserName</label>
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        id="username"
+        autofocus
+        placeholder="Please Enter Your Username"
+        required
+      />
     </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <div class="input-group">
+        <input
+          name="password"
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Please Enter Your Password"
+          required
+        />
+      </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+      <button
+        type="submit"
+        class="btn btn-primary btn-custom-fill-primary py-2 px-4"
+        value="Submit"
+      >
+        Login
+      </button>
+      <a href="/readingBliss/register" class="btn btn-link" role="button"
+        >Sign Up</a
+      >
+    </div>
+  </form>
+</div>
