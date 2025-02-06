@@ -8,9 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/scss/style.css" />
     <link rel="stylesheet" type="text/css" href="/scss/gallery.css" />
     <link rel="stylesheet" type="text/css" href="/scss/logo.css" />
-    <title>BOILERPLATE</title>
+    <title>Reading Bliss</title>
 </head>
 <body class="d-flex flex-column vh-100 custom-style font-family-custom">
+  <%=JSON.stringify(registerStatic)%>
     <% if(currentUser) { %>
       <%- include("../partials/navbarLoggedIn") %>
     <% } else { %>

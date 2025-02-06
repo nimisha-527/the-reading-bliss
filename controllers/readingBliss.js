@@ -1,6 +1,6 @@
 const Books = require('../models/books');
 const Recommend = require('../models/recommend');
-const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('../public/index');
+const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('../public');
 const {cloudinary} = require('../cloudinary');
 const {trashIcon, starIcon, infoIcon, bookIcon} = require("../public/icons");
 module.exports.index = async (req, res) => {

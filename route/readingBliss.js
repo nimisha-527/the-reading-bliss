@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { wrapAsync, isLoggedIn, isOwner,validateBooks } = require('../utils/index');
+const { wrapAsync, isLoggedIn, isOwner,validateBooks } = require('../utils');
 const reviewsRoutes = require('./reviews');
 const readingBlissController = require('../controllers/readingBliss');
 // const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;

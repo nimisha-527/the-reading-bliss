@@ -1,6 +1,8 @@
 const User = require('../models/user');
+const { bookJson } = require('../public');
 module.exports.renderRegisterForm = (req, res) => {
-    res.render('readingBliss/register');
+    const registerStatic = bookJson.register;
+    res.render('readingBliss/register', { registerStatic });
 }
 
 module.exports.register = async (req, res) => {
@@ -33,7 +35,8 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.renderLoginForm = (req, res) => {
-    res.render('readingBliss/login');
+    const loginStatic = bookJson.login;
+    res.render('readingBliss/login', { loginStatic });
 }
 
 module.exports.login = async (req, res) => {

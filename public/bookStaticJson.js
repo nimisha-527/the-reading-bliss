@@ -77,9 +77,19 @@ const staticJson = {
             "postLabel": "Post"
         },
         "recommend": {
-            "buttonName": "Recommend this book",
-            "helperText": "If you want you can update the image and description of the book.",
-            "infoText": "*Your recommended book goes to the Gallery"
+            "infoText": "*Your recommended book goes to the Gallery",
+            "recommendModal": {
+                "buttonName": "Recommend this book",
+                "helperText": "If you want you can update the image and description of the book.",
+                "imageLinkLabel": "Image Link:",
+                "descriptionLabel": "Description:",
+                "actionButtons": {
+                    "closeLabel": "Close",
+                    "proceedLabel": "Proceed",
+                    "galleryLinkLabel": "Gallery Section"
+                },
+                "alreadyRecommendedText": "This book is already recommended. You can view it in"
+            },
         }
     },
     "edit": {
@@ -147,7 +157,63 @@ const staticJson = {
     },
     "login": {
         "title": "Login",
-        "enterUsernameLabel": "Enter your username"
+        "enterUsernameLabel": "Enter username",
+        "enterUsernamePlaceholder": "Please Enter Your Username",
+        "passwordLabel": "Enter Password",
+        "enterPasswordPlaceHolder": "Please Enter Your Password",
+        "actionButtons": {
+            "loginButton": "Login",
+            "signupButton": "Sign Up"
+        }
+    },
+    "register": {
+        "title": "Register",
+        "enterNameLabel": "Enter Name",
+        "enterNamePlaceholder": "Please Enter Your Name",
+        "enterUsernameLabel": "Enter username",
+        "enterUsernamePlaceholder": "Please Enter Your Username",
+        "passwordLabel": "Enter Password",
+        "enterPasswordPlaceHolder": "Please Enter Your Password",
+        "actionButtons": {
+            "loginButton": "Login",
+            "signUpButton": "Sign Up"
+        }
+    },
+    "navbarLoggedOut": {
+        "picDetails": {
+            "logo": "https://res.cloudinary.com/dzjms6aad/image/upload/c_thumb,w_200,g_face/v1738393828/sqaure-logo1_qk8cgq.webp",
+            "logoText": "Reading Bliss",
+        },
+        "navItems": {
+            "aboutUsLabel": "About US",
+            "galleryLabel": "Gallery",
+            "contactLabel": "Contact",
+            "registerLabel" : "Register",
+            "loginLabel": "Login"
+        }
+    },
+    "navbarLoggedIn": {
+        "readingBlissLabel": "Reading Bliss",
+        "navItems": {
+            "homeLabel": "Home",
+            "aboutUsLabel": "About US",
+            "galleryLabel": "Gallery",
+            "contactLabel": "Contact",
+            "newBookLabel" : "New Book",
+            "logoutLabel": "Logout",
+            "userCollectionLabel": "'s Collection"
+        }
+    },
+    "footer": {
+        "text": "READING BLISS 2024"
+    },
+    "carousal": {
+        "picDetails": {
+            "pic1": "https://images.pexels.com/photos/5331071/pexels-photo-5331071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            "pic2": "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?q=80&w=1783&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "pic3": "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            "pic4": "https://images.pexels.com/photos/4256852/pexels-photo-4256852.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3"
+        }
     },
     "logoImage": "",
     "randomImages": "https://images.pexels.com/photos/#randomImage#/pexels-photo-#randomImage#.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
