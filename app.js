@@ -18,11 +18,10 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
 
-mongoose.connect('mongodb://localhost:27017/reading-bliss', {
-    useNewURLParser: true,
-    useUnifiedTopology: true
-})
+const MongoStore = require('connect-mongo');
+mongoose.connect(dbUrl)
 .then(() => {
     console.log("Mongo Connection established")
 })
@@ -50,11 +49,22 @@ app.use(
     mongoSanitize({
       replaceWith: '--',
     }),
-  );
+);
 
+const secret = process.env.SECRET_KEY || 'thisisnotasecret';
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    secret,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (err) {
+    console.log("SESSION ERROR: ", err)
+})
 const sessionConfig = {
+    store,
     name:"session",
-    secret: "thisisnotasecret",
+    secret,
     resave:false,
     saveUninitialized: true,
     cookie: {
