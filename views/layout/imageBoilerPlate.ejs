@@ -12,19 +12,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/scss/style.css" />
     <link rel="stylesheet" type="text/css" href="/scss/logo.css" />
-    <title>Reading Bliss</title>
+    <title><%=bookJson.webTitle  %></title>
   </head>
 
   <body class="d-flex flex-column font-family-custom">
+    <%#=JSON.stringify(bookJson.navbarLoggedIn.readingBlissLabel)%>
     <% if(currentUser) { %>
-      <%- include("../partials/navbarLoggedIn") %>
+      <%- include("../partials/navbarLoggedIn", {navLoggedIn: bookJson.navbarLoggedIn}) %>
     <% } else { %>
-      <%- include("../partials/navbar") %>
+      <%- include("../partials/navbar", {navLoggedOut: bookJson.navbarLoggedOut}) %>
     <% } %>
     <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
+    <%- include("../partials/flash", {
+      flashIcons: JSON.stringify(icons.flashIcons.symbols) , 
+      successIcons: JSON.stringify(icons.flashIcons.successIcon), 
+      errorIcons: JSON.stringify(icons.flashIcons.errorIcon), 
+      infoIcons: JSON.stringify(icons.flashIcons.infoIcon),
+      clickHereLabel: JSON.stringify(icons.flashIcons.clickHereText)
+    })%>
     <%- body %> 
     
-    <%- include("../partials/footer") %>
+    <%- include("../partials/footer", {footerLabel: bookJson.footer}) %>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

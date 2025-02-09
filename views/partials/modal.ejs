@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-custom-fill-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#ModalPopup" data-bs-whatever="<%= foundBook.title %>"><%= buttonName  %></button>
+<button type="button" class="btn btn-primary btn-custom-fill-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#ModalPopup" data-bs-whatever="<%= foundBook.title %>"><%= staticDetailsRecommend.buttonName  %></button>
 
 <!-- Modal -->
  <% if(!foundBook.recommended) { %>
@@ -11,19 +11,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p><%= helperText %></p>
+        <p><%=staticDetailsRecommend.helperText %></p>
         <form action="/readingBliss/<%= foundBook.id  %>/recommend/<%= currentUser._id  %>" method="POST">
           <div class="mb-3">
-            <label for="image" class="col-form-label">Image Link:</label>
+            <label for="image" class="col-form-label"><%=staticDetailsRecommend.imageLinkLabel  %></label>
             <input type="text" class="form-control" id="image" name="image" value="<%= foundBook.images[0].url  %>">
           </div>
           <div class="mb-3">
-            <label for="description-text" class="col-form-label">Description:</label>
+            <label for="description-text" class="col-form-label"><%=staticDetailsRecommend.descriptionLabel %></label>
             <textarea class="form-control" id="description-text" name="description" value="<%= foundBook.description  %>"></textarea>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" value="Submit">Proceed</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%=staticDetailsRecommend.actionButtons.closeLabel %>
+            </button>
+            <button type="submit" class="btn btn-primary" value="Submit"><%=staticDetailsRecommend.actionButtons.proceedLabel %></button>
           </div>
         </form>
       </div>
@@ -41,10 +42,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>This book is already recommended. You can view it in <a href="/readingBliss/gallery">Gallery Section</a></p>
+        <p><%=staticDetailsRecommend.alreadyRecommendedText %> <a href="/readingBliss/gallery"><%=staticDetailsRecommend.actionButtons.galleryLinkLabel %></a></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%=staticDetailsRecommend.actionButtons.closeLabel %></button>
       </div>
     </div>
   </div>

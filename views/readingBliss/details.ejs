@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate') %>
+<% layout('layout/boilerplate', {bookJson, icons}) %>
 
 <div class="row">
     <div class="col-lg-6 pb-5">
@@ -50,7 +50,7 @@
                 <h4 class="card-title d-flex flex-row justify-content-between">~<%= review?.owner.name %>
                   <% if(currentUser && review?.owner && review?.owner?.equals(currentUser._id)) { %>
                   <form action="/readingBliss/<%=foundBook.id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="default-css-unset"><%- trashIcon  %></button>
+                    <button class="default-css-unset"><%- icons.trashIcon  %></button>
                   </form>
                   <% } %>
                 </h4>
@@ -58,7 +58,7 @@
                   <%=review.body%>
                   <div>
                     <% for(let i=1; i<=review.rating; i++) { %>
-                      <%-starIcon %>
+                      <%-icons.starIcon %>
                     <% } %>
                   </div>
               </p>
@@ -74,7 +74,7 @@
 <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
 <div class="mt-3">
 <div id="staticBackdrop">
-    <%- include("../partials/modal", {buttonName: 'Recommend this book', foundBook, helperText: 'If you want you can update the image and description of the book.'}) %>
+    <%- include("../partials/modal", {staticDetailsRecommend: staticDetails.recommend.recommendModal, foundBook}) %>
     <p><%=staticDetails.recommend.infoText  %></p>
   </div>
 </div>

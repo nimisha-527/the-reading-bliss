@@ -1,7 +1,7 @@
-<% layout('layout/boilerplate') %>
+<% layout('layout/boilerplate', {bookJson, icons}) %>
 <div class="container">
   <div class="alert alert-primary d-flex align-items-center mb-5" role="alert">
-    <%-infoIcon%>
+    <%-icons.infoIcon%>
     <div>
       <%=galleryStatic.infoMessage %>
     </div>

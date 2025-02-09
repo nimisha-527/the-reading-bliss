@@ -1,4 +1,5 @@
 const staticJson = {
+    "webTitle": "Reading Bliss",
     "home": {
         "title": "WELCOME TO READING BLISS",
         "description": {
@@ -185,8 +186,8 @@ const staticJson = {
             "logoText": "Reading Bliss",
         },
         "navItems": {
-            "aboutUsLabel": "About US",
             "galleryLabel": "Gallery",
+            "aboutUsLabel": "About US",
             "contactLabel": "Contact",
             "registerLabel" : "Register",
             "loginLabel": "Login"

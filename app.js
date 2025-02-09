@@ -8,7 +8,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 // const { fileURLToPath } = require('url');
 const mongoose = require('mongoose');
-const { bookJson } = require('./public');
+const { bookJson, icons } = require('./public');
 const ejsMate = require('ejs-mate');
 const { readingBlissRoutes, userRoutes, recommendRoutes } = require('./route');
 const session = require('express-session');
@@ -138,7 +138,7 @@ app.use('/readingBliss', readingBlissRoutes);
 
 app.get('/', (req, res) => {
     const homeStatic = bookJson.home
-    res.render("home", {homeStatic})
+    res.render("home", {homeStatic, bookJson, icons})
 });
 
 app.all('*', (req, res, next) => {
@@ -149,7 +149,7 @@ app.all('*', (req, res, next) => {
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     if(!err.message) err.message = "Something went wrong!!!";
-    res.status(statusCode).render("error" , {err});
+    res.status(statusCode).render("error" , {err, bookJson, icons});
 })
 
 app.listen(PORT, () => {

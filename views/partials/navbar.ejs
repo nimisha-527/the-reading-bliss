@@ -1,6 +1,6 @@
 <nav class="z-1 navbar navbar-expand-lg bg-dark sticky-top" data-bs-theme="dark">
   <div class="container-fluid mx-5">
-    <a class="d-lg-flex mx-lg-auto navbar-brand" href="/"><img src="https://res.cloudinary.com/dzjms6aad/image/upload/c_thumb,w_200,g_face/v1738393828/sqaure-logo1_qk8cgq.webp" alt="Reading Bliss" class="logo-design"></a>
+    <a class="d-lg-flex mx-lg-auto navbar-brand" href="/"><img src="<%=JSON.stringify(navLoggedOut.picDetails.logo).replaceAll('"', '')%>" alt="<%=JSON.stringify(navLoggedOut.picDetails.logoText).replaceAll('"', '')%>" class="logo-design"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,19 +9,19 @@
       <a class="display-6 d-none d-lg-flex mx-lg-auto navbar-brand" href="/" style="color: #FFFFFF; text-decoration: none; display: none;"></a> 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/readingBliss/aboutUs">About US</a>
+          <a class="nav-link" aria-current="page" href="/readingBliss/gallery"><%=JSON.stringify(navLoggedOut.navItems.galleryLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/gallery">Gallery</a>
+          <a class="nav-link" href="/readingBliss/aboutUs"><%=JSON.stringify(navLoggedOut.navItems.aboutUsLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/contact">Contact</a>
+          <a class="nav-link" href="/readingBliss/contact"><%=JSON.stringify(navLoggedOut.navItems.contactLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/register">Register</a>
+          <a class="nav-link" href="/readingBliss/register"><%=JSON.stringify(navLoggedOut.navItems.registerLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/login">Login</a>
+          <a class="nav-link" href="/readingBliss/login"><%=JSON.stringify(navLoggedOut.navItems.loginLabel).replaceAll('"', '')%></a>
         </li>
         <!-- <li class="nav-item form-check form-switch">
           <div class="nav-link">

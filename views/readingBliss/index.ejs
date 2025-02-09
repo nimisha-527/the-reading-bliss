@@ -1,9 +1,9 @@
-<% layout('layout/boilerplate') %>
+<% layout('layout/boilerplate', {bookJson, icons}) %>
 <% if(!bookLibrary.length) { %> 
   <div class="mt-5">
     <%=booksListStatic.emptyListText %>
     <a href="/readingbliss/newBook" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Book">
-      <%- bookIcon%>
+      <%- icons.bookIcon%>
     </a>
   </div>
 <% } else {%>

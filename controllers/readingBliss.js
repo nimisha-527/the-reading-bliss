@@ -1,8 +1,8 @@
 const Books = require('../models/books');
 const Recommend = require('../models/recommend');
-const { bookJson, galleryImages1, galleryImages2, galleryImages3, galleryImages4 } = require('../public');
+const { bookJson, icons } = require('../public');
 const {cloudinary} = require('../cloudinary');
-const {trashIcon, starIcon, infoIcon, bookIcon} = require("../public/icons");
+
 module.exports.index = async (req, res) => {
     const booksLibrary = await Books.find({});
     let books;
@@ -13,11 +13,11 @@ module.exports.index = async (req, res) => {
             bookLibrary.push(books);
         }
     }
-    res.render("readingBliss/index", { bookLibrary, booksListStatic, bookIcon });
+    res.render("readingBliss/index", { bookLibrary, booksListStatic, icons, bookJson });
 }
 
 module.exports.renderNewForm = async (req, res) => {
-    res.render("readingBliss/new", { bookJson })
+    res.render("readingBliss/new", { bookJson, icons })
 }
 
 module.exports.addNewBook = async (req, res) => {
@@ -46,7 +46,7 @@ module.exports.addNewBook = async (req, res) => {
 
 module.exports.renderAboutUs = async (req, res) => {
     const aboutUsStatic = bookJson.aboutUs;
-    res.render("readingBliss/aboutUs", { aboutUsStatic });
+    res.render("readingBliss/aboutUs", { aboutUsStatic, bookJson, icons });
 }
 
 module.exports.renderGallery = async (req, res) => {
@@ -86,13 +86,13 @@ module.exports.renderGallery = async (req, res) => {
     details3.push(array3);
     details4.push(array4);
 
-    res.render("readingBliss/gallery", { galleryStatic, recommendedBook, recommendedList, details1, details2, details3, details4, infoIcon });
+    res.render("readingBliss/gallery", { galleryStatic, recommendedBook, recommendedList, details1, details2, details3, details4, icons, bookJson });
 
 }
 
 module.exports.renderContactUs = async (req, res) => {
     const contactUsStatic = bookJson.contactUs;
-    res.render("readingBliss/contact", { contactUsStatic });
+    res.render("readingBliss/contact", { contactUsStatic, bookJson, icons });
 }
 
 module.exports.renderDetailsPage = async (req, res) => {
@@ -109,13 +109,13 @@ module.exports.renderDetailsPage = async (req, res) => {
         return res.redirect('/readingBliss')
     }
     const staticDetails = bookJson.details;
-    res.render("readingBliss/details", { foundBook, trashIcon, starIcon, staticDetails });
+    res.render("readingBliss/details", { foundBook, icons, staticDetails, bookJson });
 }
 
 module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const foundBook = await Books.findById(id);
-    res.render("readingBliss/edit", { book: foundBook, bookJson });
+    res.render("readingBliss/edit", { book: foundBook, bookJson, icons });
 }
 
 module.exports.editBooks = async (req, res) => {
