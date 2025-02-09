@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
-const { wrapAsync, isLoggedIn, isOwner } = require('../utils/index');
+const { wrapAsync, isLoggedIn, isOwner } = require('../utils');
 const recommendController = require('../controllers/recommend')
 
 // router.get('/', async (req, res) => {

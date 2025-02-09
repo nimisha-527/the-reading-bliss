@@ -82,7 +82,7 @@
   background-color: #ffffff !important;
   color: #7e6683 !important;
   cursor: pointer;
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .default-css-unset {

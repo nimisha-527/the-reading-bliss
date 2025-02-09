@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate') %>
+<% layout('layout/boilerplate', {bookJson, icons}) %>
 
 <div class="row">
     <div class="col-lg-6 pb-5">
@@ -7,22 +7,22 @@
             <div class="card-body">
               <h5 class="card-title"><%=foundBook.title%></h5>
               <p class="card-text"><%=foundBook.description%></p>
-              <p class="card-text text-muted"><%=bookJson.details.authorText.replace("#author#", foundBook.author)%></p>
+              <p class="card-text text-muted"><%=staticDetails.authorText.replace("#author#", foundBook.author)%></p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Added by - <b><%=foundBook?.owner.name%></b></li>
+              <li class="list-group-item"><%=staticDetails.ownerNameField %> <b><%=foundBook?.owner.name%></b></li>
             </ul>
             <div class="card-footer d-grid gap-2 d-md-flex justify-content-md-between">
               <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
                 <form class="btn-custom btn" action="/readingBliss/<%=foundBook.id%>?_method=DELETE" method="POST">
-                  <button class="btn btn-link" type="button"><%=bookJson.details.actionButtons.deleteLabel%></button>
+                  <button class="btn btn-link"><%=staticDetails.actionButtons.deleteLabel%></button>
                 </form>
               <% } %>
               <div class="d-grid gap-2 d-md-flex justify-content-md-between">
                 <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
-                  <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-primary btn-custom-outline-primary py-2 px-4 text-center"><%=bookJson.details.actionButtons.editLabel%></a>
+                  <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-primary btn-custom-outline-primary py-2 px-4 text-center"><%=staticDetails.actionButtons.editLabel%></a>
                 <% } %>
-                <a href="https://www.google.com/search?q=<%=foundBook.title%>" target="_blank" class="btn btn-primary btn-custom-fill-primary py-2 px-4"><%=bookJson.details.actionButtons.toReadBook%></a>
+                <a href="https://www.google.com/search?q=<%=foundBook.title%>" target="_blank" class="btn btn-primary btn-custom-fill-primary py-2 px-4"><%=staticDetails.actionButtons.browseBookLabel%></a>
               </div>
             </div>
         </div>
@@ -30,17 +30,17 @@
 
     <!-- REVIEWS -->
     <div class="col-lg-6">
-      <h2>Leave Your review</h2>
+      <h2><%=staticDetails.reviews.title %></h2>
       <form action="/readingBliss/<%= foundBook.id %>/reviews" method="POST" class="needs-validation mb-5" novalidate>
         <div class="mb-3">
-          <label class="form-label" for="rating">Rating</label>
+          <label class="form-label" for="rating"><%=staticDetails.reviews.ratingLabel %></label>
           <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating" />
         </div>
         <div class="mb-3">
-          <label class="form-label" for="body">Reviews</label>
+          <label class="form-label" for="body"><%=staticDetails.reviews.reviewsLabel %></label>
           <textarea class="form-control" name="review[body]" id="body" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit">Post</button>
+        <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=staticDetails.reviews.postLabel %></button>
       </form>
       <div class="border-bottom border-3"></div>
       <div class="mt-5">
@@ -50,7 +50,7 @@
                 <h4 class="card-title d-flex flex-row justify-content-between">~<%= review?.owner.name %>
                   <% if(currentUser && review?.owner && review?.owner?.equals(currentUser._id)) { %>
                   <form action="/readingBliss/<%=foundBook.id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="default-css-unset"> <i class="fa fa-trash fa-2x icon-button-custom-fill-primary"></i></button>
+                    <button class="default-css-unset"><%- icons.trashIcon  %></button>
                   </form>
                   <% } %>
                 </h4>
@@ -58,9 +58,7 @@
                   <%=review.body%>
                   <div>
                     <% for(let i=1; i<=review.rating; i++) { %>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFDF00" class="bi bi-star-fill" viewBox="0 0 16 16">
-                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
+                      <%-icons.starIcon %>
                     <% } %>
                   </div>
               </p>
@@ -76,8 +74,8 @@
 <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
 <div class="mt-3">
 <div id="staticBackdrop">
-    <%- include("../partials/modal", {buttonName: 'Recommend this book', foundBook, helperText: 'If you want you can update the image and description of the book.'}) %>
-    <p>*Your recommended book goes to the Gallery</p>
+    <%- include("../partials/modal", {staticDetailsRecommend: staticDetails.recommend.recommendModal, foundBook}) %>
+    <p><%=staticDetails.recommend.infoText  %></p>
   </div>
 </div>
 

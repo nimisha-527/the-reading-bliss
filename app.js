@@ -8,17 +8,16 @@ const path = require('path');
 const methodOverride = require('method-override');
 // const { fileURLToPath } = require('url');
 const mongoose = require('mongoose');
-const { bookJson } = require('./public/index');
+const { bookJson, icons } = require('./public');
 const ejsMate = require('ejs-mate');
-const { expressError } = require('./utils/index');
-const { readingBlissRoutes, userRoutes, recommendRoutes } = require('./route/index');
+const { readingBlissRoutes, userRoutes, recommendRoutes } = require('./route');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
-const helmet = require("helmet")
+const helmet = require("helmet");
 
 mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     useNewURLParser: true,
@@ -76,7 +75,9 @@ const styleSrcUrls = [
     "https://fonts.googleapis.com"
 ];
 const connectSrcUrls = [];
-const fontSrcUrls = [];
+const fontSrcUrls = [
+    "http://www.w3.org"
+];
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
@@ -136,7 +137,8 @@ app.use('/readingBliss', userRoutes);
 app.use('/readingBliss', readingBlissRoutes);
 
 app.get('/', (req, res) => {
-    res.render("home", {bookJson})
+    const homeStatic = bookJson.home
+    res.render("home", {homeStatic, bookJson, icons})
 });
 
 app.all('*', (req, res, next) => {
@@ -147,7 +149,7 @@ app.all('*', (req, res, next) => {
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     if(!err.message) err.message = "Something went wrong!!!";
-    res.status(statusCode).render("error" , {err});
+    res.status(statusCode).render("error" , {err, bookJson, icons});
 })
 
 app.listen(PORT, () => {

@@ -1,10 +1,12 @@
 const User = require('../models/user');
+const { bookJson, icons } = require('../public');
+
 module.exports.renderRegisterForm = (req, res) => {
-    res.render('readingBliss/register');
+    const registerStatic = bookJson.register;
+    res.render('readingBliss/register', { registerStatic, bookJson, icons });
 }
 
 module.exports.register = async (req, res) => {
-    console.log(req.body);
     // const {username, password, emailId, name} = req.body
     const {username, password, name} = req.body
     try {
@@ -33,7 +35,8 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.renderLoginForm = (req, res) => {
-    res.render('readingBliss/login');
+    const loginStatic = bookJson.login;
+    res.render('readingBliss/login', { loginStatic, bookJson, icons });
 }
 
 module.exports.login = async (req, res) => {

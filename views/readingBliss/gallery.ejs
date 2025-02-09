@@ -1,11 +1,9 @@
-<% layout('layout/boilerplate') %>
+<% layout('layout/boilerplate', {bookJson, icons}) %>
 <div class="container">
   <div class="alert alert-primary d-flex align-items-center mb-5" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-    </svg>
+    <%-icons.infoIcon%>
     <div>
-      You can click on the book cover images below to know more about the book.
+      <%=galleryStatic.infoMessage %>
     </div>
   </div>
 
@@ -13,12 +11,12 @@
     <div class="gallery-col">
       <% for(let detail1 of details1[0]) { %>
         <a href="/readingBliss/<%= detail1._id %>">
-        <div class="card bg-dark text-white img-hover-transform mb-2">
-         <img src="<%=detail1.images[0]?.url%>" alt="" style="width: 100%" />
-         <div class="card-img-overlay">
-            <h4 class="card-title card-title-custom-gallery"><%=detail1.title%></h4>
+          <div class="card bg-dark text-white img-hover-transform mb-2">
+          <img src="<%=detail1.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" />
+          <div class="card-img-overlay">
+              <h4 class="card-title card-title-custom-gallery"><%=detail1.title%></h4>
+            </div>
           </div>
-        </div>
         </a>
       <% } %>
     </div>
@@ -26,10 +24,10 @@
       <% for(let detail2 of details2[0]) { %>
         <a href="/readingBliss/<%= detail2._id %>">
           <div class="card bg-dark text-white img-hover-transform mb-2">
-           <img src="<%=detail2.images[0]?.url%>" alt="" style="width: 100%" />
-           <div class="card-img-overlay">
-            <h4 class="card-title card-title-custom-gallery"><%=detail2.title%></h4>
-          </div>
+            <img src="<%=detail2.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" />
+            <div class="card-img-overlay">
+              <h4 class="card-title card-title-custom-gallery"><%=detail2.title%></h4>
+            </div>
           </div>
           </a>
       <% } %>
@@ -38,7 +36,7 @@
       <% for(let detail3 of details3[0]) { %>
         <a href="/readingBliss/<%= detail3._id %>">
           <div class="card bg-dark text-white img-hover-transform mb-2">
-           <img src="<%=detail3.images[0]?.url%>" alt="" style="width: 100%" />
+           <img src="<%=detail3.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" />
            <div class="card-img-overlay">
             <h4 class="card-title card-title-custom-gallery"><%=detail3.title%></h4>
           </div>
@@ -50,7 +48,7 @@
       <% for(let detail4 of details4[0]) { %>
         <a href="/readingBliss/<%= detail4._id %>">
           <div class="card bg-dark text-white img-hover-transform mb-2">
-           <img src="<%=detail4.images[0]?.url%>" alt="" style="width: 100%" />
+           <img src="<%=detail4.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" />
            <div class="card-img-overlay">
             <h4 class="card-title card-title-custom-gallery"><%=detail4.title%></h4>
           </div>

@@ -8,20 +8,27 @@
     <link rel="stylesheet" type="text/css" href="/scss/style.css" />
     <link rel="stylesheet" type="text/css" href="/scss/gallery.css" />
     <link rel="stylesheet" type="text/css" href="/scss/logo.css" />
-    <title>BOILERPLATE</title>
+    <title><%=bookJson.webTitle  %></title>
 </head>
 <body class="d-flex flex-column vh-100 custom-style font-family-custom">
+  <%#=JSON.stringify(bookJson)%>
     <% if(currentUser) { %>
-      <%- include("../partials/navbarLoggedIn") %>
+      <%- include("../partials/navbarLoggedIn", {navLoggedIn: bookJson.navbarLoggedIn}) %>
     <% } else { %>
-      <%- include("../partials/navbar") %>
+      <%- include("../partials/navbar", {navLoggedOut: bookJson.navbarLoggedOut}) %>
     <% } %>
     <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
     <main class="container mt-5 mb-5">
-      <%- include("../partials/flash") %>
-        <%- body %>
+      <%- include("../partials/flash", {
+        flashIcons: JSON.stringify(icons.flashIcons.symbols) , 
+        successIcons: JSON.stringify(icons.flashIcons.successIcon), 
+        errorIcons: JSON.stringify(icons.flashIcons.errorIcon), 
+        infoIcons: JSON.stringify(icons.flashIcons.infoIcon),
+        clickHereLabel: JSON.stringify(icons.flashIcons.clickHereText)
+      })%>
+      <%- body %>
     </main>
-    <%- include("../partials/footer") %>
+    <%- include("../partials/footer", {footerLabel: bookJson.footer}) %>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="/js/formValidation.js"></script>
