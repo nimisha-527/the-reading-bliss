@@ -1,0 +1,32 @@
+<% layout('./layout/imageBoilerplate', {bookJson, icons}) %>
+<div class="mb-5 d-grid gap-5">
+  <div class="back-ground-image-half position-relative">
+    <h1
+      class="display-3 position-absolute top-50 start-50 translate-middle image-text-label"
+    >
+      <%=contactUsStatic.title %>
+    </h1>
+  </div>
+
+  <div class="container text-center">
+    <img
+      src="<%=contactUsStatic.picDetails.url%>"
+      class="rounded-circle"
+      alt="<%=contactUsStatic.picDetails.text%>"
+      width="304"
+      height="236"
+    />
+    <div class="d-flex flex-lg-row flex-column gap-2 pt-5">
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <p><%=contactUsStatic.description.first %></p>
+        </div>
+      </div>
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <p><%=contactUsStatic.description.second %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

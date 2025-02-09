@@ -1,0 +1,32 @@
+<%-flashIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+
+<% if(success && success.length) { %>
+<div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+  <%-successIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+  <div>
+    <%= success %>
+  </div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+
+
+<% if(error && error.length) { %>
+  <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+    <%-errorIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+    <div>
+      <%= error %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<% if(info && info.length) { %>
+  <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show" role="alert">
+    <%-infoIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+    <div>
+      <%= info %> &nbsp; <a href="/readingBliss/gallery" class="alert-link"><%=clickHereLabel.replaceAll('"', '')  %></a>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <% } %>

@@ -1,38 +1,34 @@
-<% layout('layout/boilerplate') %>
-
-<h1><%=bookJson.edit.title%></h1>
-<form action="/readingBliss/<%= book._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
-    <div class="mb-3">
-        <label for="name" class="form-label"><%=bookJson.edit.productName.label%></label>
-        <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.edit.productName.placeHolder%>" value="<%= book.title %>" required>
-      </div>
+<% layout('layout/boilerplate', {bookJson, icons}) %>
+<%- include("../partials/carousal", {carousalDetails: bookJson.carousal}) %>
+<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
+  <form action="/readingBliss/<%= book._id %>?_method=PUT" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
       <div class="mb-3">
-          <label for="price" class="form-label"><%=bookJson.edit.productPrice.label%></label>
-          <div class="input-group">
-              <span class="input-group-text">$</span>
-              <input name="price" type="text" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="<%=bookJson.edit.productPrice.placeHolder%>" value="<%= book.price %>" required>
-            </div>
-      </div>
-      <div class="mb-3">
-        <label for="author" class="form-label"><%=bookJson.edit.productAuthor.label%></label>
-        <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.edit.productAuthor.placeHolder%>" value="<%= book.author %>" required>
-      </div>
-      <div class="mb-3">
-          <label for="images" class="form-label"><%=bookJson.edit.productImage.label%></label>
-          <input type="text" name="images" class="form-control" id="images" placeholder="<%=bookJson.edit.productImage.placeHolder%>" value="<%= book.images %>" required>
+          <label for="name" class="form-label"><%=bookJson.edit.productName.label%></label>
+          <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.edit.productName.placeHolder%>" value="<%= book.title %>" required>
         </div>
-      <div class="mb-3">
-        <label for="description" class="form-label"><%=bookJson.edit.productDescription.label%></label>
-        <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.edit.productDescription.placeHolder%>" rows="3" required><%= book.description %></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="category"><%=bookJson.edit.productCategory.label%></label>
-        <select id="category" name="category" type="text" class="form-select" aria-label="Default select example">
-            <% for(let category of bookJson.edit.productCategory.categoryValues) { %>
-                <option value="<%=category %>" <%=book.category === category ? 'selected': ''%>> <%= category %> </option>
-            <% } %>
-          </select>
-      </div>
-      <a class="d-inline" href="/readingBliss"><%=bookJson.edit.actionButtons.cancelLabel%></a>
-    <button type="submit" class="btn btn-success" value="Submit"><%=bookJson.edit.actionButtons.saveLabel%></button>
-</form>
+        <div class="mb-3">
+          <label for="author" class="form-label"><%=bookJson.edit.productAuthor.label%></label>
+          <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.edit.productAuthor.placeHolder%>" value="<%= book.author %>" required>
+        </div>
+        <div class="mb-3">
+          <label for="images" class="form-label"><%=bookJson.edit.productImage.label%></label>
+          <input type="file" name="images" id="images" class="form-control" multiple>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label"><%=bookJson.edit.productDescription.label%></label>
+          <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.edit.productDescription.placeHolder%>" rows="3" required><%= book.description %></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="category"><%=bookJson.edit.productCategory.label%></label>
+          <select id="category" name="category" type="text" class="form-select" aria-label="Default select example">
+              <% for(let category of bookJson.edit.productCategory.categoryValues) { %>
+                  <option value="<%=category %>" <%=book.category === category ? 'selected': ''%>> <%= category %> </option>
+              <% } %>
+            </select>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+          <a href="/readingBliss" class="d-inline btn btn-link" role="button"><%=bookJson.edit.actionButtons.cancelLabel%></a>
+          <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=bookJson.edit.actionButtons.saveLabel%></button>
+        </div>
+  </form>
+</div>

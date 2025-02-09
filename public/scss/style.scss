@@ -1,0 +1,163 @@
+$dark: #4c3e4f;
+$light: #c6a1cf;
+$display-font-weight: 500;
+$primary: #4c3e4f;
+$secondary: #c6a1cf;
+$info: #cfcbab;
+$text-info-emphasis: $secondary;
+$white: #ffffff;
+$black: #000;
+
+$box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
+
+// CUSTOM CLASSES
+
+// FONT FAMILY
+
+.font-family-custom {
+  font-family: "Slabo 27px", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: $primary;
+}
+
+.font-family-custom-slabo-white {
+  font-family: "Slabo 27px", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: $white;
+}
+
+.font-family-custom-home {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
+  color: $primary;
+}
+
+// PRIMARY bUTTON STYLES
+
+.btn-custom-outline-primary {
+  background-color: $white !important;
+  color: $primary !important;
+}
+.btn-custom-fill-primary:hover {
+  background-color: $white !important;
+  color: $primary !important;
+}
+.btn-custom-fill-primary {
+  background-color: $primary !important;
+  color: $white !important;
+}
+.btn-custom-outline-primary:hover {
+  background-color: $primary !important;
+  color: $white !important;
+}
+
+.btn-custom .btn {
+  padding: 0 !important;
+}
+
+// SECONDARY BUTTONS STYLE
+
+.btn-custom-fill-secondary {
+  background-color: $secondary !important;
+  color: $white !important;
+}
+
+.btn-custom-outline-secondary {
+  background-color: $white !important;
+  color: $secondary !important;
+}
+
+.btn-custom-outline-secondary:hover {
+  background-color: $secondary !important;
+  color: $white !important;
+}
+
+.btn-custom-fill-secondary:hover {
+  background-color: $white !important;
+  color: $secondary !important;
+}
+
+.btn-link:hover {
+  font-size: 18px !important;
+  transition: all .2s ease;
+}
+
+/* ICONS */
+.icon-button-custom-fill-primary {
+  background-color: #ffffff !important;
+  color: #4c3e4f !important;
+  cursor:pointer;
+  transition: transform 1s;
+}
+.icon-button-custom-fill-primary:hover {
+  background-color: #ffffff !important;
+  color: #7e6683 !important;
+  cursor:pointer;
+  transform: rotate(90deg);
+}
+.default-css-unset {
+  all:unset;
+}
+
+// BACKGROUND IMAGES
+
+.home--image {
+  height: 87vh;
+  background-image:linear-gradient(rgba($primary, 0.4), rgba(24, 24, 24, 0.5)),
+  url("https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: contain;
+  background-position: center bottom;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+}
+// https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+.back-ground-image-half {
+  height: 50vh;
+  background-image: linear-gradient(rgba(0,0,0, 0.8), rgba($black, 0.5)),
+  url("https://images.pexels.com/photos/1808200/pexels-photo-1808200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3");
+  background-size: cover;
+  background-position: center;
+  text-shadow: 0 0.05rem 0.1rem rgba($black, 0.687);
+  box-shadow: inset 0 0 10px rgba($black, 0.700);
+  background-repeat: no-repeat;
+}
+
+.image-text-label {
+  border-radius: 4px;
+  background-color: #000000a9;
+  padding: 8px;
+  box-shadow: 1px 1px 2px $black;
+  color: $white;
+}
+
+// CAROUSAL STYLES
+
+.carousal--size {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousal--design {
+  box-shadow: 0 4px 10px rgba($black, 0.2);
+}
+
+// NAVBAR STYLES
+
+.nav-link.active:hover {
+  border-bottom: 1px solid $white;
+}
+
+.nav-link:hover {
+  border-bottom: 1px solid rgba($white, .55);
+}
+
+.navbar {
+  font-size: 20px; 
+}
+@import "../../node_modules/bootstrap/scss/bootstrap";

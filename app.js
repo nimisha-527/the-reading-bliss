@@ -1,18 +1,27 @@
-const express =  require('express');
+// ejs-mate is used for layout, partials and block template functions for the EJS template engine
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+const express = require('express');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
 // const { fileURLToPath } = require('url');
 const mongoose = require('mongoose');
-const Books = require('./models/books');
-const { bookJson } = require('./public/index');
+const { bookJson, icons } = require('./public');
 const ejsMate = require('ejs-mate');
-const { wrapAsync, expressError } = require('./utils/index');
+const { readingBlissRoutes, userRoutes, recommendRoutes } = require('./route');
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require("helmet");
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
 
-mongoose.connect('mongodb://localhost:27017/reading-bliss', {
-    useNewURLParser: true,
-    useUnifiedTopology: true
-})
+const MongoStore = require('connect-mongo');
+mongoose.connect(dbUrl)
 .then(() => {
     console.log("Mongo Connection established")
 })
@@ -20,6 +29,7 @@ mongoose.connect('mongodb://localhost:27017/reading-bliss', {
     console.log(err)
     console.log("Mongo Connection Failed");
 })
+const PORT = process.env.PORT || 8080;
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Failed"));
@@ -35,67 +45,124 @@ app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
 app.use(express.static( path.join(__dirname, "public") ));
 app.use(express.urlencoded({extended: true}));
+app.use(
+    mongoSanitize({
+      replaceWith: '--',
+    }),
+);
 
-// const wrapAsync = (fn) => {
-
-// }
-
-app.get('/', (req, res) => {
-    res.render("home", {bookJson})
+const secret = process.env.SECRET_KEY || 'thisisnotasecret';
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    secret,
+    touchAfter: 24 * 60 * 60
 });
 
-app.get('/readingBliss', wrapAsync(async (req, res) => {
-    const bookLibrary = await Books.find({});
-    res.render("readingBliss/index", {bookLibrary, bookJson});
+store.on("error", function (err) {
+    console.log("SESSION ERROR: ", err)
+})
+const sessionConfig = {
+    store,
+    name:"session",
+    secret,
+    resave:false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+// session expires in one week, above calcuation is for that purpose.
+app.use(session(sessionConfig));
+app.use(flash());
+app.use(helmet());
+const scriptSrcUrls = [
+    "https://cdnjs.cloudflare.com",
+    "https://cdn.jsdelivr.net"
+];
+const styleSrcUrls = [
+    "https://fonts.googleapis.com"
+];
+const connectSrcUrls = [];
+const fontSrcUrls = [
+    "http://www.w3.org"
+];
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            "default-src": ["'self'"],
+            "connect-src": ["'self'", ...connectSrcUrls],
+            "script-src": ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            "style-src": ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            "worker-src": ["'self'", "blob:"],
+            "child-src": ["blob:"],
+            "object-src": [],
+            "img-src": [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/dzjms6aad/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                "https://images.unsplash.com",
+                "https://images.pexels.com",
+                "https://ashsinfinitelibrary.wordpress.com",
+                "https://i0.wp.com/fannaforbooks.com",
+                "https://perireads.com",
+                "https://platform.vox.com",
+                "https://i0.wp.com",
+                "https://tyshiashante.com",
+                "https://picsum.photos",
+                "https://michellehickey.design",
+                "https://www.gateshousings.com",
+                "https://i.pinimg.com"
+            ],
+            "font-src": ["'self'", ...fontSrcUrls],
+        },
+    }
 }));
 
-app.get('/readingBliss/newBook', wrapAsync(async (req, res) => {
-    res.render("readingBliss/new", {bookJson})
-}));
+app.use(passport.initialize()); // look for the docs passport.js for better understanding
+app.use(passport.session()); // look for the docs passport.js for better understanding. And this comes after the session according to docs
 
-app.post('/readingBliss', wrapAsync(async (req, res) => {
-    // if(!req.body.books) throw new expressError("INVALID DATA", 400);
-    const newBook = await new Books(req.body)
-    await newBook.save();
-    res.redirect(`/readingBliss/${newBook._id}`)
-}));
+passport.use(new LocalStrategy(User.authenticate())); // this method authenticate comes from passport.
 
-app.get('/readingBliss/:id', wrapAsync(async (req, res) => {
-    const {id} = req.params;
-    const foundBook = await Books.findById(id);
-    res.render("readingBliss/details", {foundBook, bookJson});
-}));
+passport.serializeUser(User.serializeUser()); // this method serializeUser comes from passport. Basically store
+passport.deserializeUser(User.deserializeUser()); // this method deserialize current user. Basically destore
 
-app.get('/readingBliss/:id/edit', wrapAsync(async (req, res) => {
-    const {id} = req.params;
-    const foundBook = await Books.findById(id);
-    res.render("readingBliss/edit", {book: foundBook, bookJson});
-}));
+// app.get('/fakeUser', async (req, res) => {
+//     const user = await new User({username: "nimisha", emailId:"nimisha@gmail.com", name: "nim"});
+//     const newUser = await User.register(user, "hello");
+//     res.send(newUser);
+// })
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user; // we have access to the current user, in our middleware file we have function isLoggedIn, there req.user gives us the user details when logged in, now since this app.use with res.local we are accessing everywhere in our project so that is why we are passing a new key currentUser to it with req.user so that we can show/hide the things we wants to differentiate when customer is logged or logged out.
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    res.locals.info = req.flash('info');
+    next();
+})
 
-app.put('/readingBliss/:id', wrapAsync(async (req, res) => {
-        const {id} = req.params;
-        const foundBook = await Books.findByIdAndUpdate(id, req.body, {runValidators: true, new: true});
-        await foundBook.save()
-        res.redirect("/readingBliss");
-}));
+app.use('/readingBliss', recommendRoutes);
+app.use('/readingBliss', userRoutes);
+app.use('/readingBliss', readingBlissRoutes);
 
-app.delete('/readingBliss/:id', wrapAsync(async (req, res) => {
-    const {id} = req.params;
-    await Books.findByIdAndDelete(id);
-    res.redirect("/readingBliss");
-}));
+app.get('/', (req, res) => {
+    const homeStatic = bookJson.home
+    res.render("home", {homeStatic, bookJson, icons})
+});
 
 app.all('*', (req, res, next) => {
-    next(new expressError("PAGE NOT FOUND", 404));
+    // next(new expressError("PAGE NOT FOUND", 404));
+    res.render("readingBliss/pageNotFound");
 })
 
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     if(!err.message) err.message = "Something went wrong!!!";
-    res.status(statusCode).render("error" , {err});
+    res.status(statusCode).render("error" , {err, bookJson, icons});
 })
 
-app.listen(8080, () => {
-    console.log('listening on port 8080');
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}....`);
 });
 
