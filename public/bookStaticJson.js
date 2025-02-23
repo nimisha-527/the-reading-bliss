@@ -3,8 +3,8 @@ const staticJson = {
     "home": {
         "title": "WELCOME TO READING BLISS",
         "description": {
-            "first": "Reading Community – Create a space for book lovers to discuss and share their favorite reads.",
-            "second": "Book Reviews & Recommendations – Share detailed reviews and recommendations for different genres."
+            "first": `<b>Reading Community</b> – Create a space for book lovers to discuss and share their favorite reads.`,
+            "second": `<b>Book Reviews & Recommendations</b> – Share detailed reviews and recommendations for different genres.`
         },
         "picDetails": {
             "firstUrl": "https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2",
@@ -135,8 +135,8 @@ const staticJson = {
     "aboutUs": {
         "title": "About US",
         "description": {
-            "first": "If you have come here then definitly you have a knack for the books. Welcome to the world of books. This is just one place for all your books need. Weather you are on a trip or just roaming on the streets, having a nice lunch or date, you heard about a book and found it interesting. That is why this is a one shot place to store all your books data.",
-            "second": `How to use: <br> Explore all the books that this site has to offer. If like any book select it and browse it on net. It takes you directly to the google and saves the hastle for searching the `
+            "first": "<h4><b>Welcome To The World Of Books!<i></i></b></h4> <br> If you have come here then definitly you have a knack for the books. <i>This is just one place for all your books needs</i>. Weather you are on a trip or just roaming on the streets, having a nice lunch or date, you heard about a book and found it interesting. We always have issues remembering where we have written that name, sometimes we could not even write, after sometime we forget which sheet/workbook/notes we have penned the name. This led me to create this website so that I would know that all my books are in one place and I no longer have to juggle between different sites.",
+            "second": "<h4><b>How To Use<i></i></b></h4> <br> Explore all the books that this site has to offer. If you like any book <i>select it and browse it on net</i>. It takes you directly to the google and saves the hastle for searching the books. However, if you wish to have your own collection, do register and then you can have your own collection of books by adding new book. You can also recommend your favs to other viewers by becoming one of the user."
         },
         "picDetails": {
             "url": "https://images.pexels.com/photos/711009/pexels-photo-711009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -146,10 +146,10 @@ const staticJson = {
     "contactUs": {
         "title": "Contact US",
         "description": {
-            "text": `For any queries regarding this website do call or email us. Whichever is preferrable to you.<br> HAPPY READING!!!!`,
-            "email": "some@email.com",
-            "phone": "+91 *******",
-            "address": "Hyderabad, India"
+            "text": `For any queries regarding this website do call or email us. Whichever is preferrable to you.<br> <h4><b style="color:#4c3e4f"><i>HAPPY READING!!</i></b></h4>`,
+            "email": `<b>Email</b>: some@email.com`,
+            "phone": `<b>Phone</b>: +91 **********`,
+            "address": `<b>Location</b>: Hyderabad, India`
         },
         "picDetails": {
             "url": "https://images.pexels.com/photos/2789781/pexels-photo-2789781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -210,7 +210,7 @@ const staticJson = {
         }
     },
     "footer": {
-        "text": "READING BLISS 2024"
+        "text": "READING BLISS 2025"
     },
     "carousal": {
         "picDetails": {

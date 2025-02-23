@@ -6,21 +6,6 @@
   color: #4c3e4f;
 }
 
-.font-family-custom-slabo-white {
-  font-family: "Slabo 27px", serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #ffffff;
-}
-
-.font-family-custom-home {
-  font-family: "Dancing Script", cursive;
-  font-optical-sizing: auto;
-  font-weight: bolder;
-  font-style: normal;
-  color: #4c3e4f;
-}
-
 .btn-custom-outline-primary {
   background-color: #ffffff !important;
   color: #4c3e4f !important;
