@@ -19,12 +19,16 @@
     <div class="d-flex flex-lg-row flex-column gap-2 pt-5">
       <div class="card shadow rounded">
         <div class="card-body">
-          <p><%=contactUsStatic.description.first %></p>
+          <p v-html="<%=contactUsStatic.description.text %>"></p>
         </div>
       </div>
       <div class="card shadow rounded">
         <div class="card-body">
-          <p><%=contactUsStatic.description.second %></p>
+          <div class="d-flex">
+            <p><%=contactUsStatic.description.address %></p>
+            <p><%=contactUsStatic.description.phone %></p>
+            <p><%=contactUsStatic.description.email %></p>
+          </div>
         </div>
       </div>
     </div>

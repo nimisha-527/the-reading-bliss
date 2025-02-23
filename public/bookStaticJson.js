@@ -3,8 +3,8 @@ const staticJson = {
     "home": {
         "title": "WELCOME TO READING BLISS",
         "description": {
-            "first": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autfuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi reprehenderit, in veniam doloribus! Incidunt consequuntur sit praesentium velit nulla!",
-            "second": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autfuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi reprehenderit, in veniam doloribus! Incidunt consequuntur sit praesentium velit nulla!"
+            "first": "Reading Community – Create a space for book lovers to discuss and share their favorite reads.",
+            "second": "Book Reviews & Recommendations – Share detailed reviews and recommendations for different genres."
         },
         "picDetails": {
             "firstUrl": "https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2",
@@ -50,7 +50,8 @@ const staticJson = {
                 "Memoir", 
                 "Literary Fiction", 
                 "Science Fiction", 
-                "Historical Fiction"
+                "Historical Fiction",
+                "Education"
             ],
         },
         "actionButtons": {
@@ -109,7 +110,8 @@ const staticJson = {
                 "Memoir", 
                 "Literary Fiction", 
                 "Science Fiction", 
-                "Historical Fiction"
+                "Historical Fiction",
+                "Education"
             ],
         },
         "productImage": {
@@ -133,8 +135,8 @@ const staticJson = {
     "aboutUs": {
         "title": "About US",
         "description": {
-            "first": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autfuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi reprehenderit, in veniam doloribus! Incidunt consequuntur sit praesentium velit nulla!",
-            "second": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autfuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi reprehenderit, in veniam doloribus! Incidunt consequuntur sit praesentium velit nulla!"
+            "first": "If you have come here then definitly you have a knack for the books. Welcome to the world of books. This is just one place for all your books need. Weather you are on a trip or just roaming on the streets, having a nice lunch or date, you heard about a book and found it interesting. That is why this is a one shot place to store all your books data.",
+            "second": `How to use: <br> Explore all the books that this site has to offer. If like any book select it and browse it on net. It takes you directly to the google and saves the hastle for searching the `
         },
         "picDetails": {
             "url": "https://images.pexels.com/photos/711009/pexels-photo-711009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -144,8 +146,10 @@ const staticJson = {
     "contactUs": {
         "title": "Contact US",
         "description": {
-            "first": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autfuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi reprehenderit, in veniam doloribus! Incidunt consequuntur sit praesentium velit nulla!",
-            "second": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autfuga! Animi placeat tenetur sequi? Nobis cum dolor aliquam nisi reprehenderit, in veniam doloribus! Incidunt consequuntur sit praesentium velit nulla!"
+            "text": `For any queries regarding this website do call or email us. Whichever is preferrable to you.<br> HAPPY READING!!!!`,
+            "email": "some@email.com",
+            "phone": "+91 *******",
+            "address": "Hyderabad, India"
         },
         "picDetails": {
             "url": "https://images.pexels.com/photos/2789781/pexels-photo-2789781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
