@@ -4,7 +4,7 @@
 <div class="home--image position-relative">
   <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="text-center">
-      <h1 class="display-4 font-family-custom-home text-white">
+      <h1 class="display-4 text-white">
         <%=homeStatic.title%>
       </h1>
       <div class="my-5"></div>
@@ -27,12 +27,12 @@
       />
     </div>
     <div class="col-md-4 text-start d-flex align-items-center">
-      <p><%=homeStatic.description.first %></p>
+      <p><%-homeStatic.description.first %></p>
     </div>
   </div>
   <div class="row mt-5">
     <div class="col-md-4 text-start d-flex align-items-center">
-      <p><%=homeStatic.description.second %></p>
+      <p><%-homeStatic.description.second %></p>
     </div>
     <div class="col-md-8 text-center">
       <img
