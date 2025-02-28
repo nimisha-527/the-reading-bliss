@@ -11,6 +11,6 @@ module.exports.recommend = async (req, res) => {
         const foundBookToUpdate = await Books.findByIdAndUpdate(id, { $set: { recommended: true }}, { runValidators: true, new: true });
         await foundBookToUpdate.save();
     }
-    req.flash('success', "Awesome!!! You ahve successfully recommmeded the book. Thank you for your contribution.")
+    req.flash('success', "Awesome!!! You have successfully recommmeded the book. Thank you for your contribution.")
     res.redirect(`/readingBliss/${id}`)
 }

@@ -1,9 +1,9 @@
 <% layout('layout/boilerplate', {bookJson, icons}) %>
 
-<div class="row">
-    <div class="col-lg-6 pb-5">
+<div class="row fade-in-load">
+    <div class="col-lg-4 pb-5">
         <div class="card">
-            <img src="<%=foundBook.images[0]?.url%>" class="card-img-top" alt="...">
+            <img src="<%=foundBook.images[0]?.url%>" class="card-img-top opacity-decrease-in-scroll" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%=foundBook.title%></h5>
               <p class="card-text"><%=foundBook.description%></p>
@@ -22,14 +22,14 @@
                 <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
                   <a href="/readingBliss/<%= foundBook.id %>/edit" class="card-link btn btn-primary btn-custom-outline-primary py-2 px-4 text-center"><%=staticDetails.actionButtons.editLabel%></a>
                 <% } %>
-                <a href="https://www.google.com/search?q=<%=foundBook.title%>" target="_blank" class="btn btn-primary btn-custom-fill-primary py-2 px-4"><%=staticDetails.actionButtons.browseBookLabel%></a>
+                <a href="https://www.google.com/search?q=<%=foundBook.title%> by <%=foundBook.author%>" target="_blank" class="btn btn-primary btn-custom-fill-primary py-2 px-4"><%=staticDetails.actionButtons.browseBookLabel%></a>
               </div>
             </div>
         </div>
     </div>
 
     <!-- REVIEWS -->
-    <div class="col-lg-6">
+    <div class="col-lg-8 fade-in-scroll-js">
       <h2><%=staticDetails.reviews.title %></h2>
       <form action="/readingBliss/<%= foundBook.id %>/reviews" method="POST" class="needs-validation mb-5" novalidate>
         <div class="mb-3">
@@ -43,26 +43,28 @@
         <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=staticDetails.reviews.postLabel %></button>
       </form>
       <div class="border-bottom border-3"></div>
-      <div class="mt-5">
+      <div class="row mt-5 fade-in-scroll-js">
         <% for(let review of foundBook.reviews) { %>
-          <div class="mb-3 card">
-            <div class="card-body p-3">
-                <h4 class="card-title d-flex flex-row justify-content-between">~<%= review?.owner.name %>
-                  <% if(currentUser && review?.owner && review?.owner?.equals(currentUser._id)) { %>
-                  <form action="/readingBliss/<%=foundBook.id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="default-css-unset"><%- icons.trashIcon  %></button>
-                  </form>
-                  <% } %>
-                </h4>
-                <p class="card-text">
-                  <%=review.body%>
-                  <div>
-                    <% for(let i=1; i<=review.rating; i++) { %>
-                      <%-icons.starIcon %>
+          <div class="col-lg-6">
+            <div class="mb-3 card">
+              <div class="card-body p-3 pb-0">
+                  <h4 class="card-title d-flex flex-row justify-content-between"><b>~<%= review?.owner.name %></b>
+                    <% if(currentUser && review?.owner && review?.owner?.equals(currentUser._id)) { %>
+                    <form action="/readingBliss/<%=foundBook.id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                      <button class="default-css-unset"><%- icons.trashIcon  %></button>
+                    </form>
                     <% } %>
-                  </div>
-              </p>
-
+                  </h4>
+                  <p class="card-text">
+                    <%=review.body%>
+                    <div>
+                      <% for(let i=1; i<=review.rating; i++) { %>
+                        <%-icons.starIcon %>
+                      <% } %>
+                    </div>
+                  </p>
+  
+              </div>
             </div>
           </div>
         <% } %>
@@ -73,9 +75,9 @@
 <!-- Recommend -->
 <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
 <div class="mt-3">
-<div id="staticBackdrop">
+  <div id="staticBackdrop">
     <%- include("../partials/modal", {staticDetailsRecommend: staticDetails.recommend.recommendModal, foundBook}) %>
-    <p><%=staticDetails.recommend.infoText  %></p>
+    <p class="fade-in-scroll-js"><%=staticDetails.recommend.infoText  %></p>
   </div>
 </div>
 

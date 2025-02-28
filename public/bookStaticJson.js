@@ -38,7 +38,7 @@ const staticJson = {
             "placeHolder": "Enter description"
         },
         "productImage": {
-            "label": "Image URL",
+            "label": "Image Upload",
             "placeHolder": ""
         },
         "productCategory": {
@@ -115,7 +115,7 @@ const staticJson = {
             ],
         },
         "productImage": {
-            "label": "Image URL",
+            "label": "Image Upload",
             "placeHolder": ""
         },
         "productAuthor": {
@@ -135,7 +135,7 @@ const staticJson = {
     "aboutUs": {
         "title": "About US",
         "description": {
-            "first": "<h4><b>Welcome To The World Of Books!<i></i></b></h4> <br> If you have come here then definitly you have a knack for the books. <i>This is just one place for all your books needs</i>. Weather you are on a trip or just roaming on the streets, having a nice lunch or date, you heard about a book and found it interesting. We always have issues remembering where we have written that name, sometimes we could not even write, after sometime we forget which sheet/workbook/notes we have penned the name. This led me to create this website so that I would know that all my books are in one place and I no longer have to juggle between different sites.",
+            "first": "<h4><b>Welcome To The World Of Books!<i></i></b></h4> <br> If you have come here then definitely you have a knack for the books. <i>This is just one place for all your books needs</i>. Weather you are on a trip or just roaming on the streets, having a nice lunch or date, you heard about a book and found it interesting. We always have issues remembering where we have written that name, sometimes we could not even write, after sometime we forget which sheet/workbook/notes we have penned the name. This led me to create this website so that I would know that all my books are in one place and I no longer have to juggle between different sites.",
             "second": "<h4><b>How To Use<i></i></b></h4> <br> Explore all the books that this site has to offer. If you like any book <i>select it and browse it on net</i>. It takes you directly to the google and saves the hastle for searching the books. However, if you wish to have your own collection, do register and then you can have your own collection of books by adding new book. You can also recommend your favs to other viewers by becoming one of the user."
         },
         "picDetails": {
@@ -218,6 +218,15 @@ const staticJson = {
             "pic2": "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?q=80&w=1783&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             "pic3": "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
             "pic4": "https://images.pexels.com/photos/4256852/pexels-photo-4256852.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3"
+        }
+    },
+    "errorScenario": {
+        "pageNotFound": {
+            "title": "Page Not Found"
+        },
+        "technicalError": {
+            "message": "Something went wrong. Please try again later!",
+            "homeButtonLabel": "Go Back Home"
         }
     },
     "logoImage": "",
