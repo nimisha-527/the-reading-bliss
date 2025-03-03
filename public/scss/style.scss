@@ -19,6 +19,11 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
   font-weight: 400;
   font-style: normal;
   color: $primary;
+  scroll-behavior: smooth;
+  // below two are to provide sharping and smooth effect to
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
 }
 
 // PRIMARY bUTTON STYLES
@@ -99,7 +104,13 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
   background-repeat: no-repeat;
+
+  transform-origin: bottom;
+  animation: background-image-animation linear;
+  animation-timeline: view();
+  animation-range: exit;
 }
+
 // https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 .back-ground-image-half {
   height: 50vh;
@@ -110,6 +121,16 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
   text-shadow: 0 0.05rem 0.1rem rgba($black, 0.687);
   box-shadow: inset 0 0 10px rgba($black, 0.700);
   background-repeat: no-repeat;
+
+  transform-origin: bottom;
+  animation: background-image-animation linear;
+  animation-timeline: view();
+  animation-range: exit;
+}
+
+@keyframes background-image-animation {
+  25% {opacity:1}
+  85%, 100% {opacity: 0; scale: 2}
 }
 
 .image-text-label {
@@ -144,5 +165,85 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
 
 .navbar {
   font-size: 20px; 
+}
+
+a.btn:active, button:active {
+  transform: scale(0.95); /* Adds a subtle press effect */
+}
+
+// STYLES ON SCROLL
+@media (prefers-reduced-motion: no-preference) {
+
+  .fade-in-load {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .fade-in-load.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  // @mixin fade-in-scroll-contain($cssProperty1, $cssPropertyValue1, $cssProperty2, $cssPropertyValue2) {
+  //   scale: .9;
+  //   #{$cssProperty}: $cssPropertyValue;
+  //   animation-timeline: scroll();
+  //   animation-range: contain 100px;
+  //   transition: 0.2s ease
+  // }
+
+  .fade-in-scroll-js {
+    @extend .fade-in-load
+  }
+  
+  .fade-in-scroll-js.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-scroll-js.hidden {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+
+  .fade-out-scroll {
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -400px;
+  }
+
+  @keyframes fade-out {
+    to{opacity: 0; visibility: hidden;}
+  }
+
+  .fade-in-scroll-image {
+      scale: .8;
+      animation: fade-in-image linear;
+      animation-timeline: scroll();
+      animation-range: cover;
+      transition: 0.6s ease;
+  }
+
+  @keyframes fade-in-image {
+    to{scale: 1; opacity: 1;}
+  }
+  
+  /* Alternative approach for touch devices (less precise) */
+  
+  @media (pointer: coarse) {
+    .opacity-decrease-in-scroll {
+      // scale: .98;
+      // opacity: 0; // if used this then the value it is used on will not be visible
+      animation: opacity-decrease linear;
+      animation-timeline: view();
+      animation-range: exit;
+    }
+  
+    @keyframes opacity-decrease {
+      // from {
+      //   scale: 0.95;
+      // }
+      to{scale: 1; opacity: 0;}
+    }
+  }
 }
 @import "../../node_modules/bootstrap/scss/bootstrap";

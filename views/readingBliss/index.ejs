@@ -1,6 +1,6 @@
 <% layout('layout/boilerplate', {bookJson, icons}) %>
 <% if(!bookLibrary.length) { %> 
-  <div class="mt-5">
+  <div class="mt-5 fade-in-load">
     <%=booksListStatic.emptyListText %>
     <a href="/readingbliss/newBook" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Book">
       <%- icons.bookIcon%>
@@ -8,11 +8,11 @@
   </div>
 <% } else {%>
 <div>
-  <div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class="row row-cols-1 row-cols-md-4 g-4 fade-in-load">
     <% for(let library of bookLibrary) { %> 
     <% if(currentUser && library?.owner && library?.owner?.equals(currentUser._id)) { %>
     <div class="col">
-      <div class="card h-100">
+      <div class="card h-100 fade-in-scroll-js">
         <img
           src="<%= library.images[0]?.url%>"
           class="card-img-top"
@@ -22,7 +22,7 @@
           <h5 class="card-title"><%=library.title%></h5>
           <p class="card-text"><%=library.description%></p>
         </div>
-        <div class="card-footer" style="text-align: center">
+        <div class="card-footer fade-in-scroll-js" style="text-align: center">
           <a
             class="btn btn-primary btn-custom-fill-primary py-2 px-4"
             href="/readingBliss/<%=library.id%>"

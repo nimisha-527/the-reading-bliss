@@ -4,6 +4,9 @@
   font-weight: 400;
   font-style: normal;
   color: #4c3e4f;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .btn-custom-outline-primary {
@@ -82,6 +85,10 @@
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
   background-repeat: no-repeat;
+  transform-origin: bottom;
+  animation: background-image-animation linear;
+  animation-timeline: view();
+  animation-range: exit;
 }
 
 .back-ground-image-half {
@@ -92,8 +99,21 @@
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.687);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
+  transform-origin: bottom;
+  animation: background-image-animation linear;
+  animation-timeline: view();
+  animation-range: exit;
 }
 
+@keyframes background-image-animation {
+  25% {
+    opacity: 1;
+  }
+  85%, 100% {
+    opacity: 0;
+    scale: 2;
+  }
+}
 .image-text-label {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.662745098);
@@ -125,6 +145,67 @@
   font-size: 20px;
 }
 
+a.btn:active, button:active {
+  transform: scale(0.95); /* Adds a subtle press effect */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in-load, .fade-in-scroll-js {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .fade-in-load.visible, .visible.fade-in-scroll-js {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-scroll-js.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-scroll-js.hidden {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+  .fade-out-scroll {
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -400px;
+  }
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  .fade-in-scroll-image {
+    scale: 0.8;
+    animation: fade-in-image linear;
+    animation-timeline: scroll();
+    animation-range: cover;
+    transition: 0.6s ease;
+  }
+  @keyframes fade-in-image {
+    to {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+  /* Alternative approach for touch devices (less precise) */
+}
+@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
+  .opacity-decrease-in-scroll {
+    animation: opacity-decrease linear;
+    animation-timeline: view();
+    animation-range: exit;
+  }
+  @keyframes opacity-decrease {
+    to {
+      scale: 1;
+      opacity: 0;
+    }
+  }
+}
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
