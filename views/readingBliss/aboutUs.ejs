@@ -1,5 +1,5 @@
 <% layout('./layout/imageBoilerPlate', {bookJson, icons}) %>
-<div class="mb-5 d-grid gap-5">
+<div class="mb-5 d-grid gap-5 fade-in-load">
   <div class="back-ground-image-half position-relative">
     <h1
       class="display-3 position-absolute top-50 start-50 translate-middle image-text-label"
@@ -9,12 +9,12 @@
   </div>
   <div class="container text-center">
     <div class="d-flex flex-column align-self-center gap-3 pb-5">
-      <div class="card shadow rounded">
+      <div class="card shadow rounded fade-in-scroll-js">
         <div class="card-body">
           <p><%-aboutUsStatic.description.first %></p>
         </div>
       </div>
-      <div class="card shadow rounded">
+      <div class="card shadow rounded fade-in-scroll-js">
         <div class="card-body">
           <p><%-aboutUsStatic.description.second %></p>
         </div>
@@ -22,7 +22,7 @@
     </div>
     <img
       src="<%= aboutUsStatic.picDetails.url  %>"
-      class="rounded-circle"
+      class="rounded-circle fade-in-scroll-js"
       alt="<%= aboutUsStatic.picDetails.text  %>"
       width="304"
       height="236"

@@ -1,6 +1,6 @@
 <% layout('layout/boilerplate', {bookJson, icons}) %>
 <%- include("../partials/carousal", {carousalDetails: bookJson.carousal}) %>
-<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded">
+<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded fade-in-scroll-js">
 <form action="/readingBliss" class="needs-validation" novalidate enctype="multipart/form-data" method="POST">
     <div class="mb-3">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>

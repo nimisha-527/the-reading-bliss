@@ -153,13 +153,16 @@ app.get('/', (req, res) => {
 
 app.all('*', (req, res, next) => {
     // next(new expressError("PAGE NOT FOUND", 404));
-    res.render("readingBliss/pageNotFound");
+    const staticPageNotFound = bookJson.errorScenario.pageNotFound;
+    res.render("readingBliss/pageNotFound", {staticPageNotFound});
 })
 
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
+    const staticError = bookJson.errorScenario.technicalError;
     if(!err.message) err.message = "Something went wrong!!!";
-    res.status(statusCode).render("error" , {err, bookJson, icons});
+    console.dir(err,"--error ") // Printing this so to know the error message
+    res.status(statusCode).render("error" , {bookJson, icons, staticError});
 })
 
 app.listen(PORT, () => {

@@ -18,18 +18,18 @@
   .gallery-col img {
     vertical-align: middle;
     width: 100%;
-    opacity: 0.5;
+    /* opacity: 0.5; */
   }
 
-  .img-hover-transform {
-    transition: all .2s ease;
+  .fade-out-scroll-gallery {
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit;
+    z-index: -1;
   }
 
-  .img-hover-transform:hover {
-    transform: translate3D(-30px,-25px,7px) scale(1.03); /* move up slightly and zoom in */
-    box-shadow: 8px 28px 50px rgba(39,44,49,.07), 1px 6px 12px rgba(39,44,49,.04);
-    transition: all .2s ease; /* zoom in */
-    cursor: pointer;
+  @keyframes fade-out {
+    to{scale: 1; opacity: 0;}
   }
 
   .card-img-overlay {
@@ -45,11 +45,13 @@
   }
   .card-img-overlay:hover .card-title-custom-gallery {
     border-radius: 4px;
-    background-color: #c6a1cf;
+    /* background-color: #c6a1cf; */
+    background-color: #ffffff;
     padding: 8px;
     box-shadow: 1px 1px 2px #4c3e4f;
     transition: all .2s ease;
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: #4c3e4f;
     visibility: visible;
   }
 
@@ -70,3 +72,46 @@
       max-width: 100%;
     }
   }
+
+  /* Hover effect for devices with hover capability */
+
+@media (hover: hover) {
+
+  .card.bg-dark {
+    background-color: #4c3e4f7c !important;
+    transition: all .2s ease-in-out;
+  }
+  .card.bg-dark:hover {
+    transform-origin: center;
+   /* transform: translate3d(0, -20px, -20px) scale(1.1);*/  /*move up slightly and zoom in */
+    transform: translate3d(-20px, -40px, -20px) scale(1.1);
+    box-shadow: 10px 28px 70px rgba(39,44,49,.07), 1px 8px 15px rgba(39,44,49,.04);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+}
+
+/* Alternative approach for touch devices (less precise) */
+
+@media (pointer: coarse) {
+  .card.bg-dark {
+    background-color: #4c3e4f3e !important;
+    transition: all .2s ease;
+  }
+  .card.bg-dark:active {
+    transform-origin: center;
+    box-shadow: 10px 28px 70px rgba(39,44,49,.07), 1px 8px 15px rgba(39,44,49,.04);
+    transform: translate3d(0,0,0) scale(1.1);
+    transition: all .2s ease-in-out;
+  }
+}
+
+
+
+/* 
+"pointer: coarse":
+This feature detects if the primary pointer device on the screen has a coarse movement, which is usually associated with touch screens.
+"not (pointer: coarse)":
+By using the "not" operator, the media query will only apply to devices where the pointer is not coarse, meaning non-touch devices.  
+*/
