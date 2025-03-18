@@ -166,7 +166,7 @@ app.use('/readingBliss', readingBlissRoutes);
 
 app.get('/', (req, res) => {
     const homeStatic = bookJson.home;
-    setNavLinkColor({dark: false, light: true});
+    setNavLinkColor({dark: true, light: false});
     res.render("home", {homeStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor})
 });
 

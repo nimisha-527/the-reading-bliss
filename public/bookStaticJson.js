@@ -2,7 +2,8 @@ const staticJson = {
     "webTitle": "Reading Bliss",
     "home": {
         "title": "WELCOME TO READING BLISS",
-        "description": "Your cozy corner for book lovers. Dive into a world of captivating stories, timeless classics, and new favorites. Grab a cup of coffee, find your next read, and let the pages whisk you away! 📚✨",
+        "description": "A cozy corner for book lovers. Dive into a world of captivating stories, timeless classics, and new favorites. Grab a cup of coffee, find your next read, and let the pages whisk you away! 📚✨",
+        // "description": "A cozy corner for book lovers. Grab a cup of coffee, find your next read, and let the pages whisk you away! 📚✨",
         "content": {
             "readingBlissText": "ReadingBliss",
             "readingCommunityTitle": "Reading Community",
