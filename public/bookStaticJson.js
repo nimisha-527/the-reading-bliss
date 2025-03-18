@@ -2,9 +2,13 @@ const staticJson = {
     "webTitle": "Reading Bliss",
     "home": {
         "title": "WELCOME TO READING BLISS",
-        "description": {
-            "first": `<b>Reading Community</b> – Create a space for book lovers to discuss and share their favorite reads.`,
-            "second": `<b>Book Reviews & Recommendations</b> – Share detailed reviews and recommendations for different genres.`
+        "description": "Your cozy corner for book lovers. Dive into a world of captivating stories, timeless classics, and new favorites. Grab a cup of coffee, find your next read, and let the pages whisk you away! 📚✨",
+        "content": {
+            "readingBlissText": "ReadingBliss",
+            "readingCommunityTitle": "Reading Community",
+            "readingCommunityDescription1": "Welcome to the <span class='reading-bliss-text'>Reading Bliss</span> community — a vibrant space for book lovers to connect, share, and celebrate their favorite reads! 🌟 <br> Here, every reader has a voice. Dive into engaging discussions, exchange thought-provoking insights, and discover new perspectives from fellow book enthusiasts. Whether you’re into heart-pounding thrillers, enchanting fantasies, or soul-stirring classics, there’s a place for you in our community.",
+            "booksRAndRTitle": "Book Reviews & Recommendations",
+            "booksRAndRDescription1": "At <span class='reading-bliss-text'>Reading Bliss</span>, we believe that every book has a story to tell beyond its pages. Our curated book reviews dive deep into the essence of each story, capturing the emotions, themes, and unique perspectives that make every read unforgettable. <br> Whether you're seeking a heartwarming romance, a mind-bending thriller, or a timeless classic, our personalized recommendations ensure you'll find your next favorite book. We explore a wide range of genres, shedding light on hidden gems and bestselling titles alike."
         },
         "picDetails": {
             "firstUrl": "https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2",
@@ -76,9 +80,13 @@ const staticJson = {
             "title": "Leave Your review",
             "ratingLabel": "Rating",
             "reviewsLabel": "Reviews",
-            "postLabel": "Post"
+            "postLabel": "Post",
+            "noReviews": "There are no reviews yet.",
+            "noReviewsDescription": "Be the first to share your thoughts!"
         },
         "recommend": {
+            "title": "Love the book you are reading?",
+            "description": "Share it with your fellow readers. Click on the <b>Recommend book button</b> below and share the joy of reading the book together.",
             "infoText": "*Your recommended book goes to the Gallery",
             "recommendModal": {
                 "buttonName": "Recommend this book",
@@ -133,7 +141,7 @@ const staticJson = {
         }
     },
     "aboutUs": {
-        "title": "About US",
+        "title": "Scripting Bliss : <span style='color: #d9cbb7'> Your Literary Escape Awaits </span>",
         "description": {
             "first": "<h4><b>Welcome To The World Of Books!<i></i></b></h4> <br> If you have come here then definitely you have a knack for the books. <i>This is just one place for all your books needs</i>. Weather you are on a trip or just roaming on the streets, having a nice lunch or date, you heard about a book and found it interesting. We always have issues remembering where we have written that name, sometimes we could not even write, after sometime we forget which sheet/workbook/notes we have penned the name. This led me to create this website so that I would know that all my books are in one place and I no longer have to juggle between different sites.",
             "second": "<h4><b>How To Use<i></i></b></h4> <br> Explore all the books that this site has to offer. If you like any book <i>select it and browse it on net</i>. It takes you directly to the google and saves the hastle for searching the books. However, if you wish to have your own collection, do register and then you can have your own collection of books by adding new book. You can also recommend your favs to other viewers by becoming one of the user."
@@ -144,16 +152,36 @@ const staticJson = {
         }
     },
     "contactUs": {
-        "title": "Contact US",
-        "description": {
-            "text": `For any queries regarding this website do call or email us. Whichever is preferrable to you.<br> <h4><b style="color:#4c3e4f"><i>HAPPY READING!!</i></b></h4>`,
-            "email": `<b>Email</b>: some@email.com`,
-            "phone": `<b>Phone</b>: +91 **********`,
-            "address": `<b>Location</b>: Hyderabad, India`
+        "lightBackground": true,
+        "title": "Let’s Talk",
+        "description": "<span style='color: #afa494 !important;'>We'd love to hear from you! </span><br> <span style='font-size: 20px;'>Whether you have questions, suggestions, or just want to chat about your favorite books, feel free to reach out.</span>",
+        "details": {
+            "email": {
+                "emailLabel": "<span style='color: #afa494'>Email</span>",
+                "emailText": "Have a query or feedback? Drop us an email at:",
+                "emailValue": `some@email.com`,
+            },
+            "phone": {
+                "phoneLabel": "<span style='color: #afa494'>Phone</span>",
+                "phoneText": "Prefer talking over the phone? Reach us at:",
+                "phoneValue": `+91 **********`,
+            }
+        },
+        "formSection": {
+            "title": "Write To Us",
+            "description": "Have something to share? Fill out the form, and we'll get back to you soon!",
+            "formContent": {
+                "namePlaceHolder": "Your Name",
+                "emailPlaceHolder": "Your Email",
+                "messagePlaceHolder": "Type your Message"
+            }
         },
         "picDetails": {
             "url": "https://images.pexels.com/photos/2789781/pexels-photo-2789781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "text": "Cinque Terre"
+        },
+        "actionButtons": {
+            "submitButton": "Submit",
         }
     },
     "gallery": {
@@ -162,10 +190,9 @@ const staticJson = {
     },
     "login": {
         "title": "Login",
-        "enterUsernameLabel": "Enter username",
-        "enterUsernamePlaceholder": "Please Enter Your Username",
-        "passwordLabel": "Enter Password",
-        "enterPasswordPlaceHolder": "Please Enter Your Password",
+        "enterUsernameLabel": "Username",
+        "passwordLabel": "Password",
+        "signupText": "Don't have an account?",
         "actionButtons": {
             "loginButton": "Login",
             "signupButton": "Sign Up"
@@ -173,12 +200,10 @@ const staticJson = {
     },
     "register": {
         "title": "Register",
-        "enterNameLabel": "Enter Name",
-        "enterNamePlaceholder": "Please Enter Your Name",
-        "enterUsernameLabel": "Enter username",
-        "enterUsernamePlaceholder": "Please Enter Your Username",
-        "passwordLabel": "Enter Password",
-        "enterPasswordPlaceHolder": "Please Enter Your Password",
+        "enterNameLabel": "Name",
+        "enterUsernameLabel": "Username",
+        "passwordLabel": "Password",
+        "loginText": "Already have an account?",
         "actionButtons": {
             "loginButton": "Login",
             "signUpButton": "Sign Up"
@@ -222,7 +247,10 @@ const staticJson = {
     },
     "errorScenario": {
         "pageNotFound": {
-            "title": "Page Not Found"
+            "title": "WELL!!!! OOPPPSSS!!! Page you are trying to run is not found. Kindly use the nav menu for better navigation.",
+            "actionButton": {
+                "homeButtonLabel": "Go Back Home"
+            }
         },
         "technicalError": {
             "message": "Something went wrong. Please try again later!",

@@ -1,51 +1,33 @@
-<% layout('layout/boilerplate', {bookJson, icons}) %>
+<% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 
-<h1 class="text-center mb-3 fade-in-load">
-  <u><b><%=loginStatic.title%></b></u>
-</h1>
-<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded fade-in-load">
-  <form
-    action="/readingBliss/login"
-    method="POST"
-    class="needs-validation"
-    novalidate
-  >
-    <div class="mb-3">
-      <label for="username" class="form-label"><%=loginStatic.enterUsernameLabel%></label>
-      <input
-        type="text"
-        name="username"
-        class="form-control"
-        id="username"
-        autofocus
-        placeholder="<%=loginStatic.enterUsernamePlaceholder%>"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label"><%=loginStatic.passwordLabel%></label>
-      <div class="input-group">
-        <input
-          name="password"
-          type="password"
-          id="password"
-          class="form-control"
-          placeholder="<%=loginStatic.enterPasswordPlaceHolder%>"
-          required
-        />
+  <div class="px-md-5 py-5 user-login-register user-login-register">
+    <div class="user-login-register_user container image-animation">
+      <div class="form-box container">
+        <h1 class="text-style fade-in-load">
+          <%=loginStatic.title%>
+        </h1>
+        <form action="/readingBliss/login" method="POST" class="needs-validation" novalidate>
+          <div class="input-group">
+            <input type="text" name="username" required>
+            <label for="username">
+              <%=loginStatic.enterUsernameLabel%>
+            </label>
+          </div>
+          <div class="input-group mb-5">
+            <input name="password" type="password" required>
+            <label for="password">
+              <%=loginStatic.passwordLabel%>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-custom-fill-primary" value="Submit">
+            <%=loginStatic.actionButtons.loginButton%>
+          </button>
+          <p class="pt-3 text-center">
+            <%=loginStatic.signupText %> <a class="d-inline btn btn-link" href="/readingBliss/register">
+                <%=loginStatic.actionButtons.signupButton%>
+              </a>
+          </p>
+        </form>
       </div>
     </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-      <button
-        type="submit"
-        class="btn btn-primary btn-custom-fill-primary py-2 px-4"
-        value="Submit"
-      >
-      <%=loginStatic.actionButtons.loginButton%>
-      </button>
-      <a href="/readingBliss/register" class="btn btn-link" role="button"
-        ><%=loginStatic.actionButtons.signupButton%></a
-      >
-    </div>
-  </form>
-</div>
+  </div>

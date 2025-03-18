@@ -1,13 +1,13 @@
-<% layout('./layout/imageBoilerPlate', {bookJson, icons}) %>
+<% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 <!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
 
 <div class="home--image position-relative fade-in-load">
   <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="text-center">
-      <h1 class="display-4 text-white fade-out-scroll">
+      <h1 class="display-4 text-white fade-out-scroll font-family-custom-image-heading">
         <%=homeStatic.title%>
       </h1>
-      <div class="my-5 fade-out-scroll"></div>
+      <h6 class="text-white text-style pt-5"><%=homeStatic.description %></h6>
       <a
         href="/readingBliss/gallery"
         class="card-link btn btn-outline-secondary mt-3 py-3 px-5 btn-custom-fill-primary fade-out-scroll"
@@ -16,30 +16,13 @@
     </div>
   </div>
 </div>
-
-<div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-md-8 text-center">
-      <img
-        class="object-fit-sm-cover shadow fade-in-scroll-image"
-        src="<%=homeStatic.picDetails.firstUrl %>"
-        alt="<%=homeStatic.picDetails.firstText %>"
-      />
-    </div>
-    <div class="col-md-4 text-start d-flex align-items-center">
-      <p><%-homeStatic.description.first %></p>
-    </div>
+<div class="container mt-5 mb-5 d-flex flex-column pb-5">
+  <div class="text-center d-flex flex-column mt-3 fade-in-scroll-js">
+    <h3><%=homeStatic.content.readingCommunityTitle %></h3>
+    <p><%-homeStatic.content.readingCommunityDescription1 %></p>
   </div>
-  <div class="row mt-5">
-    <div class="col-md-4 text-start d-flex align-items-center">
-      <p><%-homeStatic.description.second %></p>
-    </div>
-    <div class="col-md-8 text-center">
-      <img
-        class="object-fit-sm-cover shadow fade-in-scroll-image"
-        src="<%=homeStatic.picDetails.secondUrl %>"
-        alt="<%=homeStatic.picDetails.secondText %>"
-      />
-    </div>
+  <div class="text-center d-flex flex-column mt-5 fade-in-scroll-js">
+    <h3><%=homeStatic.content.booksRAndRTitle %></h3>
+    <p><%-homeStatic.content.booksRAndRDescription1 %></p>
   </div>
 </div>

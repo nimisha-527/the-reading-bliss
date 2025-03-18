@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate', {bookJson, icons}) %>
+<% layout('layout/boilerplate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 <div class="row fade-in-load">
     <div class="col-6 offset-3">
         <div class="alert alert-danger" role="alert">
@@ -6,6 +6,6 @@
         </div>
         <div class="d-grid gap-2 d-flex justify-content-center">
             <a href="/" class="d-inline btn btn-link" role="button"><%=staticError.homeButtonLabel %></a>
-          </div>
+        </div>
     </div>
 </div>

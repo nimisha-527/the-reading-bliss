@@ -1,28 +1,50 @@
 <%-flashIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
 
 <% if(success && success.length) { %>
-<div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
-  <%-successIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
-  <div>
-    <%= success %>
-  </div>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+  <% if(JSON.stringify(success).includes("logged out") || JSON.stringify(success).includes("message")) { %>
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div class="toast-container position-absolute top-0 end-0 p-5">
+        <div class="toast show align-items-center text-white bg-success bg-gradient border-0" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="5000">
+          <div class="d-flex">
+            <div class="toast-body">
+              <%-successIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+              <%= success %>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="alert alert-success d-flex align-items-center alert-dismissible fade show mb-3" role="alert">
+      <%-successIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+      <div>
+        <%= success %>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
 <% } %>
 
 
 <% if(error && error.length) { %>
-  <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-    <%-errorIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
-    <div>
-      <%= error %>
+  <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div class="toast-container position-absolute top-0 end-0 p-5">
+        <div class="toast show align-items-center text-white bg-danger text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="5000">
+          <div class="d-flex">
+            <div class="toast-body">
+              <%-errorIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
+              <%= error %>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
     </div>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
 <% } %>
 
 <% if(info && info.length) { %>
-  <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show" role="alert">
+  <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show mb-3" role="alert">
     <%-infoIcons.replace(/\\n/g, '').replace(/\\"/g, '"').replace('"<', '<').replace('>"', '>')  %>
     <div>
       <%= info %> &nbsp; <a href="/readingBliss/gallery" class="alert-link"><%=clickHereLabel.replaceAll('"', '')  %></a>

@@ -1,27 +1,45 @@
-<nav class="z-1 navbar navbar-expand-lg bg-dark sticky-top" data-bs-theme="dark">
+<nav class="<%-isNavTransparent ? 'z-1 navbar navbar-expand-lg fade-in-scroll-js fixed-top nav-bar-transparent' : 'z-1 navbar navbar-expand-lg bg-dark sticky-top'%>" data-bs-theme="dark" data-bs-whatever="<%=isNavTransparent%>">
   <div class="container-fluid mx-5">
     <a class="d-lg-flex mx-lg-auto navbar-brand" href="/"><img src="<%=JSON.stringify(navLoggedOut.picDetails.logo).replaceAll('"', '')%>" alt="<%=JSON.stringify(navLoggedOut.picDetails.logoText).replaceAll('"', '')%>" class="logo-design"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation" data-bs-whatever="<%=getNavToggleColor%>">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="<%- isNavTransparent ? 'transparent collapse navbar-collapse ' : 'collapse navbar-collapse' %>" id="navbarScroll">
       <!-- in the anchor tag below removed the Reading Bliss text to add the space betwwen above Reading Bliss and below ul. TODO: Check this code so anchor tag can we removed and the UI will not change -->
       <a class="display-6 d-none d-lg-flex mx-lg-auto navbar-brand" href="/" style="color: #FFFFFF; text-decoration: none; display: none;"></a> 
-      <ul class="navbar-nav">
+       <ul class="navbar-nav" data-bs-whatever="<%=getNavLinkColor%>"> <!-- data-bs-whatever="<%#=JSON.stringify(bookJson)%>" -->
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/readingBliss/gallery"><%=JSON.stringify(navLoggedOut.navItems.galleryLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" aria-current="page" href="/readingBliss/gallery"><%=JSON.stringify(navLoggedOut.navItems.galleryLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/aboutUs"><%=JSON.stringify(navLoggedOut.navItems.aboutUsLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/aboutUs"><%=JSON.stringify(navLoggedOut.navItems.aboutUsLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/contact"><%=JSON.stringify(navLoggedOut.navItems.contactLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/contact"><%=JSON.stringify(navLoggedOut.navItems.contactLabel).replaceAll('"', '')%></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/register"><%=JSON.stringify(navLoggedOut.navItems.registerLabel).replaceAll('"', '')%></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/login"><%=JSON.stringify(navLoggedOut.navItems.loginLabel).replaceAll('"', '')%></a>
+        <!-- <li class="nav-item">
+          <a class="<%#-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/register"><%#=JSON.stringify(navLoggedOut.navItems.registerLabel).replaceAll('"', '')%></a>
+        </li> -->
+        <li class="nav-item px-3">
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/login">
+            <svg 
+    width="40" 
+    height="40" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+    xmlns="http://www.w3.org/2000/svg"
+    class="login-icon">
+    <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+    <circle cx="12" cy="8" r="3"></circle>
+    <path d="M6 18c0-3 3-5 6-5s6 2 6 5"></path>
+</svg>
+
+
+        </a>
         </li>
         <!-- <li class="nav-item form-check form-switch">
           <div class="nav-link">

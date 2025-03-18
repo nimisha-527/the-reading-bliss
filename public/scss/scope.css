@@ -1,0 +1,23 @@
+@scope (.background-dark) {
+    :scope {
+      background-color: #4c3e4f;
+    }
+}
+
+@scope (.large-text) {
+  h1 {
+    font-size: 54px
+  }
+  p {
+    font-size: 20px;
+    color: #4c3e4f
+  }
+}
+
+@scope (.content) {
+  :scope {
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    padding: 12px 80px;
+  }
+}

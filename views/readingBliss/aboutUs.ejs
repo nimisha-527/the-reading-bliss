@@ -1,31 +1,37 @@
-<% layout('./layout/imageBoilerPlate', {bookJson, icons}) %>
-<div class="mb-5 d-grid gap-5 fade-in-load">
-  <div class="back-ground-image-half position-relative">
-    <h1
-      class="display-3 position-absolute top-50 start-50 translate-middle image-text-label"
-    >
-      <%=aboutUsStatic.title %>
-    </h1>
-  </div>
-  <div class="container text-center">
-    <div class="d-flex flex-column align-self-center gap-3 pb-5">
-      <div class="card shadow rounded fade-in-scroll-js">
-        <div class="card-body">
-          <p><%-aboutUsStatic.description.first %></p>
+
+<% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
+
+<div class="fade-in-load">
+  <div class="fade-in-scroll-js background-dark large-text">
+    <div class="container pt-5">
+      <div class="pt-5 mt-5">
+        <div class="row mt-3">
+          <div class="col-md-8 pt-5">
+            <h1 class="text-white pt-md-5 mt-md-5 text-style fade-in-load"><%-aboutUsStatic.title %></h1>
+          </div>
+          <div class="col-md-4 d-flex justify-content-end">
+            <%- include("../partials/bookFlip") %>
+          </div>
         </div>
-      </div>
-      <div class="card shadow rounded fade-in-scroll-js">
-        <div class="card-body">
-          <p><%-aboutUsStatic.description.second %></p>
+    </div>
+    </div>
+  </div>
+
+  <div class="fade-in-scroll-js mt-5">
+    <div class="container text-center">
+      <div class="d-flex flex-column align-self-center gap-3 pb-5">
+        <div class="card shadow rounded fade-in-scroll-js">
+          <div class="card-body">
+            <p><%-aboutUsStatic.description.first %></p>
+          </div>
+        </div>
+        <div class="card shadow rounded fade-in-scroll-js">
+          <div class="card-body">
+            <p><%-aboutUsStatic.description.second %></p>
+          </div>
         </div>
       </div>
     </div>
-    <img
-      src="<%= aboutUsStatic.picDetails.url  %>"
-      class="rounded-circle fade-in-scroll-js"
-      alt="<%= aboutUsStatic.picDetails.text  %>"
-      width="304"
-      height="236"
-    />
   </div>
 </div>
+

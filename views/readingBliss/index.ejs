@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate', {bookJson, icons}) %>
+<% layout('layout/boilerplate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 <% if(!bookLibrary.length) { %> 
   <div class="mt-5 fade-in-load">
     <%=booksListStatic.emptyListText %>
@@ -20,7 +20,7 @@
         />
         <div class="card-body" style="text-align: center">
           <h5 class="card-title"><%=library.title%></h5>
-          <p class="card-text"><%=library.description%></p>
+          <p class="card-text text-truncate-content"><%=library.description%></p>
         </div>
         <div class="card-footer fade-in-scroll-js" style="text-align: center">
           <a
