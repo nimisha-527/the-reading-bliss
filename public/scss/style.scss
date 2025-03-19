@@ -136,18 +136,69 @@ a.btn:active, button:active {
   animation-range: exit;
 }
 
+// .image-wrapper-home {
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+//   .img1 {
+//     width: 300px;
+//   }
+//   .img2 {
+//     position: absolute;
+//     left: 100px; /* Adjust overlap */
+//     top: 100px; /* Adjust overlap */
+//     z-index: 1;
+//   }
+// }
+
+// /* Container for images */
+// .image-wrapper {
+//   position: relative;
+//   width: 300px; /* Width of images */
+//   height: 300px; /* Height of images */
+//   overflow: hidden;
+// }
+
 .image-wrapper-home {
-  display: flex;
-  align-items: center;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: z-index 0.5s; /* Smooth transition for stacking order */
   .img1 {
+    z-index: 1; /* Initially image1 is on top */
     width: 300px;
-  }
-  .img2 {
     position: absolute;
+    animation: swap 2s infinite ease-in-out; /* Apply the swap animation */
+    border-radius: 5px;
+    /* transition: 2s ease-in-out; */
+  }
+  
+  .img2 {
+      border-radius: 5px;
+    z-index: 0; /* Initially image2 is behind image1 */
     left: 100px; /* Adjust overlap */
     top: 100px; /* Adjust overlap */
-    z-index: 1;
+    width: 300px;
+    position: absolute;
+    animation: swap 2s infinite 1s ease-in-out; /* Apply the same animation */
+    /* transition: 4s ease-in-out; */
+  }
+}
+@keyframes swap {
+  0% {
+    z-index: 1; /* image1 on top, image2 behind */
+    transform: translateX(50px);
+  }
+  50% {
+    z-index: 0; /* image2 on top, image1 behind */
+    transform: translateX(100px);
+  }
+  100% {
+    z-index: 1; /* image1 back on top, image2 behind */
+    transform: translateX(50px);
   }
 }
 
@@ -438,9 +489,11 @@ a.btn:active, button:active {
     }
   }
 
-  .image-animation-scale-up1 {
-    animation: scale-up1 0.8s infinite ease-in-out;
-  }
+  // .image-animation-scale-up1 {
+  //   animation: scale-up1 0.8s infinite ease-in-out;
+  // }
+
+  
   // BOOK FLIP ANIMATION
 
   .book-container { perspective: 1000px; }

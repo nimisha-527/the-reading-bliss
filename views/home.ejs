@@ -65,12 +65,12 @@
       </div>
       <div class="col image-wrapper-home d-none d-md-block">
         <img
-        class="object-fit-sm-cover shadow img1 image-animation-scale-up1"
+        class="object-fit-sm-cover shadow img1"
         src="<%=homeStatic.picDetails.firstUrl %>"
         alt="<%=homeStatic.picDetails.firstText %>"
       />
       <img
-        class="object-fit-sm-cover shadow img2 image-animation-scale-up"
+        class="object-fit-sm-cover shadow img2"
         src="<%=homeStatic.picDetails.secondUrl %>"
         alt="<%=homeStatic.picDetails.secondText %>"
       />
@@ -128,3 +128,69 @@
     <p><%-homeStatic.content.booksRAndRDescription1 %></p>
   </div>
 </div> -->
+
+<!-- Image show and hide could use this for the home page cover image -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Swap Animation</title>
+  <style>
+    /* Container for images */
+    .image-wrapper {
+      position: relative;
+      width: 300px; /* Width of images */
+      height: 300px; /* Height of images */
+      overflow: hidden;
+    }
+
+    /* Base styling for both images */
+    .image-wrapper img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Image 1 styling */
+    .img1 {
+      z-index: 1; /* Initially image1 is on top */
+      animation: swap 4s infinite; /* Animation for swapping */
+    }
+
+    /* Image 2 styling */
+    .img2 {
+      z-index: 0; /* Initially image2 is behind image1 */
+      animation: swap 4s infinite 2s; /* Same animation but delayed by 2 seconds */
+    }
+
+    /* Keyframes for swap animation */
+    @keyframes swap {
+      0% {
+        opacity: 1;
+        z-index: 1;
+      }
+      50% {
+        opacity: 0;
+        z-index: 0;
+      }
+      100% {
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Image wrapper containing two images -->
+  <div class="image-wrapper">
+    <img src="https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2" alt="Image 1" class="img1">
+    <img src="https://images.pexels.com/photos/5604251/pexels-photo-5604251.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2" alt="Image 2" class="img2">
+  </div>
+
+</body>
+</html> -->
