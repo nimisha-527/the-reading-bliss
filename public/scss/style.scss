@@ -1,74 +1,105 @@
 $dark: #4c3e4f;
 $light: #c6a1cf;
-$display-font-weight: 500;
 $primary: #4c3e4f;
 $secondary: #c6a1cf;
 $info: #cfcbab;
-$text-info-emphasis: $secondary;
+// $text-info-emphasis: $secondary;
 $white: #ffffff;
 $black: #000;
+$textColor: #d9cbb7;
 
-$box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
+// Weights
+$font-weight-bold: 700;
+$font-weight-normal: 400;
 
 // CUSTOM CLASSES
 
-// FONT FAMILY
-
-.font-family-custom {
-  font-family: "Slabo 27px", serif;
-  font-weight: 400;
-  font-style: normal;
-  color: $primary;
+// COMMON CLASSES
+body {
   scroll-behavior: smooth;
+}
+@mixin font-style($fontFamily, $fontStyle, $fontWeight, $color-text, $font-size) {
   // below two are to provide sharping and smooth effect to
   text-rendering: optimizeLegibility;
-
   -webkit-font-smoothing: antialiased;
+  font-family: $fontFamily, sans-serif !important;
+  font-style: $fontStyle !important;
+  font-weight: $fontWeight !important;
+  color: $color-text !important;
+  @if $font-size {
+    font-size: $font-size !important;
+  }
 }
 
-// PRIMARY bUTTON STYLES
+@mixin btn-style($bg-color, $text-color, $isButton: false, $isIconButton: false) {
+  background-color: $bg-color !important;
+  color: $text-color !important;
+  @if $isButton {
+    transition: transform 0.3s ease !important;
+  }
+  @if $isIconButton {
+    transition: transform 1s !important;
+  }
 
-.btn-custom-outline-primary {
-  background-color: $white !important;
-  color: $primary !important;
+  &:hover {
+    @if $isButton {
+      transform: scale(1.1);
+    }
+    @if $isIconButton {
+      transform: rotate(90deg);
+    }
+  }
 }
-.btn-custom-fill-primary:hover {
-  background-color: $white !important;
-  color: $primary !important;
+
+@mixin gradient-linear ($gradientValue) {
+  background: $gradientValue !important;
 }
-.btn-custom-fill-primary {
-  background-color: $primary !important;
-  color: $white !important;
+
+.text-style {
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.9);
 }
-.btn-custom-outline-primary:hover {
-  background-color: $primary !important;
-  color: $white !important;
+
+h1, h2, h3, h4, h5, h6 {
+  @include font-style("Montserrat", bold, $font-weight-bold, $primary, "");
+}
+
+p {
+  @include font-style("Open Sans", normal, $font-weight-normal, $primary, "");
+}
+
+.font-family-custom-image-para {
+  @include font-style("Open Sans", normal, $font-weight-normal, $textColor, 1.3rem);
+  @extend .text-style;
+}
+
+.logo-design {
+  border: 2px solid #c6a1cf !important;
+  border-radius: 50%;
+  color: #FFFFFF; 
+  text-decoration: none;
+  max-height: 80px;
+  vertical-align: middle;
 }
 
 .btn-custom .btn {
   padding: 0 !important;
 }
 
-// SECONDARY BUTTONS STYLE
+// Buttons
+.btn-custom-outline-primary {
+  @include btn-style($white, $primary, $isButton: true, $isIconButton: false);
+}
 
-.btn-custom-fill-secondary {
-  background-color: $secondary !important;
-  color: $white !important;
+.btn-custom-fill-primary {
+  @include btn-style($primary, $white, $isButton: true, $isIconButton: false);
 }
 
 .btn-custom-outline-secondary {
-  background-color: $white !important;
-  color: $secondary !important;
+  @include btn-style($white, $secondary, $isButton: true, $isIconButton: false);
 }
 
-.btn-custom-outline-secondary:hover {
-  background-color: $secondary !important;
-  color: $white !important;
-}
-
-.btn-custom-fill-secondary:hover {
-  background-color: $white !important;
-  color: $secondary !important;
+.btn-custom-fill-secondary {
+  @include btn-style($secondary, $white, $isButton: true, $isIconButton: false);
 }
 
 .btn-link:hover {
@@ -76,56 +107,109 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
   transition: all .2s ease;
 }
 
+a.btn:active, button:active {
+  transform: scale(0.95); /* Adds a subtle press effect */
+}
+
 /* ICONS */
 .icon-button-custom-fill-primary {
-  background-color: #ffffff !important;
-  color: #4c3e4f !important;
-  cursor:pointer;
-  transition: transform 1s;
-}
-.icon-button-custom-fill-primary:hover {
-  background-color: #ffffff !important;
-  color: #7e6683 !important;
-  cursor:pointer;
-  transform: rotate(90deg);
+  @include btn-style($white, $primary, $isButton: false, $isIconButton: true)
 }
 .default-css-unset {
   all:unset;
 }
 
-// BACKGROUND IMAGES
+// BACKGROUND
+//https://res.cloudinary.com/dzjms6aad/image/upload/v1741162788/background-image2_dkhyt5.webp
+.home {
+  .background-image {
+    position: relative;
+    height: 100vh;
+    background-image:linear-gradient(rgba($primary, 0.5), rgba(24, 24, 24, 0.5)),
+    url("https://images.pexels.com/photos/6560997/pexels-photo-6560997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transform-origin: bottom;
+    animation: background-image-animation linear;
+    animation-timeline: view();
+    animation-range: exit;
+  }
+  @mixin content-wrapper-mixin($options) {
+    @include gradient-linear(
+      linear-gradient(
+        map-get($options, 'linearGradientPosition'), 
+        map-get($options, 'linearGradientColor1') , 
+        map-get($options, 'linearGradientColor2'), 
+        map-get($options, 'linearGradientColor3')
+      ));
+      height: 80vh;
+      p {
+        font-size:  map-get($options, 'paraFontSize');
+      }
+      h3 {
+        @extend .text-style;
+        font-size: map-get($options, 'h3FontSize');
+      }
+  }
+  .content-wrapper-top-dark {
+    @include content-wrapper-mixin((
+      'linearGradientPosition': to bottom right,
+      'linearGradientColor1': #6d5d7a,
+      'linearGradientColor2': rgba(217, 203, 183, 0.1) 40%,
+      'linearGradientColor3': $white,
+      'paraFontSize': 18px,
+      'h3FontSize': 38px
+    ));
+  }
+  .content-wrapper-top-light {
+    @include content-wrapper-mixin((
+      'linearGradientPosition': to top left,
+      'linearGradientColor1': #6d5d7a,
+      'linearGradientColor2': rgba(217, 203, 183, 0.1) 40%,
+      'linearGradientColor3': $white,
+      'paraFontSize': 18px,
+      'h3FontSize': 38px
+    ));   
+  }
+  .row {
+    .image-wrapper-home {
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: z-index 0.5s; /* Smooth transition for stacking order */
+      object-fit: cover;
 
-.home--image {
-  height: 87vh;
-  background-image:linear-gradient(rgba($primary, 0.4), rgba(24, 24, 24, 0.5)),
-  url("https://images.pexels.com/photos/1884326/pexels-photo-1884326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-  background-size: contain;
-  background-position: center bottom;
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
-  background-repeat: no-repeat;
-
-  transform-origin: bottom;
-  animation: background-image-animation linear;
-  animation-timeline: view();
-  animation-range: exit;
+      .img1 {
+        position: absolute;
+        // width: 300px;
+        z-index: 1; /* Initially image1 is on top */
+        animation: swap 2s infinite ease-in-out; /* Apply the swap animation */
+      }
+      .img2 {
+        position: absolute;
+        left: 100px; /* Adjust overlap */
+        top: 100px; /* Adjust overlap */
+        z-index: 0;
+        animation: swap 2s infinite 1s ease-in-out; /* Apply the same animation */
+      }
+    }
+  }
 }
 
-// https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
-.back-ground-image-half {
-  height: 50vh;
-  background-image: linear-gradient(rgba(0,0,0, 0.8), rgba($black, 0.5)),
-  url("https://images.pexels.com/photos/1808200/pexels-photo-1808200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3");
-  background-size: cover;
-  background-position: center;
-  text-shadow: 0 0.05rem 0.1rem rgba($black, 0.687);
-  box-shadow: inset 0 0 10px rgba($black, 0.700);
-  background-repeat: no-repeat;
-
-  transform-origin: bottom;
-  animation: background-image-animation linear;
-  animation-timeline: view();
-  animation-range: exit;
+@keyframes swap {
+  0% {
+    z-index: 1; /* image1 on top, image2 behind */
+    transform: translateX(50px);
+  }
+  50% {
+    z-index: 0; /* image2 on top, image1 behind */
+    transform: translateX(100px);
+  }
+  100% {
+    z-index: 1; /* image1 back on top, image2 behind */
+    transform: translateX(50px);
+  }
 }
 
 @keyframes background-image-animation {
@@ -133,14 +217,11 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
   85%, 100% {opacity: 0; scale: 2}
 }
 
-.image-text-label {
-  border-radius: 4px;
-  background-color: #000000a9;
-  padding: 8px;
-  box-shadow: 1px 1px 2px $black;
-  color: $white;
+.image-sizing {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
 }
-
 // CAROUSAL STYLES
 
 .carousal--size {
@@ -164,15 +245,139 @@ $box-shadow-lg: 0 1rem 3rem rgba($info, 0.175);
 }
 
 .navbar {
-  font-size: 20px; 
-}
-
-a.btn:active, button:active {
-  transform: scale(0.95); /* Adds a subtle press effect */
+  font-size: 20px;
 }
 
 // STYLES ON SCROLL
+
+.scrollable-section {
+  height: 300px; /* Set a fixed height */
+  overflow: auto; /* Enable scrolling when content overflows */
+}
+
+//LOGIN | REGISTER PAGE DESIGN
+
+/* CSS for an aesthetic login/signup page with sliding animation */
+.alert {
+  margin: 0px !important;
+}
+
+.user-login-register {
+  height: 100vh;
+  @include gradient-linear(linear-gradient(to bottom, #4c3e4f 50%, #ffffff 50%));
+  &_user.container {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    @include gradient-linear(linear-gradient(to top, #4c3e4f , rgba(217, 203, 183, 0.1) 40%, #ffffff));
+  }
+  a.btn {
+    background: none !important;
+    padding: 0px !important;
+  }
+  .form-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+  }
+  .input-group {
+    position: relative;
+    margin: 15px 0;
+    width: 80%;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid $primary !important;
+    font-size: 16px;
+    outline: none;
+    color: $primary !important;
+  }
+  .input-group label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+    color: #d9cbb7 !important;
+  }
+  .input-group input:focus + label, 
+  .input-group input:valid + label {
+    top: -10px;
+    font-size: 12px;
+  }
+  .btn {
+    width: 80%;
+    padding: 10px;
+  }
+  
+}
+
+.edit-new-form-design {
+  @include gradient-linear(linear-gradient(to bottom, #6d5d7a , rgba(217, 203, 183, 0.1) 50%, $white));
+  & label {
+    font-size: 18px !important;
+    color: #d9cbb7 !important;
+    font-weight: 600;
+  }
+  .form-select {
+    color: $primary !important;
+  }
+}
+
+.form-label, .form-control {
+  color: #4c3e4f !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+
+  @mixin slide-to-left_right-animation($animationName, $animationTimeLine) {
+    animation: $animationName;
+    animation-timeline: $animationTimeLine;
+  }
+
+  @mixin slide-to-left_right-keyframes($transformValue) {
+    from {
+      transform: $transformValue;
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .reading-bliss-text {
+    background: linear-gradient(
+          to right,
+          #c6a1cf 20%,
+          #d9cbb7 30%,
+          #4c3e4f 70%,
+          #cfcbab 80%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 500% auto;
+    animation: linearGradientAnimation 5s ease infinite;
+    font-size: 18px !important;
+  }
+  
+  @keyframes linearGradientAnimation { 
+    0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+  }
 
   .fade-in-load {
     opacity: 0;
@@ -183,13 +388,6 @@ a.btn:active, button:active {
     opacity: 1;
     transform: translateY(0);
   }
-  // @mixin fade-in-scroll-contain($cssProperty1, $cssPropertyValue1, $cssProperty2, $cssPropertyValue2) {
-  //   scale: .9;
-  //   #{$cssProperty}: $cssPropertyValue;
-  //   animation-timeline: scroll();
-  //   animation-range: contain 100px;
-  //   transition: 0.2s ease
-  // }
 
   .fade-in-scroll-js {
     @extend .fade-in-load
@@ -226,9 +424,168 @@ a.btn:active, button:active {
   @keyframes fade-in-image {
     to{scale: 1; opacity: 1;}
   }
+
+  .transparent.navbar-collapse.show {
+    padding: 8px 0 0 8px !important;
+    position: fixed; top: 85%; left: 0; right: 0;
+    height: 100vh;
+    background-color: rgba(76, 62, 79, 0.8) !important;
+    font-size: 24px;
+    transition: 0.5s ease;
+    color: $white !important;
+  }
+
+  @keyframes slideLeft {
+    @include slide-to-left_right-keyframes(translateX(40%))
+  }
   
-  /* Alternative approach for touch devices (less precise) */
+  .slide-to-left-animation {
+    &_view {
+      @include slide-to-left_right-animation(slideLeft 1s ease-in-out, "")
+    }
+    &_scroll {
+      @include slide-to-left_right-animation(slideLeft, scroll())
+    }
+  }
+
+  @keyframes slideRight {
+    @include slide-to-left_right-keyframes(translateX(-20%))
+  }
   
+  .slide-to-right-animation {
+    &_view {
+      @include slide-to-left_right-animation(slideRight 1s ease-in-out, "")
+    }
+    &_scroll {
+      @include slide-to-left_right-animation(slideRight, scroll())
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .pulse-animation:hover {
+    animation: pulse 0.8s infinite ease-in-out;
+  }
+  
+  .image-animation-pulse {
+    animation: pulse 0.8s ease-in-out;
+  }
+
+  
+  // BOOK FLIP ANIMATION
+
+  .book-container { perspective: 1000px; }
+    .book {
+      width: 200px;
+      height: 300px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #6d5d7a;
+      backface-visibility: visible;
+      border-radius: 5px;
+      transform-origin: left;
+      animation: pageFlip 8s infinite linear;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .page:nth-child(odd) { background-color: #837189; }
+  
+    @keyframes pageFlip {
+      0%, 100% { transform: rotateY(0deg); }
+      50% { transform: rotateY(-180deg); }
+    }
+  
+    .page:nth-child(1) { animation-delay: 0s; }
+    .page:nth-child(2) { animation-delay: 0.5s; }
+    .page:nth-child(3) { animation-delay: 1s; }
+    .page:nth-child(4) { animation-delay: 1.5s; }
+  
+    .ball {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      animation: orbit 5s infinite linear;
+    }
+    .ball:nth-child(odd) { background-color: #d9cbb7; }
+    .ball:nth-child(even) { background-color: #a58f72; }
+  
+    @keyframes orbit {
+    0% { transform: rotate(120deg) translateX(700px) rotate(240deg); }
+    100% { transform: rotate(480deg) translateX(30px) rotate(-600deg); }
+  }
+  
+    .ball:nth-child(1) { animation: orbit 5s infinite linear; }
+    .ball:nth-child(2) { animation: orbit 5s infinite linear reverse; }
+    .ball:nth-child(3) { animation: orbit 5s infinite linear; transform-origin: 70px; }
+    .ball:nth-child(4) { animation: orbit 5s infinite linear reverse; transform-origin: 70px; }
+
+    .nav-toggle-dark {
+      background-color: $primary !important;
+      padding: 8px;
+    }
+
+    .nav-toggle-light {
+      background-color: $primary !important;
+      padding: 8px;
+    }
+  @media screen and (min-width: 780px) {
+    .font-family-custom-image-heading {
+      @include font-style("Poppins", normal, $font-weight-bold, $info, 4rem);
+      text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.9);
+    }
+    .nav-bar-transparent {
+      background-color: rgba(76, 62, 79, 0);
+      transition: background-color 0.3s ease;
+      animation: nav-bar-transparent-animation linear;
+      animation-timeline: scroll();
+      animation-range: exit;
+    }
+    
+    @keyframes nav-bar-transparent-animation {
+      to {opacity: 0; visibility: hidden;}
+    }
+
+    .nav-link-light {
+      color: $white !important;
+    }
+    
+    .nav-link-dark {
+      color: $primary !important;
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    .user-login-register {
+      &_user.container {
+        position: relative;
+        width: auto;
+        height: 500px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+   /* Alternative approach for touch devices (less precise) */
   @media (pointer: coarse) {
     .opacity-decrease-in-scroll {
       // scale: .98;

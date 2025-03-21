@@ -1,7 +1,7 @@
-<% layout('layout/boilerplate', {bookJson, icons}) %>
+<% layout('layout/boilerplate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 <%- include("../partials/carousal", {carousalDetails: bookJson.carousal}) %>
-<div class="shadow-lg bg-info p-5 bg-opacity-75 rounded fade-in-scroll-js">
-<form action="/readingBliss" class="needs-validation" novalidate enctype="multipart/form-data" method="POST">
+<div class="p-5 rounded fade-in-scroll-js edit-new-form-design bg-dark">
+<form action="/readingBliss" class="needs-validation container p-md-5" novalidate enctype="multipart/form-data" method="POST">
     <div class="mb-3">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>
         <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.newBook.productName.placeHolder%>" required>

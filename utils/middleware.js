@@ -5,6 +5,7 @@ const { booksSchema, reviewSchema } = require('../schemas');
 module.exports.isLoggedIn = (req, res, next) => {
     //isAuthenticated() is the helper function from passport
     if (!req.isAuthenticated()) {
+        console.log("not authenticated")
         req.session.returnTo = req.originalUrl;
         req.flash('error', "Please sign in first");
         return res.redirect('/readingBliss/login');

@@ -1,36 +1,56 @@
-<% layout('./layout/imageBoilerPlate', {bookJson, icons}) %>
-<div class="mb-5 d-grid gap-5 fade-in-load">
-  <div class="back-ground-image-half position-relative">
-    <h1
-      class="display-3 position-absolute top-50 start-50 translate-middle image-text-label"
-    >
-      <%=contactUsStatic.title %>
-    </h1>
-  </div>
+<% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 
-  <div class="container text-center">
-    <img
-      src="<%=contactUsStatic.picDetails.url%>"
-      class="rounded-circle"
-      alt="<%=contactUsStatic.picDetails.text%>"
-      width="304"
-      height="236"
-    />
-    <div class="d-flex flex-column gap-5 pt-5">
-      <div class="card shadow rounded bg-info bg-opacity-75">
-        <div class="card-body">
-          <div class="d-flex flex-column">
-            <div class="border-bottom border-primary fade-in-scroll-js">
-              <p><%-icons.addressIcon%> <%-contactUsStatic.description.address %></p>
-              <p><%-icons.phoneIcon%> <%-contactUsStatic.description.phone %></p>
-              <p><%-icons.emailIcon%> <%-contactUsStatic.description.email %></p>
+  <div class="fade-in-load mt-5">
+    <div class="container py-md-5 pb-5">
+        <div class="row pt-md-5">
+          <div class="col-md-8 py-md-5 px-5 large-text">
+            <div>
+              <h1 class="px-md-5 pt-5 pb-3 fade-in-load fade-in-scroll-js"><%-contactUsStatic.title %></h1>
+              <p class="px-md-5 fade-in-load fade-in-scroll-js"><%-contactUsStatic.description %></p>
             </div>
-            <div class="pt-3 fade-in-scroll-js">
-              <p><%-contactUsStatic.description.text %></p>
+            <div class="fade-in-load d-flex justify-content-md-between flex-md-row flex-column px-md-5 py-5">
+              <div class="px-md-2 fade-in-scroll-js slide-to-right-animation_view">
+                <p><%-icons.phoneIcon%> <%-contactUsStatic.details.phone.phoneLabel %></p>
+                <p style="font-size: 16px;"><%-contactUsStatic.details.phone.phoneText %></p>
+                <p><%-contactUsStatic.details.phone.phoneValue %></p>
+              </div>
+              <div class="px-md-5 fade-in-scroll-js slide-to-left-animation_view">
+                <p><%-icons.emailIcon%> <b><%-contactUsStatic.details.email.emailLabel %></b></p>
+                <p style="font-size: 16px;"><%-contactUsStatic.details.email.emailText %></p>
+                <p><%-contactUsStatic.details.email.emailValue %></p>
+              </div>
             </div>
           </div>
+          <div class="col-md-4 d-none d-md-block image-animation-pulse">
+            <img src="https://res.cloudinary.com/dzjms6aad/image/upload/v1741371352/contact-page-2_r8chpt.avif" alt="contact-page-women" class="image-sizing fade-out-scroll">
+          </div>
+        </div>
+        <div>
+      </div>
+    </div>
+    <div class="background-dark pt-5 pb-5 px-2">
+      <div class="container d-flex justify-content-md-around flex-md-row flex-column align-items-center gap-5 pb-md-5 pt-md-5">
+        <div class="fade-in-scroll-js slide-to-right-animation_scroll">
+          <h2 class="text-style" style="color: #fff !important;"><%-contactUsStatic.formSection.title %></h2>
+          <p style="color: #d9cbb7 !important"><%-contactUsStatic.formSection.description %></p>
+        </div>
+
+        <div class="fade-in-scroll-js w-75">
+          <form action="/readingBliss/connectToCustomer" class="needs-validation slide-to-left-animation_scroll" novalidate method="POST">
+              <div class="mb-3">
+                <input type="text" name="customerName" class="form-control" id="name" placeholder="<%-contactUsStatic.formSection.formContent.namePlaceHolder %>" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" name="customerEmailId" id="email" placeholder="<%-contactUsStatic.formSection.formContent.emailPlaceHolder %>" required>
+              </div>
+              <div class="mb-3">
+                <textarea type="text" class="form-control" name="customerMessage" id="message" placeholder="<%-contactUsStatic.formSection.formContent.messagePlaceHolder %>" rows="3" required></textarea>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center pt-3">
+                <button type="submit" class="btn pulse-animation py-2 px-5 content" value="Submit"><%=contactUsStatic.actionButtons.submitButton%></button>
+              </div>
+        </form>
         </div>
       </div>
     </div>
   </div>
-</div>

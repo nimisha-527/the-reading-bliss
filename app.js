@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const { bookJson, icons } = require('./public');
 const ejsMate = require('ejs-mate');
-const { readingBlissRoutes, userRoutes, recommendRoutes } = require('./route');
+const { readingBlissRoutes, userRoutes, recommendRoutes, connectToCustomerRoutes } = require('./route');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -19,6 +19,7 @@ const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
+// const dbUrl = "mongodb://localhost:27017/reading-bliss"
 
 const MongoStore = require('connect-mongo');
 mongoose.connect(dbUrl)
@@ -134,8 +135,24 @@ passport.deserializeUser(User.deserializeUser()); // this method deserialize cur
 //     const newUser = await User.register(user, "hello");
 //     res.send(newUser);
 // })
+
+let getNavLinkColor = '';
+let getNavToggleColor = '';
+const setNavLinkColor = (value) => {
+    const {dark, light} = value;
+    if(dark) {
+        getNavLinkColor = 'nav-link-dark';
+        getNavToggleColor = 'nav-toggle-dark';
+    } else if(light) {
+        getNavLinkColor = 'nav-link-light';
+        getNavToggleColor = 'nav-toggle-light';
+    } else {
+        getNavLinkColor = '';
+        getNavToggleColor = '';
+    }
+}
 app.use((req, res, next) => {
-    res.locals.currentUser = req.user; // we have access to the current user, in our middleware file we have function isLoggedIn, there req.user gives us the user details when logged in, now since this app.use with res.local we are accessing everywhere in our project so that is why we are passing a new key currentUser to it with req.user so that we can show/hide the things we wants to differentiate when customer is logged or logged out.
+    res.locals.currentUser = req.user; // we have access to the current user, in our middleware file we have function isLoggedIn, there req.user gives us the user details when logged in, now since this app.use with res.local we are accessing everywhere in our project so that is why we are passing a new key currentUser to it with req.user so that we can show/hide the things we wants to differentiate when customer is logged in or logged out.
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     res.locals.info = req.flash('info');
@@ -144,11 +161,13 @@ app.use((req, res, next) => {
 
 app.use('/readingBliss', recommendRoutes);
 app.use('/readingBliss', userRoutes);
+app.use('/readingBliss', connectToCustomerRoutes)
 app.use('/readingBliss', readingBlissRoutes);
 
 app.get('/', (req, res) => {
-    const homeStatic = bookJson.home
-    res.render("home", {homeStatic, bookJson, icons})
+    const homeStatic = bookJson.home;
+    setNavLinkColor({dark: true, light: false});
+    res.render("home", {homeStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor})
 });
 
 app.all('*', (req, res, next) => {
@@ -162,7 +181,8 @@ app.use((err, req, res, next) => {
     const staticError = bookJson.errorScenario.technicalError;
     if(!err.message) err.message = "Something went wrong!!!";
     console.dir(err,"--error ") // Printing this so to know the error message
-    res.status(statusCode).render("error" , {bookJson, icons, staticError});
+    setNavLinkColor({dark: false, light: false});
+    res.status(statusCode).render("error" , {bookJson, icons, staticError, isNavTransparent: false, getNavLinkColor, getNavToggleColor});
 })
 
 app.listen(PORT, () => {
