@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate', {bookJson, icons}) %>
+<% layout('layout/boilerplate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 <div class="container">
   <div class="alert alert-primary d-flex align-items-center mb-5 fade-in-load" role="alert">
     <%-icons.infoIcon%>
@@ -11,7 +11,7 @@
     <div class="gallery-col">
       <% for(let detail1 of details1[0]) { %>
         <a href="/readingBliss/<%= detail1._id %>">
-          <div class="card bg-dark text-white mb-2">
+          <div class="card bg-dark text-white mb-2 image-animation-pulse">
           <img src="<%=detail1.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" class="fade-out-scroll-gallery fade-in-scroll-js"/>
           <div class="card-img-overlay">
               <h4 class="card-title card-title-custom-gallery"><%=detail1.title%></h4>
@@ -23,7 +23,7 @@
     <div class="gallery-col">
       <% for(let detail2 of details2[0]) { %>
         <a href="/readingBliss/<%= detail2._id %>">
-          <div class="card bg-dark text-white mb-2">
+          <div class="card bg-dark text-white mb-2 image-animation-pulse">
             <img src="<%=detail2.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" class="fade-out-scroll-gallery fade-in-scroll-js"/>
             <div class="card-img-overlay">
               <h4 class="card-title card-title-custom-gallery"><%=detail2.title%></h4>
@@ -35,7 +35,7 @@
     <div class="gallery-col">
       <% for(let detail3 of details3[0]) { %>
         <a href="/readingBliss/<%= detail3._id %>">
-          <div class="card bg-dark text-white mb-2">
+          <div class="card bg-dark text-white mb-2 image-animation-pulse">
            <img src="<%=detail3.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" class="fade-out-scroll-gallery fade-in-scroll-js"/>
            <div class="card-img-overlay">
             <h4 class="card-title card-title-custom-gallery"><%=detail3.title%></h4>
@@ -47,7 +47,7 @@
     <div class="gallery-col">
       <% for(let detail4 of details4[0]) { %>
         <a href="/readingBliss/<%= detail4._id %>">
-          <div class="card bg-dark text-white mb-2">
+          <div class="card bg-dark text-white mb-2 image-animation-pulse">
            <img src="<%=detail4.images[0]?.url%>" alt="<%=galleryStatic.picText %>" style="width: 100%" class="fade-out-scroll-gallery fade-in-scroll-js"/>
            <div class="card-img-overlay">
             <h4 class="card-title card-title-custom-gallery"><%=detail4.title%></h4>

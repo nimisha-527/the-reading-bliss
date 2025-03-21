@@ -3,6 +3,21 @@ const Recommend = require('../models/recommend');
 const { bookJson, icons } = require('../public');
 const {cloudinary} = require('../cloudinary');
 
+let getNavLinkColor = '';
+let getNavToggleColor = '';
+const setNavLinkColor = (value) => {
+    const {dark, light} = value;
+    if(dark) {
+        getNavLinkColor = 'nav-link-dark';
+        getNavToggleColor = 'nav-toggle-dark';
+    } else if(light) {
+        getNavLinkColor = 'nav-link-light';
+        getNavToggleColor = 'nav-toggle-light';
+    } else {
+        getNavLinkColor = '';
+        getNavToggleColor = '';
+    }
+}
 module.exports.index = async (req, res) => {
     const booksLibrary = await Books.find({});
     let books;
@@ -13,11 +28,13 @@ module.exports.index = async (req, res) => {
             bookLibrary.push(books);
         }
     }
-    res.render("readingBliss/index", { bookLibrary, booksListStatic, icons, bookJson });
+    setNavLinkColor({dark: false, light: false});
+    res.render("readingBliss/index", { bookLibrary, booksListStatic, icons, bookJson, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.renderNewForm = async (req, res) => {
-    res.render("readingBliss/new", { bookJson, icons })
+    setNavLinkColor({dark: false, light: false});
+    res.render("readingBliss/new", { bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor })
 }
 
 module.exports.addNewBook = async (req, res) => {
@@ -46,7 +63,8 @@ module.exports.addNewBook = async (req, res) => {
 
 module.exports.renderAboutUs = async (req, res) => {
     const aboutUsStatic = bookJson.aboutUs;
-    res.render("readingBliss/aboutUs", { aboutUsStatic, bookJson, icons });
+    setNavLinkColor({dark: false, light: false});
+    res.render("readingBliss/aboutUs", { aboutUsStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.renderGallery = async (req, res) => {
@@ -86,13 +104,15 @@ module.exports.renderGallery = async (req, res) => {
     details3.push(array3);
     details4.push(array4);
 
-    res.render("readingBliss/gallery", { galleryStatic, recommendedBook, recommendedList, details1, details2, details3, details4, icons, bookJson });
+    setNavLinkColor({dark: false, light: false});
+    res.render("readingBliss/gallery", { galleryStatic, recommendedBook, recommendedList, details1, details2, details3, details4, icons, bookJson, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 
 }
 
 module.exports.renderContactUs = async (req, res) => {
     const contactUsStatic = bookJson.contactUs;
-    res.render("readingBliss/contact", { contactUsStatic, bookJson, icons });
+    setNavLinkColor({dark: true, light: false});
+    res.render("readingBliss/contact", { contactUsStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.renderDetailsPage = async (req, res) => {
@@ -109,13 +129,17 @@ module.exports.renderDetailsPage = async (req, res) => {
         return res.redirect('/readingBliss')
     }
     const staticDetails = bookJson.details;
-    res.render("readingBliss/details", { foundBook, icons, staticDetails, bookJson });
+
+    setNavLinkColor({dark: false, light: false});
+    res.render("readingBliss/details", { foundBook, icons, staticDetails, bookJson, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const foundBook = await Books.findById(id);
-    res.render("readingBliss/edit", { book: foundBook, bookJson, icons });
+
+    setNavLinkColor({dark: false, light: false});
+    res.render("readingBliss/edit", { book: foundBook, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.editBooks = async (req, res) => {

@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-custom-fill-primary py-2 px-4 fade-in-scroll-js" data-bs-toggle="modal" data-bs-target="#ModalPopup" data-bs-whatever="<%= foundBook.title %>"><%= staticDetailsRecommend.buttonName  %></button>
+<!-- <button type="button" class="btn btn-primary btn-custom-fill-primary py-2 px-4 fade-in-scroll-js" data-bs-toggle="modal" data-bs-target="#ModalPopup" data-bs-whatever="<%#= foundBook.title %>"><%#= staticDetailsRecommend.buttonName  %></button> -->
 
 <!-- Modal -->
  <% if(!foundBook.recommended) { %>
@@ -14,11 +14,11 @@
         <p><%=staticDetailsRecommend.helperText %></p>
         <form action="/readingBliss/<%= foundBook.id  %>/recommend/<%= currentUser._id  %>" method="POST">
           <div class="mb-3">
-            <label for="image" class="col-form-label"><%=staticDetailsRecommend.imageLinkLabel  %></label>
+            <label for="image" class="form-label"><%=staticDetailsRecommend.imageLinkLabel  %></label>
             <input type="text" class="form-control" id="image" name="image" value="<%= foundBook.images[0].url  %>">
           </div>
           <div class="mb-3">
-            <label for="description-text" class="col-form-label"><%=staticDetailsRecommend.descriptionLabel %></label>
+            <label for="description-text" class="form-label"><%=staticDetailsRecommend.descriptionLabel %></label>
             <textarea class="form-control" id="description-text" name="description" value="<%= foundBook.description  %>"></textarea>
           </div>
           <div class="modal-footer">

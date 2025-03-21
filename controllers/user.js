@@ -1,9 +1,26 @@
 const User = require('../models/user');
 const { bookJson, icons } = require('../public');
 
+let getNavLinkColor = '';
+let getNavToggleColor = '';
+const setNavLinkColor = (value) => {
+    const {dark, light} = value;
+    if(dark) {
+        getNavLinkColor = 'nav-link-dark';
+        getNavToggleColor = 'nav-toggle-dark';
+    } else if(light) {
+        getNavLinkColor = 'nav-link-light';
+        getNavToggleColor = 'nav-toggle-light';
+    } else {
+        getNavLinkColor = '';
+        getNavToggleColor = '';
+    }
+}
+
 module.exports.renderRegisterForm = (req, res) => {
     const registerStatic = bookJson.register;
-    res.render('readingBliss/register', { registerStatic, bookJson, icons });
+    setNavLinkColor({dark: false, light: false});
+    res.render('readingBliss/register', { registerStatic, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.register = async (req, res) => {
@@ -29,14 +46,16 @@ module.exports.register = async (req, res) => {
                 res.redirect('/readingbliss/register');
             }
         } else {
-            req.flash('error', `Something went wrong. Please try again later.`)
+            req.flash('error', 'Something went wrong. Please try again later.');
+            res.redirect('/readingbliss/register');
         }
     }
 }
 
 module.exports.renderLoginForm = (req, res) => {
     const loginStatic = bookJson.login;
-    res.render('readingBliss/login', { loginStatic, bookJson, icons });
+    setNavLinkColor({dark: false, light: false});
+    res.render('readingBliss/login', { loginStatic, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
 module.exports.login = async (req, res) => {
@@ -57,7 +76,7 @@ module.exports.logout = async function(req, res) {
         if(err) {
             return next(err);
         }
-        req.flash('success',`You are successfully logout`);
+        req.flash('success',`You have logged out successfully.`);
         res.redirect('/');
     });
 }

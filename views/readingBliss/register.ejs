@@ -1,29 +1,30 @@
-<% layout('layout/boilerplate', {bookJson, icons}) %>
-
-    <h1 class="text-center mb-3 fade-in-load"><u><b><%=registerStatic.title%></b></u></h1>
-    <div class="shadow-lg bg-info p-5 bg-opacity-75 rounded fade-in-load">
-        <form action="/readingBliss/register" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="name" class="form-label"><%=registerStatic.enterNameLabel%></label>
-                <input type="text" name="name" class="form-control" id="name" autofocus
-                    placeholder="<%=registerStatic.enterNamePlaceholder%>" required>
+<% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
+    <div class="px-md-5 py-5 user-login-register user-login-register">
+        <div class="user-login-register_user container image-animation-pulse">
+            <div class="form-box">
+                <h1 class="text-style fade-in-load">
+                    <%=registerStatic.title%>
+                </h1>
+                <form action="/readingBliss/register" method="POST" class="needs-validation" novalidate>
+                    <div class="input-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name"><%=registerStatic.enterNameLabel%></label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="username" id="username" required>
+                        <label for="username"><%=registerStatic.enterUsernameLabel%></label>
+                    </div>
+                    <div class="input-group mb-5">
+                        <input name="password" type="password" id="password" required>
+                        <label for="password"><%=registerStatic.passwordLabel%></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-custom-fill-primary" value="Submit"><%=registerStatic.actionButtons.signUpButton%></button>
+                    <p class="pt-3 text-center">
+                        <%=registerStatic.loginText %> <a class="d-inline btn btn-link" href="/readingBliss/login">
+                            <%=registerStatic.actionButtons.loginButton%>
+                          </a>
+                      </p>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="username" class="form-label"><%=registerStatic.enterUsernameLabel%></label>
-                <input type="text" name="username" class="form-control" id="username"
-                    placeholder="<%=registerStatic.enterUsernamePlaceholder%>" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label"><%=registerStatic.passwordLabel%></label>
-                <div class="input-group">
-                    <input name="password" type="password" id="password" class="form-control"
-                        placeholder="<%=registerStatic.enterPasswordPlaceHolder%>" required>
-                </div>
-            </div>
-
-            <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-                <button type="submit" class="btn btn-primary btn-custom-fill-primary py-2 px-4" value="Submit"><%=registerStatic.actionButtons.signUpButton%></button>
-                <a href="/readingBliss/login" class="btn btn-link" role="button"><%=registerStatic.actionButtons.loginButton%></a>
-            </div>
-        </form>
+        </div>
     </div>

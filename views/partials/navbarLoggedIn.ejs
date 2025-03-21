@@ -1,34 +1,34 @@
-<nav class="z-1 navbar navbar-expand-lg bg-dark sticky-top py-4" data-bs-theme="dark">
+<nav class="<%-isNavTransparent ? 'z-1 navbar navbar-expand-lg fade-in-scroll-js fixed-top py-4 nav-bar-transparent' : 'z-1 navbar navbar-expand-lg bg-dark sticky-top py-4'%>" data-bs-theme="dark" data-bs-whatever="<%=isNavTransparent%>">
   <div class="container-fluid mx-5">
-    <a class="navbar-brand d-lg-none" href="/"><%=JSON.stringify(navLoggedIn.readingBlissLabel).replaceAll('"', '')%></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand d-lg-none nav-reading-bliss-text" href="/"><%=JSON.stringify(navLoggedIn.readingBlissLabel).replaceAll('"', '')%></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation" data-bs-whatever="<%=getNavToggleColor%>">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="<%- isNavTransparent ? 'transparent collapse navbar-collapse ' : 'collapse navbar-collapse' %>" id="navbarScroll">
+      <ul class="navbar-nav" data-bs-whatever="<%=getNavLinkColor%>">
         <li class="nav-item">
-          <a class="nav-link" href="/"><%=JSON.stringify(navLoggedIn.navItems.homeLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/"><%=JSON.stringify(navLoggedIn.navItems.homeLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingbliss/newBook"><%=JSON.stringify(navLoggedIn.navItems.newBookLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingbliss/newBook"><%=JSON.stringify(navLoggedIn.navItems.newBookLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingbliss"><%=currentUser.name %><%=JSON.stringify(navLoggedIn.navItems.userCollectionLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingbliss"><%=currentUser.name %><%=JSON.stringify(navLoggedIn.navItems.userCollectionLabel).replaceAll('"', '')%></a>
         </li>
       </ul>
-      <a class="display-6 d-none d-lg-flex mx-lg-auto" href="/" style="color: #FFFFFF; text-decoration: none;"><%=JSON.stringify(navLoggedIn.readingBlissLabel).replaceAll('"', '')%></a>
+      <a class="display-6 d-none d-lg-flex mx-lg-auto nav-reading-bliss-text" href="/" style="color: #FFFFFF; text-decoration: none;"><%=JSON.stringify(navLoggedIn.readingBlissLabel).replaceAll('"', '')%></a>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/aboutUs"><%=JSON.stringify(navLoggedIn.navItems.aboutUsLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/aboutUs"><%=JSON.stringify(navLoggedIn.navItems.aboutUsLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/gallery"><%=JSON.stringify(navLoggedIn.navItems.galleryLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/gallery"><%=JSON.stringify(navLoggedIn.navItems.galleryLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/readingBliss/contact"><%=JSON.stringify(navLoggedIn.navItems.contactLabel).replaceAll('"', '')%></a>
+          <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingBliss/contact"><%=JSON.stringify(navLoggedIn.navItems.contactLabel).replaceAll('"', '')%></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/readingbliss/logout"><%=JSON.stringify(navLoggedIn.navItems.logoutLabel).replaceAll('"', '')%></a>
+            <a class="<%-isNavTransparent ? 'nav-link-transparent nav-link' : 'nav-link' %>" href="/readingbliss/logout"><%=JSON.stringify(navLoggedIn.navItems.logoutLabel).replaceAll('"', '')%></a>
           </li>
         <!-- <li class="nav-item form-check form-switch">
           <div class="nav-link">

@@ -9,17 +9,17 @@ if (ModalPopup) {
     // and then do the updating in a callback.
 
     // Update the modal's content.
-    const modalTitle = ModalPopup.querySelector('.modal-title')
+    const modalTitle = ModalPopup.querySelector('#exampleModalLabel');
     modalTitle.textContent = `Recommend - ${bookTitle}`
 
     // Image of the modal
     const modalBodyImage = ModalPopup.querySelector('#image')
-    const imageLink = modalBodyImage.getAttribute('value')
+    const imageLink = modalBodyImage?.getAttribute('value')
     modalBodyImage.value = imageLink
 
     // Description of the modal
     const modalBodyDescription = ModalPopup.querySelector('#description-text')
-    const description = modalBodyDescription.getAttribute('value')
+    const description = modalBodyDescription?.getAttribute('value')
     modalBodyDescription.value = description
   })
 }
