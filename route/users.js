@@ -6,7 +6,7 @@ const userController = require('../controllers/user');
 
 router.route('/register')
 .get(userController.renderRegisterForm)
-.post(wrapAsync(userController.register))
+.post(wrapAsync(userController.register), passport.authenticate('local', {failureFlash: true, failureRedirect: '/readingbliss/register'}))
 
 //passport.authenticate is the method that passport package gives us.
 // By using storeReturnTo middleware fn, we can save the returnTo value to res.locals before passport.authenticate() clears the session and deletes req.session.returnTo. This enables us to access and use returnTo value (via res.locals.returnTo) later the middleware chain so that we can redirect users to the approriate page after they have logged in.

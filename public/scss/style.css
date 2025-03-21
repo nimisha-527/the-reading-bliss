@@ -3,7 +3,7 @@ body {
   scroll-behavior: smooth;
 }
 
-.text-style, .font-family-custom-image-para {
+.text-style, .home .content-wrapper-top-light h3, .home .content-wrapper-top-light .h3, .home .content-wrapper-top-dark h3, .home .content-wrapper-top-dark .h3, .font-family-custom-image-para {
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.9);
 }
 
@@ -109,7 +109,7 @@ a.btn:active, button:active {
   all: unset;
 }
 
-.home--image {
+.home .background-image {
   position: relative;
   height: 100vh;
   background-image: linear-gradient(rgba(76, 62, 79, 0.5), rgba(24, 24, 24, 0.5)), url("https://images.pexels.com/photos/6560997/pexels-photo-6560997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
@@ -117,27 +117,66 @@ a.btn:active, button:active {
   background-repeat: no-repeat;
   background-attachment: fixed;
   transform-origin: bottom;
-  animation: background-image-animation-pulse linear;
+  animation: background-image-animation linear;
   animation-timeline: view();
   animation-range: exit;
 }
-
-.image-wrapper-home {
+.home .content-wrapper-top-dark {
+  background: linear-gradient(to bottom right, #6d5d7a, rgba(217, 203, 183, 0.1) 40%, #ffffff) !important;
+  height: 80vh;
+}
+.home .content-wrapper-top-dark p {
+  font-size: 18px;
+}
+.home .content-wrapper-top-dark h3, .home .content-wrapper-top-dark .h3 {
+  font-size: 38px;
+}
+.home .content-wrapper-top-light {
+  background: linear-gradient(to top left, #6d5d7a, rgba(217, 203, 183, 0.1) 40%, #ffffff) !important;
+  height: 80vh;
+}
+.home .content-wrapper-top-light p {
+  font-size: 18px;
+}
+.home .content-wrapper-top-light h3, .home .content-wrapper-top-light .h3 {
+  font-size: 38px;
+}
+.home .row .image-wrapper-home {
   display: flex;
   align-items: center;
   position: relative;
+  transition: z-index 0.5s; /* Smooth transition for stacking order */
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.image-wrapper-home .img1 {
-  width: 300px;
+.home .row .image-wrapper-home .img1 {
+  position: absolute;
+  z-index: 1; /* Initially image1 is on top */
+  animation: swap 2s infinite ease-in-out; /* Apply the swap animation */
 }
-.image-wrapper-home .img2 {
+.home .row .image-wrapper-home .img2 {
   position: absolute;
   left: 100px; /* Adjust overlap */
   top: 100px; /* Adjust overlap */
-  z-index: 1;
+  z-index: 0;
+  animation: swap 2s infinite 1s ease-in-out; /* Apply the same animation */
 }
 
-@keyframes background-image-animation-pulse {
+@keyframes swap {
+  0% {
+    z-index: 1; /* image1 on top, image2 behind */
+    transform: translateX(50px);
+  }
+  50% {
+    z-index: 0; /* image2 on top, image1 behind */
+    transform: translateX(100px);
+  }
+  100% {
+    z-index: 1; /* image1 back on top, image2 behind */
+    transform: translateX(50px);
+  }
+}
+@keyframes background-image-animation {
   25% {
     opacity: 1;
   }
@@ -250,7 +289,7 @@ a.btn:active, button:active {
 }
 .edit-new-form-design label {
   font-size: 18px !important;
-  color: #d9cbb7;
+  color: #d9cbb7 !important;
   font-weight: 600;
 }
 .edit-new-form-design .form-select {
@@ -404,9 +443,6 @@ a.btn:active, button:active {
       transform: scale(1);
       opacity: 1;
     }
-  }
-  .image-animation-scale-up1 {
-    animation: scale-up1 0.8s infinite ease-in-out;
   }
   .book-container {
     perspective: 1000px;

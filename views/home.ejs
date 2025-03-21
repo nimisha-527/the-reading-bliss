@@ -1,196 +1,51 @@
 <% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
-<!--  When called anywhere inside a template, requests that the output of the current template be passed to the given view as the body local.  -->
-<!-- justify-content-center align-items-center text-center -->
-<!-- <div class="home--image fade-in-load d-flex flex-column justify-content-center align-items-center">
-  <div class="container mt-5">
-    <div class="pb-5">
-      <h1 class="font-family-custom-image-heading text-wrap">
-        <%=homeStatic.title%>
-      </h1>
-      <p class="pt-3 font-family-custom-image-para text-wrap"><%=homeStatic.description %></p>
-    </div>
-  </div>
-  <div class="mt-5 container d-flex align-items-end">
-    <a
-      href="/readingBliss/gallery"
-      class="card-link btn btn-outline-secondary pt-3 py-3 px-5 btn-custom-fill-primary fade-out-scroll"
-      ><%=homeStatic.actionButtons.exploreLabel%></a
-    >
-  </div>
-</div>
-<section class="section mt-5 mb-5 pb-5 d-flex align-items-center" style="height:80vh">
-  <div class="container text-center d-flex flex-column mt-3 fade-in-scroll-js">
-    <h3><%=homeStatic.content.readingCommunityTitle %></h3>
-    <p><%-homeStatic.content.readingCommunityDescription1 %></p>
-  </div>
-</section>
 
-<section class="section mt-5 mb-5 pb-5 d-flex align-items-center" style="background-color: #6d5d7a  ;height:80vh">
-  <div class="container text-center d-flex flex-column mt-3 fade-in-scroll-js">
-    <h6 class="text-white pt-5"><%=homeStatic.description %></h6>
-  </div>
-</section>
-
-<section class="section mt-5 mb-5 pb-5 d-flex align-items-center" style="height:80vh">
-  <div class="container text-center d-flex flex-column mt-3 fade-in-scroll-js">
-    <h3><%=homeStatic.content.booksRAndRTitle %></h3>
-    <p><%-homeStatic.content.booksRAndRDescription1 %></p>
-  </div>
-</section> -->
-
-
-<div class="d-flex flex-column">
-<div class="home--image position-relative fade-in-load">
-  <div class="container position-absolute top-50 start-50 translate-middle mt-5">
-    <div class="px-md-5 text-center">
-      <h1 class="text-white fade-out-scroll font-family-custom-image-heading">
-        <%=homeStatic.title%>
-      </h1>
-      <p class="pt-3 font-family-custom-image-para text-wrap"><%=homeStatic.description %></p>
-      <div class="my-5 fade-out-scroll"></div>
-      <a
-        href="/readingBliss/gallery"
-        class="btn mt-3 py-3 px-5 btn-custom-fill-primary fade-out-scroll"
-        ><%=homeStatic.actionButtons.exploreLabel%></a
-      >
-    </div>
-  </div>
-</div>
-<div class="container my-5 pb-5 d-flex align-items-center shadow rounded" style="background-color: #6d5d7a  ;height:80vh">
-  <div class="container text-center d-flex flex-column mt-3 fade-in-scroll-js">
-    <div class="row text-center">
-      <div class="col d-flex flex-column align-items-center justify-content-center">
-        <h3 style="color: #d9cbb7 !important;"><%=homeStatic.content.readingCommunityTitle %></h3>
-        <p class="text-white"><%-homeStatic.content.readingCommunityDescription1 %></p>
+<div class="d-flex flex-column home fade-in-load">
+  <div class="background-image position-relative">
+    <div class="container position-absolute top-50 start-50 translate-middle mt-5">
+      <div class="px-md-5 text-center fade-in-scroll-js">
+        <h1 class="text-white fade-out-scroll font-family-custom-image-heading">
+          <%=homeStatic.title%>
+        </h1>
+        <p class="pt-3 font-family-custom-image-para text-wrap"><%=homeStatic.description %></p>
+        <div class="my-5 fade-out-scroll"></div>
+        <a
+          href="/readingBliss/gallery"
+          class="btn mt-3 py-3 px-5 btn-custom-fill-primary fade-out-scroll"
+          ><%=homeStatic.actionButtons.exploreLabel%></a
+        >
       </div>
-      <div class="col image-wrapper-home d-none d-md-block">
+    </div>
+  </div>
+
+  <div class="container my-5 pb-5 shadow rounded content-wrapper-top-light d-flex align-items-center">
+    <div class="text-center d-flex flex-column mt-5 fade-in-scroll-js px-md-5">
+      <h3><%=homeStatic.content.booksRAndRTitle %></h3>
+      <p><%-homeStatic.content.booksRAndRDescription1 %></p>
+    </div>
+  </div>
+
+  <div class="container my-5 pb-5 shadow rounded content-wrapper-top-dark border">
+    <div class="container d-flex flex-column mt-3 fade-in-scroll-js pt-3">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="d-flex flex-column justify-content-center text-center fade-in-scroll-js" style="padding-top: 24%;">
+            <h3><%=homeStatic.content.readingCommunityTitle %></h3>
+            <p><%-homeStatic.content.readingCommunityDescription1 %></p>
+          </div>
+        </div>
+        <div class="col-md-5 image-wrapper-home d-none d-md-block fade-in-scroll-js">
+          <img
+          class="shadow img1 rounded border"
+          src="<%=homeStatic.picDetails.firstUrl %>"
+          alt="<%=homeStatic.picDetails.firstText %>"
+        />
         <img
-        class="object-fit-sm-cover shadow img1"
-        src="<%=homeStatic.picDetails.firstUrl %>"
-        alt="<%=homeStatic.picDetails.firstText %>"
-      />
-      <img
-        class="object-fit-sm-cover shadow img2"
-        src="<%=homeStatic.picDetails.secondUrl %>"
-        alt="<%=homeStatic.picDetails.secondText %>"
-      />
+          class="shadow img2 rounded border"
+          src="<%=homeStatic.picDetails.secondUrl %>"
+          alt="<%=homeStatic.picDetails.secondText %>"
+        />
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container mt-5 mb-5 d-flex flex-column pb-5 shadow rounded">
-  <div class="text-center d-flex flex-column mt-5 fade-in-scroll-js">
-    <h3><%=homeStatic.content.booksRAndRTitle %></h3>
-    <p><%-homeStatic.content.booksRAndRDescription1 %></p>
-  </div>
-</div>
-
-<!-- <div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-md-8 text-center">
-      <img
-        class="object-fit-sm-cover shadow fade-in-scroll-image"
-        src="<%=homeStatic.picDetails.firstUrl %>"
-        alt="<%=homeStatic.picDetails.firstText %>"
-      />
-    </div>
-    <div class="col-md-4 text-start d-flex align-items-center">
-      <p><%-homeStatic.description.first %></p>
-    </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-md-4 text-start d-flex align-items-center">
-      <p><%-homeStatic.description.second %></p>
-    </div>
-    <div class="col-md-8 text-center">
-      <img
-        class="object-fit-sm-cover shadow fade-in-scroll-image"
-        src="<%=homeStatic.picDetails.secondUrl %>"
-        alt="<%=homeStatic.picDetails.secondText %>"
-      />
-    </div>
-  </div>
-</div> -->
-
-</div>
-
-
-
-
-<!-- <div class="container mt-5 mb-5 d-flex flex-column pb-5">
-  <div class="text-center d-flex flex-column mt-3 fade-in-scroll-js">
-    <h3><%=homeStatic.content.readingCommunityTitle %></h3>
-    <p><%-homeStatic.content.readingCommunityDescription1 %></p>
-  </div>
-  <div class="text-center d-flex flex-column mt-5 fade-in-scroll-js">
-    <h3><%=homeStatic.content.booksRAndRTitle %></h3>
-    <p><%-homeStatic.content.booksRAndRDescription1 %></p>
-  </div>
-</div> -->
-
-<!-- Image show and hide could use this for the home page cover image -->
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Swap Animation</title>
-  <style>
-    /* Container for images */
-    .image-wrapper {
-      position: relative;
-      width: 300px; /* Width of images */
-      height: 300px; /* Height of images */
-      overflow: hidden;
-    }
-
-    /* Base styling for both images */
-    .image-wrapper img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    /* Image 1 styling */
-    .img1 {
-      z-index: 1; /* Initially image1 is on top */
-      animation: swap 4s infinite; /* Animation for swapping */
-    }
-
-    /* Image 2 styling */
-    .img2 {
-      z-index: 0; /* Initially image2 is behind image1 */
-      animation: swap 4s infinite 2s; /* Same animation but delayed by 2 seconds */
-    }
-
-    /* Keyframes for swap animation */
-    @keyframes swap {
-      0% {
-        opacity: 1;
-        z-index: 1;
-      }
-      50% {
-        opacity: 0;
-        z-index: 0;
-      }
-      100% {
-        opacity: 1;
-        z-index: 1;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Image wrapper containing two images -->
-  <div class="image-wrapper">
-    <img src="https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2" alt="Image 1" class="img1">
-    <img src="https://images.pexels.com/photos/5604251/pexels-photo-5604251.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2" alt="Image 2" class="img2">
-  </div>
-
-</body>
-</html> -->

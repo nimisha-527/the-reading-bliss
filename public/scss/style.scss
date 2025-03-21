@@ -121,72 +121,84 @@ a.btn:active, button:active {
 
 // BACKGROUND
 //https://res.cloudinary.com/dzjms6aad/image/upload/v1741162788/background-image2_dkhyt5.webp
-.home--image {
-  position: relative;
-  height: 100vh;
-  background-image:linear-gradient(rgba($primary, 0.5), rgba(24, 24, 24, 0.5)),
-  url("https://images.pexels.com/photos/6560997/pexels-photo-6560997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-  background-size: cover;
-  // text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  transform-origin: bottom;
-  animation: background-image-animation-pulse linear;
-  animation-timeline: view();
-  animation-range: exit;
+.home {
+  .background-image {
+    position: relative;
+    height: 100vh;
+    background-image:linear-gradient(rgba($primary, 0.5), rgba(24, 24, 24, 0.5)),
+    url("https://images.pexels.com/photos/6560997/pexels-photo-6560997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+    // text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transform-origin: bottom;
+    animation: background-image-animation linear;
+    animation-timeline: view();
+    animation-range: exit;
+  }
+  @mixin content-wrapper-mixin($options) {
+    @include gradient-linear(
+      linear-gradient(
+        map-get($options, 'linearGradientPosition'), 
+        map-get($options, 'linearGradientColor1') , 
+        map-get($options, 'linearGradientColor2'), 
+        map-get($options, 'linearGradientColor3')
+      ));
+      height: 80vh;
+      p {
+        font-size:  map-get($options, 'paraFontSize');
+      }
+      h3 {
+        @extend .text-style;
+        font-size: map-get($options, 'h3FontSize');
+      }
+  }
+  .content-wrapper-top-dark {
+    @include content-wrapper-mixin((
+      'linearGradientPosition': to bottom right,
+      'linearGradientColor1': #6d5d7a,
+      'linearGradientColor2': rgba(217, 203, 183, 0.1) 40%,
+      'linearGradientColor3': $white,
+      'paraFontSize': 18px,
+      'h3FontSize': 38px
+    ));
+    // @include gradient-linear(linear-gradient(to bottom right, #6d5d7a , rgba(217, 203, 183, 0.1) 40%, #ffffff));
+  }
+  .content-wrapper-top-light {
+    @include content-wrapper-mixin((
+      'linearGradientPosition': to top left,
+      'linearGradientColor1': #6d5d7a,
+      'linearGradientColor2': rgba(217, 203, 183, 0.1) 40%,
+      'linearGradientColor3': $white,
+      'paraFontSize': 18px,
+      'h3FontSize': 38px
+    ));   
+  }
+  .row {
+    .image-wrapper-home {
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: z-index 0.5s; /* Smooth transition for stacking order */
+      object-fit: cover;
+
+      .img1 {
+        position: absolute;
+        // width: 300px;
+        z-index: 1; /* Initially image1 is on top */
+        animation: swap 2s infinite ease-in-out; /* Apply the swap animation */
+      }
+      .img2 {
+        position: absolute;
+        left: 100px; /* Adjust overlap */
+        top: 100px; /* Adjust overlap */
+        z-index: 0;
+        animation: swap 2s infinite 1s ease-in-out; /* Apply the same animation */
+      }
+    }
+  }
 }
 
-// .image-wrapper-home {
-//   display: flex;
-//   align-items: center;
-//   position: relative;
-//   .img1 {
-//     width: 300px;
-//   }
-//   .img2 {
-//     position: absolute;
-//     left: 100px; /* Adjust overlap */
-//     top: 100px; /* Adjust overlap */
-//     z-index: 1;
-//   }
-// }
-
-// /* Container for images */
-// .image-wrapper {
-//   position: relative;
-//   width: 300px; /* Width of images */
-//   height: 300px; /* Height of images */
-//   overflow: hidden;
-// }
-
-.image-wrapper-home {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: z-index 0.5s; /* Smooth transition for stacking order */
-  .img1 {
-    z-index: 1; /* Initially image1 is on top */
-    width: 300px;
-    position: absolute;
-    animation: swap 2s infinite ease-in-out; /* Apply the swap animation */
-    border-radius: 5px;
-    /* transition: 2s ease-in-out; */
-  }
-  
-  .img2 {
-      border-radius: 5px;
-    z-index: 0; /* Initially image2 is behind image1 */
-    left: 100px; /* Adjust overlap */
-    top: 100px; /* Adjust overlap */
-    width: 300px;
-    position: absolute;
-    animation: swap 2s infinite 1s ease-in-out; /* Apply the same animation */
-    /* transition: 4s ease-in-out; */
-  }
-}
 @keyframes swap {
   0% {
     z-index: 1; /* image1 on top, image2 behind */
@@ -202,7 +214,7 @@ a.btn:active, button:active {
   }
 }
 
-@keyframes background-image-animation-pulse {
+@keyframes background-image-animation {
   25% {opacity:1}
   85%, 100% {opacity: 0; scale: 2}
 }
@@ -314,10 +326,10 @@ a.btn:active, button:active {
 }
 
 .edit-new-form-design {
-  @include gradient-linear(linear-gradient(to bottom, #6d5d7a , rgba(217, 203, 183, 0.1) 50%, #ffffff));
+  @include gradient-linear(linear-gradient(to bottom, #6d5d7a , rgba(217, 203, 183, 0.1) 50%, $white));
   & label {
     font-size: 18px !important;
-    color: #d9cbb7;
+    color: #d9cbb7 !important;
     font-weight: 600;
   }
   .form-select {

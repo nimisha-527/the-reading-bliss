@@ -46,7 +46,8 @@ module.exports.register = async (req, res) => {
                 res.redirect('/readingbliss/register');
             }
         } else {
-            req.flash('error', `Something went wrong. Please try again later.`)
+            req.flash('error', 'Something went wrong. Please try again later.');
+            res.redirect('/readingbliss/register');
         }
     }
 }
