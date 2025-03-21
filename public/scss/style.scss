@@ -128,7 +128,6 @@ a.btn:active, button:active {
     background-image:linear-gradient(rgba($primary, 0.5), rgba(24, 24, 24, 0.5)),
     url("https://images.pexels.com/photos/6560997/pexels-photo-6560997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
     background-size: cover;
-    // text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
     background-repeat: no-repeat;
     background-attachment: fixed;
     transform-origin: bottom;
@@ -162,7 +161,6 @@ a.btn:active, button:active {
       'paraFontSize': 18px,
       'h3FontSize': 38px
     ));
-    // @include gradient-linear(linear-gradient(to bottom right, #6d5d7a , rgba(217, 203, 183, 0.1) 40%, #ffffff));
   }
   .content-wrapper-top-light {
     @include content-wrapper-mixin((
@@ -485,25 +483,6 @@ a.btn:active, button:active {
   .image-animation-pulse {
     animation: pulse 0.8s ease-in-out;
   }
-
-  @keyframes scale-up1 {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.7;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
-  // .image-animation-scale-up1 {
-  //   animation: scale-up1 0.8s infinite ease-in-out;
-  // }
 
   
   // BOOK FLIP ANIMATION
