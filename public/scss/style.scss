@@ -339,12 +339,6 @@ a.btn:active, button:active {
   color: #4c3e4f !important;
 }
 
-// CONTACT US PAGE DESIGN
-
-// .contactUs-container {
-//   overflow: hidden;
-// }
-
 @media (prefers-reduced-motion: no-preference) {
 
   @mixin slide-to-left_right-animation($animationName, $animationTimeLine) {
@@ -430,18 +424,6 @@ a.btn:active, button:active {
   @keyframes fade-in-image {
     to{scale: 1; opacity: 1;}
   }
-
-  .transparent.navbar-collapse.show {
-    padding: 8px 0 0 8px !important;
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 100vh;
-    // background-color: rgba(76, 62, 79, 0.8) !important;
-    background-color: #4c3e4f !important;
-    font-size: 24px;
-    transition: 0.5s ease;
-    color: $white !important;
-  }
-
 
   @keyframes slideLeft {
     @include slide-to-left_right-keyframes(translateX(40%))

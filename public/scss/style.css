@@ -362,18 +362,6 @@ a.btn:active, button:active {
       opacity: 1;
     }
   }
-  .transparent.navbar-collapse.show {
-    padding: 8px 0 0 8px !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    background-color: #4c3e4f !important;
-    font-size: 24px;
-    transition: 0.5s ease;
-    color: #ffffff !important;
-  }
   @keyframes slideLeft {
     from {
       transform: translateX(40%);
