@@ -52,9 +52,9 @@ Reading Bliss is the library website. It hosts the books of the user/owner.
    ## .env setup
    You will need to setup the .env to run the project:
    - Create a cloudinary account
-    - Add CLOUDINARY_CLOUD_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET.
-   - Create a Mongo Atlas account to connect your Database and set network (add your current IP address).  
-    - DB_URL(this you will get when you will connect your project in the Mongo Atlas).
+   	- Add following keys: CLOUDINARY_CLOUD_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET.
+   - Create a Mongo Atlas account to connect your Database and set network (add your current IP address).
+   	- DB_URL(this you will get when you will connect your project in the Mongo Atlas).
 
 
 # Tech Stack
