@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-column home fade-in-load">
   <div class="background-image position-relative">
-    <div class="container position-absolute top-50 start-50 translate-middle mt-5">
+    <div class="container position-absolute top-50 start-50 translate-middle mt-md-5">
       <div class="px-md-5 text-center fade-in-scroll-js">
         <h1 class="text-white fade-out-scroll font-family-custom-image-heading">
           <%=homeStatic.title%>
@@ -25,11 +25,17 @@
     </div>
   </div>
 
-  <div class="container my-5 pb-5 shadow rounded content-wrapper-top-dark border">
+  <div class="container my-md-5 pb-md-5 shadow rounded content-wrapper-top-dark border">
     <div class="container d-flex flex-column mt-3 fade-in-scroll-js pt-3">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-7 d-none d-md-block">
           <div class="d-flex flex-column justify-content-center text-center fade-in-scroll-js" style="padding-top: 24%;">
+            <h3><%=homeStatic.content.readingCommunityTitle %></h3>
+            <p><%-homeStatic.content.readingCommunityDescription1 %></p>
+          </div>
+        </div>
+        <div class="col-md-7 d-md-none d-xs-block">
+          <div class="d-flex flex-column justify-content-center text-center fade-in-scroll-js">
             <h3><%=homeStatic.content.readingCommunityTitle %></h3>
             <p><%-homeStatic.content.readingCommunityDescription1 %></p>
           </div>

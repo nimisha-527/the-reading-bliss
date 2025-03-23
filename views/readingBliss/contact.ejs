@@ -1,6 +1,6 @@
 <% layout('./layout/imageBoilerPlate', {bookJson, icons, isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
 
-  <div class="fade-in-load mt-5">
+  <div class="fade-in-load mt-5 contactUs-container">
     <div class="container py-md-5 pb-5">
         <div class="row pt-md-5">
           <div class="col-md-8 py-md-5 px-5 large-text">
@@ -30,13 +30,13 @@
     </div>
     <div class="background-dark pt-5 pb-5 px-2">
       <div class="container d-flex justify-content-md-around flex-md-row flex-column align-items-center gap-5 pb-md-5 pt-md-5">
-        <div class="fade-in-scroll-js slide-to-right-animation_scroll">
+        <div class="slide-to-right-animation_scroll">
           <h2 class="text-style" style="color: #fff !important;"><%-contactUsStatic.formSection.title %></h2>
           <p style="color: #d9cbb7 !important"><%-contactUsStatic.formSection.description %></p>
         </div>
 
-        <div class="fade-in-scroll-js w-75">
-          <form action="/readingBliss/connectToCustomer" class="needs-validation slide-to-left-animation_scroll" novalidate method="POST">
+        <div class="fade-in-scroll-js w-75 slide-to-left-animation_scroll">
+          <form action="/readingBliss/connectToCustomer" class="needs-validation" novalidate method="POST">
               <div class="mb-3">
                 <input type="text" name="customerName" class="form-control" id="name" placeholder="<%-contactUsStatic.formSection.formContent.namePlaceHolder %>" required>
               </div>
