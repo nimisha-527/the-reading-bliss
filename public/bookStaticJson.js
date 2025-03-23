@@ -160,7 +160,7 @@ const staticJson = {
             "email": {
                 "emailLabel": "<span style='color: #afa494'>Email</span>",
                 "emailText": "Have a query or feedback? Drop us an email at:",
-                "emailValue": `some@email.com`,
+                "emailValue": `test@test.com`,
             },
             "phone": {
                 "phoneLabel": "<span style='color: #afa494'>Phone</span>",
@@ -211,16 +211,18 @@ const staticJson = {
         }
     },
     "navbarLoggedOut": {
+        "readingBlissLabel": "Reading Bliss",
         "picDetails": {
             "logo": "https://res.cloudinary.com/dzjms6aad/image/upload/c_thumb,w_200,g_face/v1738393828/sqaure-logo1_qk8cgq.webp",
-            "logoText": "Reading Bliss",
+            "logoText": "Reading Bliss Logo",
         },
         "navItems": {
             "galleryLabel": "Gallery",
             "aboutUsLabel": "About US",
             "contactLabel": "Contact",
             "registerLabel" : "Register",
-            "loginLabel": "Login"
+            "loginLabel": "Login",
+            "homeLabel": "Home"
         }
     },
     "navbarLoggedIn": {
@@ -231,7 +233,7 @@ const staticJson = {
             "galleryLabel": "Gallery",
             "contactLabel": "Contact",
             "newBookLabel" : "New Book",
-            "logoutLabel": "Logout",
+            "logoutLabel": "Sign Out",
             "userCollectionLabel": "'s Collection"
         }
     },

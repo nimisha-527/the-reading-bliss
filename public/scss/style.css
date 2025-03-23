@@ -362,18 +362,6 @@ a.btn:active, button:active {
       opacity: 1;
     }
   }
-  .transparent.navbar-collapse.show {
-    padding: 8px 0 0 8px !important;
-    position: fixed;
-    top: 85%;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    background-color: rgba(76, 62, 79, 0.8) !important;
-    font-size: 24px;
-    transition: 0.5s ease;
-    color: #ffffff !important;
-  }
   @keyframes slideLeft {
     from {
       transform: translateX(40%);
@@ -430,6 +418,9 @@ a.btn:active, button:active {
   .image-animation-pulse {
     animation: pulse 0.8s ease-in-out;
   }
+  .aboutUs-container {
+    overflow: hidden;
+  }
   .book-container {
     perspective: 1000px;
   }
@@ -473,12 +464,16 @@ a.btn:active, button:active {
   .page:nth-child(4) {
     animation-delay: 1.5s;
   }
+  .ball-container {
+    position: relative;
+  }
   .ball {
     position: absolute;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     animation: orbit 5s infinite linear;
+    overflow: visible;
   }
   .ball:nth-child(odd) {
     background-color: #d9cbb7;
@@ -491,7 +486,7 @@ a.btn:active, button:active {
       transform: rotate(120deg) translateX(700px) rotate(240deg);
     }
     100% {
-      transform: rotate(480deg) translateX(30px) rotate(-600deg);
+      transform: rotate(480deg) translateX(70px) rotate(-600deg);
     }
   }
   .ball:nth-child(1) {
