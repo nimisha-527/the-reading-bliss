@@ -2,23 +2,23 @@
 <%- include("../partials/carousal", {carousalDetails: bookJson.carousal}) %>
 <div class="p-5 rounded fade-in-scroll-js edit-new-form-design bg-dark">
 <form action="/readingBliss" class="needs-validation container p-md-5" novalidate enctype="multipart/form-data" method="POST">
-    <div class="mb-3">
+    <div class="mb-3 slide-to-right-animation_scroll">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>
         <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.newBook.productName.placeHolder%>" required>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 slide-to-left-animation_scroll">
         <label for="author" class="form-label"><%=bookJson.newBook.productAuthor.label%></label>
         <input type="text" class="form-control" name="author" id="author" placeholder="<%=bookJson.newBook.productAuthor.placeHolder%>" required>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 slide-to-right-animation_scroll">
         <label for="images" class="form-label"><%=bookJson.newBook.productImage.label%></label>
         <input type="file" name="images" class="form-control" id="images" multiple>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 slide-to-left-animation_scroll">
         <label for="description" class="form-label"><%=bookJson.newBook.productDescription.label%></label>
         <textarea type="text" class="form-control" name="description" id="description" placeholder="<%=bookJson.newBook.productDescription.placeHolder%>" rows="3" required></textarea>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 slide-to-right-animation_scroll">
         <label for="category"><%=bookJson.newBook.productCategory.label%></label>
         <select id="category" name="category" type="text" class="form-select" aria-label="Default select example">
             <% for(let category of bookJson.newBook.productCategory.categoryValues) { %>
