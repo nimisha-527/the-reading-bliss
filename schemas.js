@@ -1,6 +1,7 @@
 const BaseJoi = require('joi');
-// const { type } = require('os');
-const sanitize = require('sanitize-html');
+
+const htmlPattern = /(?:<[^>]+>|&(?:lt|gt|amp);|javascript:|on[a-z0-9-]+=)/i;
+
 
 const extension = (joi) => ({
     type: 'string',
@@ -11,18 +12,21 @@ const extension = (joi) => ({
     rules: {
         escapeHTML: {
             validate(value, helpers) {
-                const clean = sanitize(value, {
-                    allowedTages: [],
-                    allowedAttributes: {}
-                });
-                if(clean !== value) return helpers.error('string.escapeHTML', {value})
-                    return clean;
+                if (typeof value !== 'string') {
+                    return value;
+                }
+
+                if (htmlPattern.test(value)) {
+                    return helpers.error('string.escapeHTML', { value });
+                }
+
+                return value;
             }
         }
     }
 });
 
-const Joi = BaseJoi.extend(extension)
+const Joi = BaseJoi.extend(extension);
 
 module.exports.booksSchema = Joi.object({
     title: Joi.string().required().escapeHTML(),
