@@ -23,7 +23,7 @@ module.exports.renderRegisterForm = (req, res) => {
     res.render('readingBliss/register', { registerStatic, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.register = async (req, res) => {
+module.exports.register = async (req, res, next) => {
     // const {username, password, emailId, name} = req.body
     const {username, password, name} = req.body
     try {
@@ -71,7 +71,7 @@ module.exports.login = async (req, res) => {
     }
 }
 
-module.exports.logout = async function(req, res) {
+module.exports.logout = async function(req, res, next) {
     req.logout(function(err) {
         if(err) {
             return next(err);

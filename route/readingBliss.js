@@ -5,9 +5,9 @@ const reviewsRoutes = require('./reviews');
 const readingBlissController = require('../controllers/readingBliss');
 // const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
 const multer  = require('multer');
-const { storage } = require('../cloudinary');
+const { uploadFile } = require('../cloudinary');
 // const upload = multer({ dest: 'uploads/' }); // using this the destination was set to uploads folder in the root of our project but it is better to upload the files so it does not use the local storage in cloud. For that we use cloudinary.
-const upload = multer({ storage });
+const upload = multer({ storage: uploadFile, limits: { fileSize:  5 * 1024 * 1024 } });
 
 router.get('/', isLoggedIn, wrapAsync(readingBlissController.index));
 
