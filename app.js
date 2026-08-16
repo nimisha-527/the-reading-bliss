@@ -19,9 +19,9 @@ const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
-// const dbUrl = "mongodb://localhost:27017/reading-bliss"
+// const dbUrl = "mongodb://127.0.0.1:27017/reading-bliss"
 
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').default;
 mongoose.connect(dbUrl)
 .then(() => {
     console.log("Mongo Connection established")
@@ -170,7 +170,7 @@ app.get('/', (req, res) => {
     res.render("home", {homeStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor})
 });
 
-app.all('*', (req, res, next) => {
+app.all(/.*/, (req, res, next) => {
     // next(new expressError("PAGE NOT FOUND", 404));
     const staticPageNotFound = bookJson.errorScenario.pageNotFound;
     res.render("readingBliss/pageNotFound", {staticPageNotFound});
