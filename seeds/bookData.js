@@ -6,11 +6,11 @@ const bookData = [
         "category": "Thriller",
         "images": [
             {
-                "url": 'https://i.pinimg.com/originals/65/bc/7e/65bc7e580e28a66d2b35374be74ecec9.jpg',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837849/silent-patient_wz4bze.jpg',
                 "filename": 'seeds1'
             }
         ],
-        "owner": "6782986ea62dc941714edff3"
+        "owner": "6aaed613f44fed6191ce4ae7"
     },
     {
         "title": "Where the Crawdads Sing",
@@ -19,11 +19,11 @@ const bookData = [
         "category": "Fiction",
         "images": [
             {
-                "url": 'https://www.gateshousings.com/wp-content/uploads/2022/06/WHERE-CRAWDADS-SING-558X793.png',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837857/WHERE-CRAWDADS-SING-558X793_elxqqa.png',
                 "filename": 'seeds2'
             }
         ],
-        "owner": "6782986ea62dc941714edff3"
+        "owner": "6aaed613f44fed6191ce4ae7"
     },
     {
         "title": "The Midnight Library",
@@ -32,11 +32,11 @@ const bookData = [
         "category": "Fantasy",
         "images": [
             {
-                "url": 'https://michellehickey.design/wp-content/uploads/2021/04/the-midnight-library-book-review-from-michelle-hickey-2-scaled.jpg',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837849/the-midnight-library_icsdso.jpg',
                 "filename": 'seeds3'
             }
         ],
-        "owner": "6782986ea62dc941714edff3"
+        "owner": "6aaed613f44fed6191ce4ae7"
     },
     {
         "title": "Educated",
@@ -45,11 +45,11 @@ const bookData = [
         "category": "Memoir",
         "images": [
             {
-                "url": 'https://picsum.photos/id/24/200/200',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837815/Educated_cyk33q.jpg',
                 "filename": 'seeds4'
             }
         ],
-        "owner": "6782986ea62dc941714edff3",
+        "owner": "6aaed613f44fed6191ce4ae7",
         "recommended": true
     },
     {
@@ -59,11 +59,11 @@ const bookData = [
         "category": "Literary Fiction",
         "images": [
             {
-                "url": 'https://tyshiashante.com/wp-content/uploads/2020/08/The-Vanishing-Half-1024x820.jpg',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837849/The-Vanishing-Half_attcwn.jpg',
                 "filename": 'seeds5'
             }
         ],
-        "owner": "6782986ea62dc941714edff3"
+        "owner": "6aaed613f44fed6191ce4ae7"
     },
     {
         "title": "The Invisible Life of Addie LaRue",
@@ -72,79 +72,79 @@ const bookData = [
         "category": "Fantasy",
         "images": [
             {
-                "url": 'https://i0.wp.com/www.hooksbookswanderlust.com/wp-content/uploads/2022/03/Addie-LaRue.jpg?resize=600%2C600&ssl=1',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837815/Addie-LaRue_xlnhlb.webp',
                 "filename": 'seeds6'
             }
         ],
-        "owner": "6782986ea62dc941714edff3"
+        "owner": "6aaed613f44fed6191ce4ae7"
     },
     {
-        "owner": '6781402d231ec2db658a038d',
+        "owner": '6aaeba96ddce8b8102b0a2ae',
         "title": "Klara and the Sun",
         "author": "Kazuo Ishiguro",
         "description": "A poignant exploration of love and artificial intelligence through the eyes of an artificial friend.",
         "category": "Science Fiction",
         "images": [
             {
-                "url": 'https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22337411/headshots_1614627884458.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837831/klara-and-sun_vnhlto.webp',
                 "filename": 'seeds7'
             }
         ],
     },
     {
-        "owner": '6781402d231ec2db658a038d',
+        "owner": '6aaeba96ddce8b8102b0a2ae',
         "title": "The Seven Husbands of Evelyn Hugo",
         "author": "Taylor Jenkins Reid",
         "description": "A historical fiction novel about an aging Hollywood icon recounting her glamorous and scandalous life.",
         "category": "Historical Fiction",
         "images": [
             {
-                "url": 'https://perireads.com/wp-content/uploads/2021/12/The-Seven-Husbands-of-Evelyn-Hugo-Feature.jpg',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837849/The-Seven-Husbands-of-Evelyn-Hugo-Feature_ojgrxb.jpg',
                 "filename": 'seeds8'
             }
         ],
     },
     {
-        "owner": '6781402d231ec2db658a038d',
+        "owner": '6aaeba96ddce8b8102b0a2ae',
         "title": "Circe",
         "author": "Madeline Miller",
         "description": "A retelling of the life of Circe, a powerful witch from Greek mythology, exploring themes of empowerment and solitude.",
         "category": "Fantasy",
         "images": [
             {
-                "url": 'https://i0.wp.com/fannaforbooks.com/wp-content/uploads/2019/05/circe-by-madeline-miller-fanna-for-books.jpg?fit=1400%2C1600&ssl=1',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837816/circe-by-madeline-miller-fanna-for-books_fo3jfc.webp',
                 "filename": 'seeds9'
             }
         ],
     },
     {
-        "owner": '6781402d231ec2db658a038d',
+        "owner": '6aaeba96ddce8b8102b0a2ae',
         "title": "Daisy Jones & The Six",
         "author": "Taylor Jenkins Reid",
         "description": "A fictional oral history of a rock band in the 1970s, capturing the complexities of love, fame, and music.",
         "category": "Historical Fiction",
         "images": [
             {
-                "url": 'https://ashsinfinitelibrary.wordpress.com/wp-content/uploads/2019/03/daisy.jpg',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837816/daisy_r5demp.jpg',
                 "filename": 'seeds10'
             }
         ],
         "recommended": true
     },
     {
-        "owner": '6781402d231ec2db658a038d',
+        "owner": '6aaeba96ddce8b8102b0a2ae',
         "title": 'Harry Potter and Philosopher Stone',
         "author": 'J. K. Rowling',
         "description": 'This book is amzazingg',
         "category": 'Fiction',
         "images": [
             {
-                "url": 'https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_360,c_scale,dpr_1.5/jackets/9781408855652.jpg',
+                "url": 'https://res.cloudinary.com/dzjms6aad/image/upload/v1789837816/9781408855652_pw188j.jpg',
                 "filename": 'seeds11'
             }
         ],
         "recommended": true
-      }
+    }
 ]
 
-module.exports = bookData
+export default bookData

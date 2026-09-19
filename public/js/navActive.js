@@ -6,7 +6,6 @@ const navBrand = document.querySelectorAll('.nav-reading-bliss-text');
 const navbar = document.querySelectorAll('.navbar');
 const pathName = window.location.pathname;
 
-// console.log(pathName,"--pathName")
 navLink.forEach(navLinkElement => {
     const navLinkPathName = navLinkElement?.href ? new URL(navLinkElement?.href)?.pathname : window.location.pathname;
     if((navLinkPathName && pathName === navLinkPathName)) {

@@ -1,8 +1,8 @@
-const express = require('express');
+import express from "express";
+import { wrapAsync } from "../utils/index.js";
+import {submitRequest} from "../controllers/connectToCustomer.js";
 const router = express.Router();
-const { wrapAsync } = require('../utils');
-const connectToCustomerController = require('../controllers/connectToCustomer');
 
-router.post('/connectToCustomer', wrapAsync(connectToCustomerController.submitRequest));
+router.post('/connectToCustomer', wrapAsync(submitRequest));
 
-module.exports = router;
+export default router;

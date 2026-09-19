@@ -63,6 +63,10 @@ Reading Bliss is the library website. It hosts the books of the user/owner.
 - *Backend*: ExpressJs
 - *Storage*: Cloudinary
 
+## To run the local changes:
+  - Point to local DB url
+  - run `node seeds/index.js` to seed the database with sample data
+
 # Future Roadmap
 
 - Optimizing the code.

@@ -1,10 +1,10 @@
-const readingBlissRoutes = require('./readingBliss');
-const reviewsRoutes = require('./reviews');
-const userRoutes = require('./users');
-const recommendRoutes = require('./recommend');
-const connectToCustomerRoutes = require('./connectToCustomer');
+import readingBlissRoutes from './readingBliss.js';
+import reviewsRoutes from './reviews.js';
+import userRoutes from './users.js';
+import recommendRoutes from './recommend.js';
+import connectToCustomerRoutes from './connectToCustomer.js';
 
-module.exports = {
+export {
     readingBlissRoutes,
     reviewsRoutes,
     userRoutes,

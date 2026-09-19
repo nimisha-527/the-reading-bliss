@@ -1,27 +1,33 @@
 // ejs-mate is used for layout, partials and block template functions for the EJS template engine
-if(process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
+import dotenv from "dotenv";
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
 }
-const express = require('express');
+
+import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import methodOverride from "method-override";
+import mongoose from "mongoose";
+import ejsMate from "ejs-mate";
+import session from "express-session";
+import flash from "connect-flash";
+import passport from "passport";
+import LocalStrategy from "passport-local";
+import mongoSanitize from "express-mongo-sanitize";
+import helmet from "helmet";
+import mongoStore from "connect-mongo";
+
+import {bookJson, icons} from "./public/index.js";
+import { readingBlissRoutes, userRoutes, recommendRoutes, connectToCustomerRoutes } from "./route/index.js";
+import User from "./models/user.js";
+
+const MongoStore = mongoStore;
 const app = express();
-const path = require('path');
-const methodOverride = require('method-override');
-// const { fileURLToPath } = require('url');
-const mongoose = require('mongoose');
-const { bookJson, icons } = require('./public');
-const ejsMate = require('ejs-mate');
-const { readingBlissRoutes, userRoutes, recommendRoutes, connectToCustomerRoutes } = require('./route');
-const session = require('express-session');
-const flash = require('connect-flash');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const User = require('./models/user');
-const mongoSanitize = require('express-mongo-sanitize');
-const helmet = require("helmet");
+const __filename = fileURLToPath(import.meta.url); // use this when using "type": "module" in the package.json for implementing import & export instead of require
+const __dirname = path.dirname(__filename); // use this when using "type": "module" in the package.json for implementing import & export instead of require
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
 // const dbUrl = "mongodb://127.0.0.1:27017/reading-bliss"
-
-const MongoStore = require('connect-mongo').default;
 mongoose.connect(dbUrl)
 .then(() => {
     console.log("Mongo Connection established")
@@ -38,19 +44,19 @@ db.once("open", () => {
     console.log("Connected Successfully to database")
 })
 
-// const __filename = fileURLToPath(import.meta.url); // use this when using "type": "module" in the package.json for implementing import & export instead of require
-// const __dirname = path.dirname(__filename);
 app.engine('ejs', ejsMate); // defining ejs engine to ejsmate to tell the app that we will not use default one but this one
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
 app.use(express.static( path.join(__dirname, "public") ));
 app.use(express.urlencoded({extended: true}));
-app.use(
-    mongoSanitize({
-      replaceWith: '--',
-    }),
-);
+app.use((req, res, next) => {
+    const sanitizeOptions = {replaceWith: '--'};
+    [req.body, req.params, req.headers, req.query].forEach((value) => {
+        if (value) mongoSanitize.sanitize(value, sanitizeOptions);
+    });
+    next();
+});
 
 const secret = process.env.SECRET_KEY || 'thisisnotasecret';
 const store = MongoStore.create({

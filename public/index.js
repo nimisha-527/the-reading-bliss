@@ -1,12 +1,7 @@
-const bookJson = require("./bookStaticJson");
-const {galleryImages1, galleryImages2, galleryImages3, galleryImages4} = require("./static/imageGallery");
-const {icons} = require("./icons");
+import bookJson from "./bookStaticJson.js";
+export * from "./static/imageGallery.js";
+export * from "./icons/index.js";
 
-module.exports = {
-    bookJson,
-    galleryImages1,
-    galleryImages2,
-    galleryImages3,
-    galleryImages4,
-    icons
+export  {
+    bookJson
 };

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Reviews = require("./review");
+import mongoose from "mongoose";
+import Reviews from "./review.js";
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
@@ -55,4 +55,4 @@ bookSchema.post('findOneAndDelete', async function (doc) {
 
 const Books = mongoose.model('Books', bookSchema);
 
-module.exports = Books;
+export default Books;

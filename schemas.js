@@ -1,4 +1,6 @@
-const BaseJoi = require('joi');
+// const BaseJoi = require('joi');
+
+import BaseJoi from 'joi';
 
 const htmlPattern = /(?:<[^>]+>|&(?:lt|gt|amp);|javascript:|on[a-z0-9-]+=)/i;
 
@@ -28,14 +30,14 @@ const extension = (joi) => ({
 
 const Joi = BaseJoi.extend(extension);
 
-module.exports.booksSchema = Joi.object({
+export const booksSchema = Joi.object({
     title: Joi.string().required().escapeHTML(),
     author: Joi.string().required().escapeHTML(),
     description: Joi.string().required().escapeHTML(),
     category: Joi.string().required().escapeHTML()
 }).required();
 
-module.exports.reviewSchema = Joi.object({
+export const reviewSchema = Joi.object({
     review: Joi.object({
         body: Joi.string().required().escapeHTML(),
         rating: Joi.number().required() 

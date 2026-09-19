@@ -17,7 +17,7 @@
 
   <body class="d-flex flex-column">
     <%#=JSON.stringify(getNavLinkColor)%>
-      <% if(currentUser) { %>
+      <% if(typeof currentUser !== 'undefined' && currentUser) { %>
         <%- include("../partials/navbarLoggedIn", {navLoggedIn: bookJson.navbarLoggedIn, isNavTransparent: isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
       <% } else { %>
         <%- include("../partials/navbar", {navLoggedOut: bookJson.navbarLoggedOut, isNavTransparent: isNavTransparent, getNavLinkColor, getNavToggleColor}) %>
@@ -29,7 +29,10 @@
         successIcons: JSON.stringify(icons.flashIcons.successIcon), 
         errorIcons: JSON.stringify(icons.flashIcons.errorIcon), 
         infoIcons: JSON.stringify(icons.flashIcons.infoIcon),
-        clickHereLabel: JSON.stringify(icons.flashIcons.clickHereText)
+        clickHereLabel: JSON.stringify(icons.flashIcons.clickHereText),
+        success: typeof success !== 'undefined' ? success : [],
+        error: typeof error !== 'undefined' ? error : [],
+        info: typeof info !== 'undefined' ? info : []
       })%>
       <%- body %>
     </main>
