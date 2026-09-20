@@ -13,6 +13,7 @@
       <div class="modal-body">
         <p><%=staticDetailsRecommend.helperText %></p>
         <form action="/readingBliss/<%= foundBook.id  %>/recommend/<%= currentUser._id  %>" method="POST">
+          <input type="hidden" name="_csrf" value="<%= _csrf %>">
           <div class="mb-3">
             <label for="image" class="form-label"><%=staticDetailsRecommend.imageLinkLabel  %></label>
             <input type="text" class="form-control" id="image" name="image" value="<%= foundBook.images[0].url  %>">

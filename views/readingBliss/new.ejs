@@ -2,6 +2,7 @@
 <%- include("../partials/carousal", {carousalDetails: bookJson.carousal}) %>
 <div class="p-5 rounded fade-in-scroll-js edit-new-form-design bg-dark">
 <form action="/readingBliss" class="needs-validation container p-md-5" novalidate enctype="multipart/form-data" method="POST">
+  <input type="hidden" name="_csrf" value="<%= _csrf %>">
     <div class="mb-3 slide-to-right-animation_scroll">
         <label for="name" class="form-label"><%=bookJson.newBook.productName.label%></label>
         <input type="text" name="title" class="form-control" id="name" placeholder="<%=bookJson.newBook.productName.placeHolder%>" required>

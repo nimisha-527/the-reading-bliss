@@ -16,6 +16,7 @@
                 <div class="card-text d-grid gap-2 d-md-flex justify-content-md-between">
               <% if(currentUser && foundBook?.owner && foundBook?.owner?.equals(currentUser._id)) { %>
                 <form class="btn-custom btn" action="/readingBliss/<%=foundBook.id%>?_method=DELETE" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= _csrf %>">
                   <button class="btn btn-link"><%=staticDetails.actionButtons.deleteLabel%></button>
                 </form>
               <% } %>
@@ -45,6 +46,7 @@
     <div class="col-lg-8 fade-in-scroll-js">
       <h2><%=staticDetails.reviews.title %></h2>
       <form action="/readingBliss/<%= foundBook.id %>/reviews" method="POST" class="needs-validation mb-5" novalidate>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>">
         <div class="mb-3">
           <label class="form-label" for="rating"><%=staticDetails.reviews.ratingLabel %></label>
           <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating" />
@@ -65,6 +67,7 @@
                     <h6 class="card-title d-flex flex-row justify-content-between"><b style="color: #afa494;">~<%= review?.owner.name %></b>
                       <% if(currentUser && review?.owner && review?.owner?.equals(currentUser._id)) { %>
                       <form action="/readingBliss/<%=foundBook.id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
                         <button class="default-css-unset"><%- icons.trashIcon  %></button>
                       </form>
                       <% } %>
