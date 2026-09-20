@@ -17,17 +17,20 @@ import LocalStrategy from "passport-local";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
 import mongoStore from "connect-mongo";
+import lusca from "lusca";
 
 import {bookJson, icons} from "./public/index.js";
 import { readingBlissRoutes, userRoutes, recommendRoutes, connectToCustomerRoutes } from "./route/index.js";
 import User from "./models/user.js";
+// set up rate limiter: maximum of five requests per minute
+import RateLimit from "express-rate-limit";
 
 const MongoStore = mongoStore;
 const app = express();
 const __filename = fileURLToPath(import.meta.url); // use this when using "type": "module" in the package.json for implementing import & export instead of require
 const __dirname = path.dirname(__filename); // use this when using "type": "module" in the package.json for implementing import & export instead of require
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
-// const dbUrl = "mongodb://127.0.0.1:27017/reading-bliss"
+// const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
+const dbUrl = "mongodb://127.0.0.1:27017/reading-bliss"
 mongoose.connect(dbUrl)
 .then(() => {
     console.log("Mongo Connection established")
@@ -82,6 +85,8 @@ const sessionConfig = {
 }
 // session expires in one week, above calcuation is for that purpose.
 app.use(session(sessionConfig));
+app.use(lusca.csrf());
+app.use(lusca.xssProtection(true));
 app.use(flash());
 app.use(helmet());
 const scriptSrcUrls = [
@@ -89,11 +94,17 @@ const scriptSrcUrls = [
     "https://cdn.jsdelivr.net"
 ];
 const styleSrcUrls = [
-    "https://fonts.googleapis.com"
+    "https://fonts.googleapis.com",
+    "https://cdn.jsdelivr.net",
+    "https://cdnjs.cloudflare.com"
 ];
-const connectSrcUrls = [];
+const connectSrcUrls = [
+    "https://cdn.jsdelivr.net"
+];
 const fontSrcUrls = [
-    "http://www.w3.org"
+    "http://www.w3.org",
+    "https://cdnjs.cloudflare.com",
+    "https://fonts.gstatic.com"
 ];
 app.use(helmet({
     contentSecurityPolicy: {
@@ -141,6 +152,14 @@ passport.deserializeUser(User.deserializeUser()); // this method deserialize cur
 //     const newUser = await User.register(user, "hello");
 //     res.send(newUser);
 // })
+
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 let getNavLinkColor = '';
 let getNavToggleColor = '';

@@ -12,9 +12,9 @@ const staticJson = {
             "booksRAndRDescription1": "At <span class='reading-bliss-text'>Reading Bliss</span>, we believe that every book has a story to tell beyond its pages. Our curated book reviews dive deep into the essence of each story, capturing the emotions, themes, and unique perspectives that make every read unforgettable. <br> Whether you're seeking a heartwarming romance, a mind-bending thriller, or a timeless classic, our personalized recommendations ensure you'll find your next favorite book. We explore a wide range of genres, shedding light on hidden gems and bestselling titles alike."
         },
         "picDetails": {
-            "firstUrl": "https://images.pexels.com/photos/7973038/pexels-photo-7973038.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2",
+            "firstUrl": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904403/pexels-photo-7973038_jenpx4.jpg",
             "firstText": "homeImage1",
-            "secondUrl": "https://images.pexels.com/photos/5604251/pexels-photo-5604251.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&dpr=2",
+            "secondUrl": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904434/pexels-photo-5604251_mqysm3.jpg",
             "secondText": "homeImage2",
         },
         "actionButtons": {
@@ -148,7 +148,7 @@ const staticJson = {
             "second": "<h4><b>How To Use<i></i></b></h4> <br> Explore all the books that this site has to offer. If you like any book <i>select it and browse it on net</i>. It takes you directly to the google and saves the hastle for searching the books. However, if you wish to have your own collection, do register and then you can have your own collection of books by adding new book. You can also recommend your favs to other viewers by becoming one of the user."
         },
         "picDetails": {
-            "url": "https://images.pexels.com/photos/711009/pexels-photo-711009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "url": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904489/pexels-photo-711009_hnt4qf.jpg",
             "text": "Cinque Terre"
         }
     },
@@ -178,7 +178,7 @@ const staticJson = {
             }
         },
         "picDetails": {
-            "url": "https://images.pexels.com/photos/2789781/pexels-photo-2789781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "url": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904529/pexels-photo-2789781_tgqbsy.jpg",
             "text": "Cinque Terre"
         },
         "actionButtons": {
@@ -242,10 +242,10 @@ const staticJson = {
     },
     "carousal": {
         "picDetails": {
-            "pic1": "https://images.pexels.com/photos/5331071/pexels-photo-5331071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            "pic2": "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?q=80&w=1783&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            "pic3": "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            "pic4": "https://images.pexels.com/photos/4256852/pexels-photo-4256852.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3"
+            "pic1": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789905324/pexels-photo-3457273_u964bm.jpg",
+            "pic2": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904599/photo-1558021212-51b6ecfa0db9_khrpjw.jpg",
+            "pic3": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904621/pexels-photo-3747468_fm2uvi.jpg",
+            "pic4": "https://res.cloudinary.com/dzjms6aad/image/upload/v1789904638/pexels-photo-4256852_o710l6.jpg"
         }
     },
     "errorScenario": {
