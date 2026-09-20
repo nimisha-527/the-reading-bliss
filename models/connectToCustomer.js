@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const connectToCustomerSchema = new mongoose.Schema({
     customerName: {
@@ -20,4 +20,4 @@ const connectToCustomerSchema = new mongoose.Schema({
 
 const ConnectToCustomerModel = mongoose.model('ConnectToCustomer', connectToCustomerSchema);
 
-module.exports = ConnectToCustomerModel;
+export default ConnectToCustomerModel;

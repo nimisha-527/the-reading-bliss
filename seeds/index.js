@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Books = require('../models/books');
-const bookData = require('./bookData');
+import mongoose from "mongoose";
+import Books from "../models/books.js";
+import bookData from "./bookData.js";
 
 // We can use the below two urls to generate the image (random images)
 // https://picsum.photos/400?random=${Math.random()}

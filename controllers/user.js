@@ -1,5 +1,5 @@
-const User = require('../models/user');
-const { bookJson, icons } = require('../public');
+import User from "../models/user.js";
+import { bookJson, icons } from "../public/index.js";
 
 let getNavLinkColor = '';
 let getNavToggleColor = '';
@@ -17,17 +17,15 @@ const setNavLinkColor = (value) => {
     }
 }
 
-module.exports.renderRegisterForm = (req, res) => {
+export const renderRegisterForm = (req, res) => {
     const registerStatic = bookJson.register;
     setNavLinkColor({dark: false, light: false});
     res.render('readingBliss/register', { registerStatic, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.register = async (req, res, next) => {
-    // const {username, password, emailId, name} = req.body
+export const register = async (req, res, next) => {
     const {username, password, name} = req.body
     try {
-        // const user = await new User({username, password, emailId, name});
         const user = await new User({username, password, name});
         const newUser = await User.register(user, password);
         req.login(newUser, err => {
@@ -52,13 +50,13 @@ module.exports.register = async (req, res, next) => {
     }
 }
 
-module.exports.renderLoginForm = (req, res) => {
+export const renderLoginForm = (req, res) => {
     const loginStatic = bookJson.login;
     setNavLinkColor({dark: false, light: false});
     res.render('readingBliss/login', { loginStatic, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.login = async (req, res) => {
+export const login = async (req, res) => {
     const {username} = req.body;
     try {
         req.flash('success',`Welcome back, ${username}`);
@@ -71,7 +69,7 @@ module.exports.login = async (req, res) => {
     }
 }
 
-module.exports.logout = async function(req, res, next) {
+export const logout = async function(req, res, next) {
     req.logout(function(err) {
         if(err) {
             return next(err);

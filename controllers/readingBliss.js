@@ -1,7 +1,7 @@
-const Books = require('../models/books');
-const Recommend = require('../models/recommend');
-const { bookJson, icons } = require('../public');
-const {cloudinary} = require('../cloudinary');
+import Books from "../models/books.js";
+import Recommend from "../models/recommend.js";
+import { bookJson, icons } from "../public/index.js";
+import { cloudinary } from "../cloudinary/index.js";
 
 let getNavLinkColor = '';
 let getNavToggleColor = '';
@@ -18,7 +18,7 @@ const setNavLinkColor = (value) => {
         getNavToggleColor = '';
     }
 }
-module.exports.index = async (req, res) => {
+export const index = async (req, res) => {
     const booksLibrary = await Books.find({});
     let books;
     let bookLibrary = [];
@@ -32,12 +32,12 @@ module.exports.index = async (req, res) => {
     res.render("readingBliss/index", { bookLibrary, booksListStatic, icons, bookJson, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.renderNewForm = async (req, res) => {
+export const renderNewForm = async (req, res) => {
     setNavLinkColor({dark: false, light: false});
     res.render("readingBliss/new", { bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor })
 }
 
-module.exports.addNewBook = async (req, res) => {
+export const addNewBook = async (req, res) => {
     const newBook = await new Books(req.body);
     newBook.images = req.files.map((f) => {
         return {
@@ -51,7 +51,7 @@ module.exports.addNewBook = async (req, res) => {
     // If the user does not select the images section then we update default image.
     if(newBook.images.length == 0) {
         const imgs = {
-            url: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1798&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: "https://res.cloudinary.com/dzjms6aad/image/upload/v1789837950/photo-1512820790803-83ca734da794_y0qojj.jpg",
             filename: "YourBook"
         }
         newBook.images.push(imgs)
@@ -61,13 +61,13 @@ module.exports.addNewBook = async (req, res) => {
     res.redirect(`/readingBliss/${newBook._id}`)
 }
 
-module.exports.renderAboutUs = async (req, res) => {
+export const renderAboutUs = async (req, res) => {
     const aboutUsStatic = bookJson.aboutUs;
     setNavLinkColor({dark: false, light: false});
     res.render("readingBliss/aboutUs", { aboutUsStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.renderGallery = async (req, res) => {
+export const renderGallery = async (req, res) => {
     const books = await Books.find({});
     const recommendedList = await Recommend.find({});
     const galleryStatic = bookJson.gallery;
@@ -109,13 +109,13 @@ module.exports.renderGallery = async (req, res) => {
 
 }
 
-module.exports.renderContactUs = async (req, res) => {
+export const renderContactUs = async (req, res) => {
     const contactUsStatic = bookJson.contactUs;
     setNavLinkColor({dark: true, light: false});
     res.render("readingBliss/contact", { contactUsStatic, bookJson, icons, isNavTransparent: true, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.renderDetailsPage = async (req, res) => {
+export const renderDetailsPage = async (req, res) => {
     const { id } = req.params;
     const foundBook = await Books.findById(id).populate({
         path: 'reviews',
@@ -123,7 +123,6 @@ module.exports.renderDetailsPage = async (req, res) => {
             path: 'owner'
         }
     }).populate('owner');
-    // console.log(foundBook,"----foundbook in details page");
     if(!foundBook) {
         req.flash('error', "Book you are searching for does not exists");
         return res.redirect('/readingBliss')
@@ -134,7 +133,7 @@ module.exports.renderDetailsPage = async (req, res) => {
     res.render("readingBliss/details", { foundBook, icons, staticDetails, bookJson, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.renderEditForm = async (req, res) => {
+export const renderEditForm = async (req, res) => {
     const { id } = req.params;
     const foundBook = await Books.findById(id);
 
@@ -142,7 +141,7 @@ module.exports.renderEditForm = async (req, res) => {
     res.render("readingBliss/edit", { book: foundBook, bookJson, icons, isNavTransparent: false, getNavLinkColor, getNavToggleColor });
 }
 
-module.exports.editBooks = async (req, res) => {
+export const editBooks = async (req, res) => {
     const { id } = req.params;
     const books = await Books.findById(id);
     const updateBooks = await Books.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
@@ -168,7 +167,7 @@ module.exports.editBooks = async (req, res) => {
     res.redirect(`/readingBliss/${id}`);
 }
 
-module.exports.deleteBooks = async (req, res) => {
+export const deleteBooks = async (req, res) => {
     const { id } = req.params;
     const deleteBooks = await Books.findByIdAndDelete(id);
     for(let image of deleteBooks.images) {

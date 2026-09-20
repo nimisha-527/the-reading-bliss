@@ -1,5 +1,7 @@
-const cloudinary = require('cloudinary').v2;
-const multer = require('multer');
+import cloudinary from "cloudinary";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -36,7 +38,7 @@ const uploadFile = {
     }
 };
 
-module.exports = {
+export {
     cloudinary,
     uploadFile
 };

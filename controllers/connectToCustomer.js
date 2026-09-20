@@ -1,6 +1,6 @@
-const ConnectToCustomer = require('../models/connectToCustomer');
+import ConnectToCustomer from "../models/connectToCustomer.js";
 
-module.exports.submitRequest = async (req, res) => {
+export const submitRequest = async (req, res) => {
     try {
         const {customerEmailId, customerName, customerMessage} = req.body;
         const newRequest = await new ConnectToCustomer({customerName, customerEmailId, customerMessage});

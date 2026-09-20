@@ -1,42 +1,38 @@
-const express = require('express');
+import express from "express";
+import { wrapAsync, isLoggedIn, isOwner, validateBooks } from "../utils/index.js";
+import reviewsRoutes from "./reviews.js";
+import {index, renderAboutUs, renderGallery, renderContactUs, renderNewForm, addNewBook, renderDetailsPage, renderEditForm, editBooks, deleteBooks} from "../controllers/readingBliss.js";
+import multer from "multer";
+import { uploadFile } from "../cloudinary/index.js";
+
 const router = express.Router();
-const { wrapAsync, isLoggedIn, isOwner,validateBooks } = require('../utils');
-const reviewsRoutes = require('./reviews');
-const readingBlissController = require('../controllers/readingBliss');
-// const randomColumn1 = Math.floor(Math.random() * 2) + 2553427;
-const multer  = require('multer');
-const { uploadFile } = require('../cloudinary');
-// const upload = multer({ dest: 'uploads/' }); // using this the destination was set to uploads folder in the root of our project but it is better to upload the files so it does not use the local storage in cloud. For that we use cloudinary.
+
 const upload = multer({ storage: uploadFile, limits: { fileSize:  5 * 1024 * 1024 } });
 
-router.get('/', isLoggedIn, wrapAsync(readingBlissController.index));
+router.get('/', isLoggedIn, wrapAsync(index));
 
-router.get('/aboutUs', wrapAsync(readingBlissController.renderAboutUs));
+router.get('/aboutUs', wrapAsync(renderAboutUs));
 
-router.get('/gallery', wrapAsync(readingBlissController.renderGallery));
+router.get('/gallery', wrapAsync(renderGallery));
 
-router.get('/contact', wrapAsync(readingBlissController.renderContactUs));
+router.get('/contact', wrapAsync(renderContactUs));
 
-router.get('/newBook', isLoggedIn, wrapAsync(readingBlissController.renderNewForm));
+router.get('/newBook', isLoggedIn, wrapAsync(renderNewForm));
 
-router.post('/', isLoggedIn, isOwner, upload.array('images'), validateBooks, wrapAsync(readingBlissController.addNewBook));
-// router.post('/', upload.array('image'), (req, res) => {
-//     console.log('Uploading', req.files)
-//     res.send(req.files);
-// })
+router.post('/', isLoggedIn, isOwner, upload.array('images'), validateBooks, wrapAsync(addNewBook));
 
-router.get('/:id', wrapAsync(readingBlissController.renderDetailsPage))
+router.get('/:id', wrapAsync(renderDetailsPage))
 
-router.get('/:id/edit', isLoggedIn, wrapAsync(readingBlissController.renderEditForm));
+router.get('/:id/edit', isLoggedIn, wrapAsync(renderEditForm));
 
 router.route('/:id')
-.put(isLoggedIn, isOwner, upload.array('images'), validateBooks, wrapAsync(readingBlissController.editBooks))
-.delete(isLoggedIn, isOwner, wrapAsync(readingBlissController.deleteBooks))
+.put(isLoggedIn, isOwner, upload.array('images'), validateBooks, wrapAsync(editBooks))
+.delete(isLoggedIn, isOwner, wrapAsync(deleteBooks))
 
 
 router.use('/:id/reviews', reviewsRoutes);
 
-module.exports = router;
+export default router;
 
 
 //ERRORS:

@@ -1,6 +1,7 @@
-const Reviews = require('../models/review');
-const Books = require('../models/books');
-module.exports.createNewReview = async (req, res) => {
+import Reviews from "../models/review.js";
+import Books from "../models/books.js";
+
+export const createNewReview = async (req, res) => {
     const {id} = req.params;
     const foundBook = await Books.findById(id);
     const review = new Reviews(req.body.review);
@@ -12,7 +13,7 @@ module.exports.createNewReview = async (req, res) => {
     res.redirect(`/readingBliss/${foundBook._id}`)
 }
 
-module.exports.deleteReview = async (req, res) => {
+export const deleteReview = async (req, res) => {
     const {id, reviewId} = req.params;
     await Books.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
     await Reviews.findByIdAndDelete(reviewId);

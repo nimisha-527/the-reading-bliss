@@ -1,7 +1,7 @@
-const Recommend = require('../models/recommend');
-const Books = require('../models/books');
+import Recommend from "../models/recommend.js";
+import Books from "../models/books.js";
 
-module.exports.recommend = async (req, res) => {
+export const recommend = async (req, res) => {
     const {id, userId} = req.params;
     const recommend = new Recommend(req.body);
     recommend.owner = req.user._id; // userId and the req.user._id (is universally available thanks to passport) is same.
