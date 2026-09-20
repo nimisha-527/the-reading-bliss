@@ -29,8 +29,8 @@ const MongoStore = mongoStore;
 const app = express();
 const __filename = fileURLToPath(import.meta.url); // use this when using "type": "module" in the package.json for implementing import & export instead of require
 const __dirname = path.dirname(__filename); // use this when using "type": "module" in the package.json for implementing import & export instead of require
-// const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
-const dbUrl = "mongodb://127.0.0.1:27017/reading-bliss"
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/reading-bliss";
+// const dbUrl = "mongodb://127.0.0.1:27017/reading-bliss"
 mongoose.connect(dbUrl)
 .then(() => {
     console.log("Mongo Connection established")
